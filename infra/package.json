@@ -1,0 +1,27 @@
+{
+  "name": "watch-over-pro-infra",
+  "version": "1.0.0",
+  "bin": {
+    "infra": "bin/infra.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy --all"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.161",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.0.0",
+    "aws-cdk": "^2.241.0",
+    "esbuild": "^0.27.3",
+    "typescript": "~5.9.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.241.0",
+    "constructs": "^10.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "jwks-rsa": "^4.0.1"
+  }
+}

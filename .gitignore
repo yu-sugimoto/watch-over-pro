@@ -1,15 +1,14 @@
-# React Native / Expo artifacts (should not exist in Swift projects)
+# Node/CDK
 node_modules/
+infra/out/
+infra/cdk.out/
+infra/node_modules/
+
+# React Native / Expo artifacts (should not exist in Swift projects)
 .expo/
 .bundle/
 android/
 ios/
-babel.config.js
-metro.config.js
-package.json
-package-lock.json
-tsconfig.json
-app.json
 
 # Xcode
 build/
@@ -23,14 +22,22 @@ xcuserdata/
 .swiftpm/
 Package.resolved
 
+# Temp
+tmp/
+
 # macOS
 .DS_Store
+**/.DS_Store
 *.swp
 *~
 
+# Secrets / environment-specific
+.env
+infra/cdk-outputs.json
+WatchOverPro/amplifyconfiguration.json
+
 # Rork
 .rork/
-.env
 rork-eslint.config.js
 
 core

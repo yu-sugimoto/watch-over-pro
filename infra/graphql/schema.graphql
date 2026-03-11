@@ -1,0 +1,130 @@
+type Family {
+  family_id: ID!
+  name: String!
+  plan_status: String!
+  plan_expires_at: AWSDateTime
+  created_at: AWSDateTime!
+}
+
+type FamilyMember {
+  family_id: ID!
+  member_user_id: ID!
+  display_name: String!
+  relationship: String!
+  age: Int!
+  color_hex: String!
+  role: String!
+  joined_at: AWSDateTime!
+}
+
+type CurrentLocation {
+  tracked_user_id: ID!
+  lat: Float!
+  lng: Float!
+  altitude: Float
+  accuracy: Float
+  speed: Float
+  heading: Float
+  battery_level: Float
+  updated_at: AWSDateTime!
+}
+
+type RoutePoint {
+  lat: Float!
+  lng: Float!
+  altitude: Float
+  speed: Float
+  timestamp: AWSDateTime!
+}
+
+type RouteChunk {
+  tracked_user_id_date: String!
+  chunk_start_epoch_ms: Float!
+  points: [RoutePoint!]!
+  created_at: AWSDateTime!
+}
+
+type StopEvent {
+  tracked_user_id_date: String!
+  stop_start_epoch_ms: Float!
+  lat: Float!
+  lng: Float!
+  started_at: AWSDateTime!
+  ended_at: AWSDateTime
+  duration_seconds: Int!
+}
+
+type PairingCode {
+  code: String!
+  family_id: ID!
+  created_by: ID!
+  expires_at: AWSDateTime!
+  is_used: Boolean!
+}
+
+input UpdateCurrentLocationInput {
+  tracked_user_id: ID!
+  lat: Float!
+  lng: Float!
+  altitude: Float
+  accuracy: Float
+  speed: Float
+  heading: Float
+  battery_level: Float
+}
+
+input AppendRouteChunkInput {
+  tracked_user_id_date: String!
+  chunk_start_epoch_ms: Float!
+  points: [RoutePointInput!]!
+}
+
+input RoutePointInput {
+  lat: Float!
+  lng: Float!
+  altitude: Float
+  speed: Float
+  timestamp: AWSDateTime!
+}
+
+input PutStopEventInput {
+  tracked_user_id_date: String!
+  stop_start_epoch_ms: Float!
+  lat: Float!
+  lng: Float!
+  started_at: AWSDateTime!
+  ended_at: AWSDateTime
+  duration_seconds: Int!
+}
+
+type LiveMapState {
+  locations: [CurrentLocation!]!
+  members: [FamilyMember!]!
+}
+
+type Query {
+  getFamily(family_id: ID!): Family
+  getFamilyMembers(family_id: ID!): [FamilyMember!]!
+  getLiveMapState(family_id: ID!): LiveMapState!
+  getRoute24h(tracked_user_id: ID!, date: String!): [RouteChunk!]!
+  getStopEvents24h(tracked_user_id: ID!, date: String!): [StopEvent!]!
+}
+
+type Mutation {
+  updateCurrentLocation(input: UpdateCurrentLocationInput!): CurrentLocation!
+  appendRouteChunk(input: AppendRouteChunkInput!): RouteChunk!
+  putStopEvent(input: PutStopEventInput!): StopEvent!
+  createPairingCode(family_id: ID!): PairingCode!
+  consumePairingCode(code: String!): FamilyMember!
+}
+
+type Subscription {
+  onLocationUpdate(tracked_user_id: ID!): CurrentLocation
+    @aws_subscribe(mutations: ["updateCurrentLocation"])
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

@@ -1,0 +1,6 @@
+import Foundation
+
+protocol FamilyRepositoryProtocol: Sendable {
+    func getFamily(familyId: String) async throws -> Family?
+    func getFamilyMembers(familyId: String) async throws -> [FamilyMember]
+}

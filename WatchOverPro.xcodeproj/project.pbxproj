@@ -1,0 +1,821 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0181A001DE4C9634CEEEFFD3 /* QuietHoursPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153C50E4078C68F5F71F368 /* QuietHoursPeriod.swift */; };
+		02A3782AD73B2754AFF0E0AF /* ManageRouteChunksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */; };
+		0B8597B860F8CFB95191E5AD /* AWSCloudWatchLoggingPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 701C289CD99A2E8A5B53C2A4 /* AWSCloudWatchLoggingPlugin */; };
+		1424A42BBA3900C8EE192E1D /* MetricCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD251454701504183C8437CD /* MetricCardView.swift */; };
+		16F20405BEA9EF6DBCA156F1 /* QuietHoursRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476918D724378E2967BE5C2 /* QuietHoursRow.swift */; };
+		1DC8737D51E03E5717DF8A08 /* MemberRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */; };
+		26F111C80647653073233DC3 /* QuietHoursListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F30609715E5CC4BE88989 /* QuietHoursListView.swift */; };
+		2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4566722C5699D477C0E003FF /* CurrentLocation.swift */; };
+		291A4A89D8E2F730E0ABC60C /* WatchOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457581D236E53239946C77C /* WatchOverView.swift */; };
+		29EA0104152EB68ACE25F03C /* AppSyncPairingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */; };
+		3203408FFF16029C825AB50A /* AlertEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF727E7DD7B35256523CA8 /* AlertEvent.swift */; };
+		391860122BD5AAEA4DA31F64 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */; };
+		3DB439D4C6E9C0B01D53AFB3 /* QuietHoursPeriodEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA8C19FC90017EEFB93C3BC /* QuietHoursPeriodEditor.swift */; };
+		3F1360888BD390BE6801D0A0 /* LocationSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35705F896169497FABC8176 /* LocationSyncService.swift */; };
+		4077DD4EB4E467BDC8B9B3C6 /* StatusSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */; };
+		40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */; };
+		43E1D603FC4D32C585A544B1 /* WatchedSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E64AC7374A288C4C62DB1A /* WatchedSetupView.swift */; };
+		465780A9A19C6DE750BA5124 /* ResolvePersonStatusUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */; };
+		485153C2B7BC45A9185BB139 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = D2BDC010AF3DE26424D084FF /* AWSAPIPlugin */; };
+		4C6DF840B0A49A65EDD221E7 /* WatchedModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552C97A713D811D1F45F7BC /* WatchedModeView.swift */; };
+		4E0B44ABA03DE63D22AB7B87 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9B25F38E3E5A095132454 /* Relationship.swift */; };
+		51742DCA8D6D423290400FB8 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6916E59677C1CCC814798304 /* Family.swift */; };
+		54DCE3D5F62D74CA99B69891 /* PairingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */; };
+		56904B3517ECB24272BBB58C /* RouteChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD0D4575361EA463E63B702 /* RouteChunk.swift */; };
+		6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */; };
+		6257D5419D8D498BCC3C1A61 /* AlertsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8CBA1135B35E881CF6D88 /* AlertsTabView.swift */; };
+		6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */; };
+		67CFF4993F80DDEC45A1B6CD /* PersonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9266825B51F419DB5F3224C1 /* PersonStatus.swift */; };
+		6F695D3053FA403591A8B525 /* CompactMetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */; };
+		7379E466A2FA215CAEFE6511 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933E05A9D4B9735B16C954EE /* AuthRepositoryProtocol.swift */; };
+		779B09B9E9DBFFB67BFB1A5C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5D87160C5EF10368639ECA11 /* Amplify */; };
+		7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */; };
+		8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */; };
+		8FFEDDD4C08D09AD19CC82C9 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D2E74AEF53ACDECA2FA59 /* AlertType.swift */; };
+		963F3705F99B3A1E0696144F /* AppSyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */; };
+		9917452F48B32EC0DDA12A56 /* UpdateLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */; };
+		99D9A876336716402AB0DDE2 /* AppModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F802AA72AF9FEC28FE4F63D /* AppModeManager.swift */; };
+		9DC2F2E5ADD799471DF74131 /* PairingRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */; };
+		9E174313A2F99D58D2D98743 /* BackgroundTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */; };
+		A14D8250912CA5BC6B61E5F9 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF30985819D2B827FDA1BFA /* PersonDetailView.swift */; };
+		A7790BFA901AC9CE8A3A0C63 /* CognitoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */; };
+		A7AA1F119BB8ABF0694FD74A /* FamilyManagementUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */; };
+		A7F8FB85A2A1FF13CCEBD101 /* StopEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B86AE3B02EA12D893EE54 /* StopEvent.swift */; };
+		A97764820E4C24A5815301AD /* PersonEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */; };
+		ACB7DFAF47FB1356745C55F6 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD868C40549C11D4E689482 /* AWSCognitoAuthPlugin */; };
+		AEA4F19FA5CAFC642AC547E8 /* AppSyncFamilyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */; };
+		B3A91A1FE28942C33873C710 /* PairingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF12DAD612E5A9769A9482D /* PairingInputView.swift */; };
+		B403F20B5D2A3AD135C38583 /* PairingStepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1260F6259B2D0AEC76C3CF31 /* PairingStepRow.swift */; };
+		B5BD16D8D3904D5B5ED0CBD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */; };
+		B5C37E507CF3860A9B7BF9E9 /* SubscribeLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */; };
+		B5CBDDEB14909E887A628736 /* PairingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C7FA33BE75193A8553FCAB /* PairingCode.swift */; };
+		B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */; };
+		B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */; };
+		BFD5B281ECAF66D629AA7B18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106CC5580EE0D2E163152017 /* SettingsView.swift */; };
+		C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */; };
+		C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */; };
+		CAB39A837FF3E12CAED111E8 /* AmplifyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */; };
+		CBCCD8866ED87EE6AA592090 /* AppModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F9432A78A24A46E394B480 /* AppModeSelectionView.swift */; };
+		CD0B4FCC73481AD864F065BE /* AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */; };
+		CF556F68E52961737890BD2F /* QuietHoursStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE34B688CBFFAB9499D7D25 /* QuietHoursStore.swift */; };
+		CFD83335B0E3EA506C0DFD4D /* PersonRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE53DF47718310EB48CB108 /* PersonRegistrationView.swift */; };
+		D239317B04E292F93C687B62 /* AppSyncLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */; };
+		D89DFC659E60CA67D73977BC /* CognitoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9302D6A708303E653BE35 /* CognitoDataSource.swift */; };
+		D9458396F64FA9A7296DDC3F /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */; };
+		DA6782E38F02C4DE53039488 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */; };
+		E3122787628EF5C9553462D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B64E47CBAD1B6C7E421495 /* Assets.xcassets */; };
+		E49D0AEC4E0DEC028EDC4CE3 /* WatchOverProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D50546B9173D5879B053C /* WatchOverProApp.swift */; };
+		E81BA78A39B2551C84C8C98C /* WatchOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88397BE81E938582BC1BA655 /* WatchOverViewModel.swift */; };
+		E8B06E32324A74578B21AF44 /* LocationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8BCBB0D872B273AB6CB773 /* LocationRepositoryProtocol.swift */; };
+		EB89EBF3424B8C8BE4ADAD6F /* PersonNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20987D67082B00322F955753 /* PersonNotFoundView.swift */; };
+		EC4976B963765E103289A6FC /* LocationPermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */; };
+		FBDABD40EF4C83C40444EBF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */; };
+		FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */; };
+		FE5C4D7698D96F6A82E4BB7C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B0A7309CF7B1BF96BFEE9 /* LocationService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingCodeGeneratorView.swift; sourceTree = "<group>"; };
+		044B0A7309CF7B1BF96BFEE9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		049C1A4857A4D898FBDC48E0 /* WatchOverPro.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WatchOverPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09E64AC7374A288C4C62DB1A /* WatchedSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedSetupView.swift; sourceTree = "<group>"; };
+		0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCardView.swift; sourceTree = "<group>"; };
+		106CC5580EE0D2E163152017 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1153C50E4078C68F5F71F368 /* QuietHoursPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuietHoursPeriod.swift; sourceTree = "<group>"; };
+		1260F6259B2D0AEC76C3CF31 /* PairingStepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingStepRow.swift; sourceTree = "<group>"; };
+		1476918D724378E2967BE5C2 /* QuietHoursRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuietHoursRow.swift; sourceTree = "<group>"; };
+		1BE9B25F38E3E5A095132454 /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
+		1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		1EF12DAD612E5A9769A9482D /* PairingInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingInputView.swift; sourceTree = "<group>"; };
+		20987D67082B00322F955753 /* PersonNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonNotFoundView.swift; sourceTree = "<group>"; };
+		2552C97A713D811D1F45F7BC /* WatchedModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedModeView.swift; sourceTree = "<group>"; };
+		29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoAuthRepository.swift; sourceTree = "<group>"; };
+		2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCase.swift; sourceTree = "<group>"; };
+		2FE34B688CBFFAB9499D7D25 /* QuietHoursStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuietHoursStore.swift; sourceTree = "<group>"; };
+		35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchOverPro.entitlements; sourceTree = "<group>"; };
+		36B64E47CBAD1B6C7E421495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		371D2E74AEF53ACDECA2FA59 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactMetricCard.swift; sourceTree = "<group>"; };
+		3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeLocationUseCase.swift; sourceTree = "<group>"; };
+		439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingRepositoryProtocol.swift; sourceTree = "<group>"; };
+		4566722C5699D477C0E003FF /* CurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
+		4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncDataSource.swift; sourceTree = "<group>"; };
+		4F802AA72AF9FEC28FE4F63D /* AppModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeManager.swift; sourceTree = "<group>"; };
+		4FD0D4575361EA463E63B702 /* RouteChunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteChunk.swift; sourceTree = "<group>"; };
+		56F9432A78A24A46E394B480 /* AppModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeSelectionView.swift; sourceTree = "<group>"; };
+		596D50546B9173D5879B053C /* WatchOverProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverProApp.swift; sourceTree = "<group>"; };
+		5AAF727E7DD7B35256523CA8 /* AlertEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEvent.swift; sourceTree = "<group>"; };
+		5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyConfiguration.swift; sourceTree = "<group>"; };
+		605B86AE3B02EA12D893EE54 /* StopEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEvent.swift; sourceTree = "<group>"; };
+		67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncPairingRepository.swift; sourceTree = "<group>"; };
+		6916E59677C1CCC814798304 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
+		6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHelper.swift; sourceTree = "<group>"; };
+		6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncFamilyRepository.swift; sourceTree = "<group>"; };
+		7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
+		86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManagementUseCase.swift; sourceTree = "<group>"; };
+		873BB2AC62B792306E6600DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		88397BE81E938582BC1BA655 /* WatchOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverViewModel.swift; sourceTree = "<group>"; };
+		8FA8C19FC90017EEFB93C3BC /* QuietHoursPeriodEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuietHoursPeriodEditor.swift; sourceTree = "<group>"; };
+		90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRole.swift; sourceTree = "<group>"; };
+		9266825B51F419DB5F3224C1 /* PersonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonStatus.swift; sourceTree = "<group>"; };
+		933E05A9D4B9735B16C954EE /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
+		99C7FA33BE75193A8553FCAB /* PairingCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingCode.swift; sourceTree = "<group>"; };
+		9AA9302D6A708303E653BE35 /* CognitoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoDataSource.swift; sourceTree = "<group>"; };
+		9BE53DF47718310EB48CB108 /* PersonRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRegistrationView.swift; sourceTree = "<group>"; };
+		9CF30985819D2B827FDA1BFA /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeys.swift; sourceTree = "<group>"; };
+		A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Relative.swift"; sourceTree = "<group>"; };
+		A35705F896169497FABC8176 /* LocationSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSyncService.swift; sourceTree = "<group>"; };
+		A457581D236E53239946C77C /* WatchOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverView.swift; sourceTree = "<group>"; };
+		A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationUseCase.swift; sourceTree = "<group>"; };
+		A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailMapCard.swift; sourceTree = "<group>"; };
+		AB9F30609715E5CC4BE88989 /* QuietHoursListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuietHoursListView.swift; sourceTree = "<group>"; };
+		AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingUseCase.swift; sourceTree = "<group>"; };
+		AD251454701504183C8437CD /* MetricCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCardView.swift; sourceTree = "<group>"; };
+		AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonEditView.swift; sourceTree = "<group>"; };
+		B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTypes.swift; sourceTree = "<group>"; };
+		C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCase.swift; sourceTree = "<group>"; };
+		CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
+		CEF8CBA1135B35E881CF6D88 /* AlertsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTabView.swift; sourceTree = "<group>"; };
+		D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISO8601+Shared.swift"; sourceTree = "<group>"; };
+		DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSummaryCard.swift; sourceTree = "<group>"; };
+		DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskService.swift; sourceTree = "<group>"; };
+		F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCase.swift; sourceTree = "<group>"; };
+		F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyMember.swift; sourceTree = "<group>"; };
+		FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncLocationRepository.swift; sourceTree = "<group>"; };
+		FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyRepositoryProtocol.swift; sourceTree = "<group>"; };
+		FC8BCBB0D872B273AB6CB773 /* LocationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryProtocol.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC130F2D0DA1CBA60E3E5AB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				779B09B9E9DBFFB67BFB1A5C /* Amplify in Frameworks */,
+				485153C2B7BC45A9185BB139 /* AWSAPIPlugin in Frameworks */,
+				ACB7DFAF47FB1356745C55F6 /* AWSCognitoAuthPlugin in Frameworks */,
+				0B8597B860F8CFB95191E5AD /* AWSCloudWatchLoggingPlugin in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12E8CA44C18497CEE1D26A56 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C90037D8DA18C012CE3F0B81 /* DataSources */,
+				4C6849C01F969BD3EA94AF4B /* DTOs */,
+				56478A30A4319C761639F7EB /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1B02EA95D0189886EC916B01 /* WatchOverPro */ = {
+			isa = PBXGroup;
+			children = (
+				DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */,
+				36B64E47CBAD1B6C7E421495 /* Assets.xcassets */,
+				873BB2AC62B792306E6600DD /* Info.plist */,
+				35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */,
+				596D50546B9173D5879B053C /* WatchOverProApp.swift */,
+				12E8CA44C18497CEE1D26A56 /* Data */,
+				8168D3930B9456861CBECA53 /* Domain */,
+				5E9A94A0FAC5B103060721C8 /* Infrastructure */,
+				94EE1FE95848D16687C061A4 /* Presentation */,
+				FEBE1D15351E84F1B948433D /* Utilities */,
+			);
+			path = WatchOverPro;
+			sourceTree = "<group>";
+		};
+		21B511FCBCE28AD6131EA95F /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */,
+				86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */,
+				C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */,
+				AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */,
+				2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */,
+				3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */,
+				A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		4C6849C01F969BD3EA94AF4B /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		56478A30A4319C761639F7EB /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */,
+				FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */,
+				67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */,
+				29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		5C2FA55C579F67981B594D81 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		5E9A94A0FAC5B103060721C8 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				2FE34B688CBFFAB9499D7D25 /* QuietHoursStore.swift */,
+				BFED6998CB6EFE93EF3599F7 /* AWS */,
+				5C2FA55C579F67981B594D81 /* Background */,
+				7E3DA1BABDE258687B87BABF /* DI */,
+				771CBD4B4278A2AB5198D37E /* Location */,
+				FAF345C0AE27629B7B0BC52D /* Notifications */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		735FCD30D5C37DFB6A60701B = {
+			isa = PBXGroup;
+			children = (
+				1B02EA95D0189886EC916B01 /* WatchOverPro */,
+				A76A2975607EF4F3D8FB26EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7511A0AA2A73EC102676BB43 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4F802AA72AF9FEC28FE4F63D /* AppModeManager.swift */,
+				88397BE81E938582BC1BA655 /* WatchOverViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		771CBD4B4278A2AB5198D37E /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				044B0A7309CF7B1BF96BFEE9 /* LocationService.swift */,
+				A35705F896169497FABC8176 /* LocationSyncService.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		77E546024435DBF9A028F6D7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */,
+				AD251454701504183C8437CD /* MetricCardView.swift */,
+				1260F6259B2D0AEC76C3CF31 /* PairingStepRow.swift */,
+				0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */,
+				A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */,
+				DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7E3DA1BABDE258687B87BABF /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		8168D3930B9456861CBECA53 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F84391B2FD0126DF1B77B6F7 /* Entities */,
+				F000078C955A295F2C8879BC /* Repositories */,
+				21B511FCBCE28AD6131EA95F /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		94EE1FE95848D16687C061A4 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				77E546024435DBF9A028F6D7 /* Components */,
+				7511A0AA2A73EC102676BB43 /* ViewModels */,
+				9BBB2024E17A3AC9706A669A /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9BBB2024E17A3AC9706A669A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEF8CBA1135B35E881CF6D88 /* AlertsTabView.swift */,
+				56F9432A78A24A46E394B480 /* AppModeSelectionView.swift */,
+				6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */,
+				04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */,
+				1EF12DAD612E5A9769A9482D /* PairingInputView.swift */,
+				9CF30985819D2B827FDA1BFA /* PersonDetailView.swift */,
+				AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */,
+				20987D67082B00322F955753 /* PersonNotFoundView.swift */,
+				9BE53DF47718310EB48CB108 /* PersonRegistrationView.swift */,
+				AB9F30609715E5CC4BE88989 /* QuietHoursListView.swift */,
+				8FA8C19FC90017EEFB93C3BC /* QuietHoursPeriodEditor.swift */,
+				1476918D724378E2967BE5C2 /* QuietHoursRow.swift */,
+				106CC5580EE0D2E163152017 /* SettingsView.swift */,
+				2552C97A713D811D1F45F7BC /* WatchedModeView.swift */,
+				09E64AC7374A288C4C62DB1A /* WatchedSetupView.swift */,
+				A457581D236E53239946C77C /* WatchOverView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A76A2975607EF4F3D8FB26EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				049C1A4857A4D898FBDC48E0 /* WatchOverPro.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFED6998CB6EFE93EF3599F7 /* AWS */ = {
+			isa = PBXGroup;
+			children = (
+				5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */,
+			);
+			path = AWS;
+			sourceTree = "<group>";
+		};
+		C90037D8DA18C012CE3F0B81 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */,
+				9AA9302D6A708303E653BE35 /* CognitoDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		F000078C955A295F2C8879BC /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				933E05A9D4B9735B16C954EE /* AuthRepositoryProtocol.swift */,
+				FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */,
+				FC8BCBB0D872B273AB6CB773 /* LocationRepositoryProtocol.swift */,
+				439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F84391B2FD0126DF1B77B6F7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5AAF727E7DD7B35256523CA8 /* AlertEvent.swift */,
+				371D2E74AEF53ACDECA2FA59 /* AlertType.swift */,
+				7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */,
+				4566722C5699D477C0E003FF /* CurrentLocation.swift */,
+				6916E59677C1CCC814798304 /* Family.swift */,
+				F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */,
+				90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */,
+				99C7FA33BE75193A8553FCAB /* PairingCode.swift */,
+				9266825B51F419DB5F3224C1 /* PersonStatus.swift */,
+				1153C50E4078C68F5F71F368 /* QuietHoursPeriod.swift */,
+				1BE9B25F38E3E5A095132454 /* Relationship.swift */,
+				4FD0D4575361EA463E63B702 /* RouteChunk.swift */,
+				605B86AE3B02EA12D893EE54 /* StopEvent.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		FAF345C0AE27629B7B0BC52D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		FEBE1D15351E84F1B948433D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */,
+				A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */,
+				D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */,
+				6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */,
+				CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBAF1AB80DC14448BD80C1CC /* WatchOverPro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ECE1C6823AB1CA399E67399 /* Build configuration list for PBXNativeTarget "WatchOverPro" */;
+			buildPhases = (
+				0D2AA6342E3C201C82F0499A /* Sources */,
+				9D8851F5C552F9DD141DC23E /* Resources */,
+				FC130F2D0DA1CBA60E3E5AB3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WatchOverPro;
+			packageProductDependencies = (
+				5D87160C5EF10368639ECA11 /* Amplify */,
+				D2BDC010AF3DE26424D084FF /* AWSAPIPlugin */,
+				9CD868C40549C11D4E689482 /* AWSCognitoAuthPlugin */,
+				701C289CD99A2E8A5B53C2A4 /* AWSCloudWatchLoggingPlugin */,
+			);
+			productName = WatchOverPro;
+			productReference = 049C1A4857A4D898FBDC48E0 /* WatchOverPro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D771B2E24E28E64118392392 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					CBAF1AB80DC14448BD80C1CC = {
+						DevelopmentTeam = ZM2HL733PV;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 09011054E7EC1B59687FB2D3 /* Build configuration list for PBXProject "WatchOverPro" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 735FCD30D5C37DFB6A60701B;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				98D1A3E13B14EE2E00CE4745 /* XCRemoteSwiftPackageReference "amplify-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A76A2975607EF4F3D8FB26EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBAF1AB80DC14448BD80C1CC /* WatchOverPro */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9D8851F5C552F9DD141DC23E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3122787628EF5C9553462D8 /* Assets.xcassets in Resources */,
+				D9458396F64FA9A7296DDC3F /* amplifyconfiguration.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D2AA6342E3C201C82F0499A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3203408FFF16029C825AB50A /* AlertEvent.swift in Sources */,
+				8FFEDDD4C08D09AD19CC82C9 /* AlertType.swift in Sources */,
+				6257D5419D8D498BCC3C1A61 /* AlertsTabView.swift in Sources */,
+				CAB39A837FF3E12CAED111E8 /* AmplifyConfiguration.swift in Sources */,
+				CD0B4FCC73481AD864F065BE /* AppMode.swift in Sources */,
+				99D9A876336716402AB0DDE2 /* AppModeManager.swift in Sources */,
+				CBCCD8866ED87EE6AA592090 /* AppModeSelectionView.swift in Sources */,
+				963F3705F99B3A1E0696144F /* AppSyncDataSource.swift in Sources */,
+				AEA4F19FA5CAFC642AC547E8 /* AppSyncFamilyRepository.swift in Sources */,
+				D239317B04E292F93C687B62 /* AppSyncLocationRepository.swift in Sources */,
+				29EA0104152EB68ACE25F03C /* AppSyncPairingRepository.swift in Sources */,
+				7379E466A2FA215CAEFE6511 /* AuthRepositoryProtocol.swift in Sources */,
+				9E174313A2F99D58D2D98743 /* BackgroundTaskService.swift in Sources */,
+				A7790BFA901AC9CE8A3A0C63 /* CognitoAuthRepository.swift in Sources */,
+				D89DFC659E60CA67D73977BC /* CognitoDataSource.swift in Sources */,
+				B5BD16D8D3904D5B5ED0CBD4 /* Color+Hex.swift in Sources */,
+				6F695D3053FA403591A8B525 /* CompactMetricCard.swift in Sources */,
+				FBDABD40EF4C83C40444EBF0 /* ContentView.swift in Sources */,
+				2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */,
+				C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */,
+				C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */,
+				B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */,
+				51742DCA8D6D423290400FB8 /* Family.swift in Sources */,
+				A7AA1F119BB8ABF0694FD74A /* FamilyManagementUseCase.swift in Sources */,
+				FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */,
+				B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */,
+				40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */,
+				8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */,
+				EC4976B963765E103289A6FC /* LocationPermissionHelper.swift in Sources */,
+				E8B06E32324A74578B21AF44 /* LocationRepositoryProtocol.swift in Sources */,
+				FE5C4D7698D96F6A82E4BB7C /* LocationService.swift in Sources */,
+				3F1360888BD390BE6801D0A0 /* LocationSyncService.swift in Sources */,
+				02A3782AD73B2754AFF0E0AF /* ManageRouteChunksUseCase.swift in Sources */,
+				1DC8737D51E03E5717DF8A08 /* MemberRole.swift in Sources */,
+				1424A42BBA3900C8EE192E1D /* MetricCardView.swift in Sources */,
+				DA6782E38F02C4DE53039488 /* NotificationService.swift in Sources */,
+				B5CBDDEB14909E887A628736 /* PairingCode.swift in Sources */,
+				7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */,
+				B3A91A1FE28942C33873C710 /* PairingInputView.swift in Sources */,
+				9DC2F2E5ADD799471DF74131 /* PairingRepositoryProtocol.swift in Sources */,
+				B403F20B5D2A3AD135C38583 /* PairingStepRow.swift in Sources */,
+				54DCE3D5F62D74CA99B69891 /* PairingUseCase.swift in Sources */,
+				391860122BD5AAEA4DA31F64 /* PermissionManager.swift in Sources */,
+				6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */,
+				6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */,
+				A14D8250912CA5BC6B61E5F9 /* PersonDetailView.swift in Sources */,
+				A97764820E4C24A5815301AD /* PersonEditView.swift in Sources */,
+				EB89EBF3424B8C8BE4ADAD6F /* PersonNotFoundView.swift in Sources */,
+				CFD83335B0E3EA506C0DFD4D /* PersonRegistrationView.swift in Sources */,
+				67CFF4993F80DDEC45A1B6CD /* PersonStatus.swift in Sources */,
+				26F111C80647653073233DC3 /* QuietHoursListView.swift in Sources */,
+				0181A001DE4C9634CEEEFFD3 /* QuietHoursPeriod.swift in Sources */,
+				3DB439D4C6E9C0B01D53AFB3 /* QuietHoursPeriodEditor.swift in Sources */,
+				16F20405BEA9EF6DBCA156F1 /* QuietHoursRow.swift in Sources */,
+				CF556F68E52961737890BD2F /* QuietHoursStore.swift in Sources */,
+				4E0B44ABA03DE63D22AB7B87 /* Relationship.swift in Sources */,
+				465780A9A19C6DE750BA5124 /* ResolvePersonStatusUseCase.swift in Sources */,
+				56904B3517ECB24272BBB58C /* RouteChunk.swift in Sources */,
+				BFD5B281ECAF66D629AA7B18 /* SettingsView.swift in Sources */,
+				4077DD4EB4E467BDC8B9B3C6 /* StatusSummaryCard.swift in Sources */,
+				A7F8FB85A2A1FF13CCEBD101 /* StopEvent.swift in Sources */,
+				B5C37E507CF3860A9B7BF9E9 /* SubscribeLocationUseCase.swift in Sources */,
+				9917452F48B32EC0DDA12A56 /* UpdateLocationUseCase.swift in Sources */,
+				E49D0AEC4E0DEC028EDC4CE3 /* WatchOverProApp.swift in Sources */,
+				291A4A89D8E2F730E0ABC60C /* WatchOverView.swift in Sources */,
+				E81BA78A39B2551C84C8C98C /* WatchOverViewModel.swift in Sources */,
+				4C6DF840B0A49A65EDD221E7 /* WatchedModeView.swift in Sources */,
+				43E1D603FC4D32C585A544B1 /* WatchedSetupView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		16EA2A72D0577CCEDD053534 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchOverPro/WatchOverPro.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZM2HL733PV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchOverPro/Info.plist;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_CFBundleDisplayName = "見守り Pro";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "バックグラウンドで位置情報を更新し続けるために必要です。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を使って、ご家族の現在地を把握します。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.watchoverpro.app;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		58D25D9D3F936365DBB2B871 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		66DF1CAF2278FB981725B597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E11CEF760DEC141FB6D91B62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchOverPro/WatchOverPro.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZM2HL733PV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchOverPro/Info.plist;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_CFBundleDisplayName = "見守り Pro";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "バックグラウンドで位置情報を更新し続けるために必要です。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を使って、ご家族の現在地を把握します。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.watchoverpro.app;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09011054E7EC1B59687FB2D3 /* Build configuration list for PBXProject "WatchOverPro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66DF1CAF2278FB981725B597 /* Debug */,
+				58D25D9D3F936365DBB2B871 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3ECE1C6823AB1CA399E67399 /* Build configuration list for PBXNativeTarget "WatchOverPro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11CEF760DEC141FB6D91B62 /* Debug */,
+				16EA2A72D0577CCEDD053534 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		98D1A3E13B14EE2E00CE4745 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D87160C5EF10368639ECA11 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98D1A3E13B14EE2E00CE4745 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
+		};
+		701C289CD99A2E8A5B53C2A4 /* AWSCloudWatchLoggingPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98D1A3E13B14EE2E00CE4745 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCloudWatchLoggingPlugin;
+		};
+		9CD868C40549C11D4E689482 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98D1A3E13B14EE2E00CE4745 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		D2BDC010AF3DE26424D084FF /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98D1A3E13B14EE2E00CE4745 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSAPIPlugin;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = D771B2E24E28E64118392392 /* Project object */;
+}
