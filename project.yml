@@ -1,0 +1,73 @@
+name: WatchOverPro
+options:
+  bundleIdPrefix: com.watchoverpro
+  deploymentTarget:
+    iOS: "18.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: false
+
+packages:
+  amplify-swift:
+    url: https://github.com/aws-amplify/amplify-swift
+    majorVersion: 2.0.0
+
+targets:
+  WatchOverPro:
+    type: application
+    platform: iOS
+    sources:
+      - path: WatchOverPro
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.watchoverpro.app
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_GENERATION_MODE: GeneratedFile
+        INFOPLIST_KEY_CFBundleDisplayName: "見守り Pro"
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait"
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "位置情報を使って、ご家族の現在地を把握します。"
+        INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription: "バックグラウンドで位置情報を更新し続けるために必要です。"
+        SWIFT_VERSION: "6.0"
+        CODE_SIGN_ENTITLEMENTS: WatchOverPro/WatchOverPro.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ZM2HL733PV
+        ENABLE_PREVIEWS: YES
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+        Release:
+          SWIFT_COMPILATION_MODE: wholemodule
+    dependencies:
+      - package: amplify-swift
+        product: Amplify
+      - package: amplify-swift
+        product: AWSAPIPlugin
+      - package: amplify-swift
+        product: AWSCognitoAuthPlugin
+      - package: amplify-swift
+        product: AWSCloudWatchLoggingPlugin
+    entitlements:
+      path: WatchOverPro/WatchOverPro.entitlements
+      properties:
+        com.apple.developer.applesignin:
+          - Default
+    info:
+      path: WatchOverPro/Info.plist
+      properties:
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.watchoverpro.app.sync
+          - com.watchoverpro.app.processing
+        CFBundleURLTypes:
+          - CFBundleURLSchemes:
+              - watchoverpro
+        UIBackgroundModes:
+          - location
+          - fetch
+          - processing
