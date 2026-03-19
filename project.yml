@@ -71,3 +71,15 @@ targets:
           - location
           - fetch
           - processing
+
+  WatchOverProTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: WatchOverProTests
+    dependencies:
+      - target: WatchOverPro
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
