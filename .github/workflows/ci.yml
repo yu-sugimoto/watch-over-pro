@@ -39,15 +39,22 @@ jobs:
       - name: Generate Xcode project
         run: xcodegen generate
 
+      - name: Boot simulator
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available -j \
+            | python3 -c "import sys,json; devs=json.load(sys.stdin)['devices']; print(next(d['udid'] for rt in devs for d in devs[rt] if 'iPhone' in d['name'] and d['isAvailable']))")
+          echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
+          xcrun simctl boot "$DEVICE_ID"
+
       - name: Build & Test
+        timeout-minutes: 15
         run: |
           xcodebuild test \
             -scheme WatchOverPro \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination "platform=iOS Simulator,id=$DEVICE_ID" \
             CODE_SIGNING_ALLOWED=NO \
             -resultBundlePath TestResults.xcresult \
-            -parallel-testing-enabled YES \
-            -quiet
+            -parallel-testing-enabled YES
 
       - name: Upload test results
         if: always()
