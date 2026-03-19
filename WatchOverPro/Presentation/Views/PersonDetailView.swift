@@ -162,6 +162,8 @@ struct PersonDetailView: View {
         PersonDetailMapCard(
             member: member,
             location: location,
+            routeChunks: routeChunks,
+            stopEvents: stopEvents,
             mapPosition: $mapPosition
         )
     }
