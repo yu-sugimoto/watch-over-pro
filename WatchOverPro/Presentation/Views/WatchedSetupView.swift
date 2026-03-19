@@ -4,6 +4,7 @@ struct WatchedSetupView: View {
     let appModeManager: AppModeManager
     @Environment(\.dismiss) private var dismiss
     @Environment(\.pairingRepository) private var pairingRepo
+    @Environment(\.authRepository) private var authRepo
 
     @State private var isGenerating = false
     @State private var generatedCode: String?
@@ -194,9 +195,14 @@ struct WatchedSetupView: View {
         errorMessage = nil
 
         do {
+            guard let userId = await authRepo.currentUserId else {
+                errorMessage = "ユーザー認証情報を取得できませんでした"
+                isGenerating = false
+                return
+            }
             let familyId = appModeManager.familyId ?? UUID().uuidString
             let pairingCode = try await pairingRepo.createPairingCode(familyId: familyId)
-            appModeManager.linkToTrackedUser(id: UUID().uuidString, name: "", familyId: familyId)
+            appModeManager.linkToTrackedUser(id: userId, name: "", familyId: familyId)
             generatedCode = pairingCode.code
         } catch {
             errorMessage = "コード生成に失敗しました: \(error.localizedDescription)"

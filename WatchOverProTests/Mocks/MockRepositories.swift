@@ -76,7 +76,13 @@ final class MockPairingRepository: PairingRepositoryProtocol {
         await stubbedPairingCode
     }
 
-    nonisolated func consumePairingCode(code: String) async throws -> FamilyMember {
+    nonisolated func consumePairingCode(
+        code: String,
+        displayName: String?,
+        relationship: String?,
+        age: Int?,
+        colorHex: String?
+    ) async throws -> FamilyMember {
         await stubbedFamilyMember
     }
 }
