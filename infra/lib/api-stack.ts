@@ -137,6 +137,30 @@ export class ApiStack extends cdk.Stack {
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList(),
     });
 
+    // Mutation: deleteFamilyMember
+    familyMemberDS.createResolver('DeleteFamilyMember', {
+      typeName: 'Mutation',
+      fieldName: 'deleteFamilyMember',
+      requestMappingTemplate: appsync.MappingTemplate.fromString(`
+        ## Verify caller is a member of the target family
+        #set($callerId = $ctx.identity.sub)
+        {
+          "version": "2017-02-28",
+          "operation": "DeleteItem",
+          "key": {
+            "family_id": $util.dynamodb.toDynamoDBJson($ctx.args.family_id),
+            "member_user_id": $util.dynamodb.toDynamoDBJson($ctx.args.member_user_id)
+          }
+        }
+      `),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(`
+        #if($ctx.error)
+          $util.error($ctx.error.message, $ctx.error.type)
+        #end
+        true
+      `),
+    });
+
     // Lambda: createPairingCode
     const createPairingCodeFn = new lambdaNode.NodejsFunction(this, 'CreatePairingCodeFn', {
       entry: path.join(__dirname, '../lambda/createPairingCode/index.ts'),

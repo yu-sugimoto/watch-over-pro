@@ -51,6 +51,8 @@ final class MockLocationRepository: LocationRepositoryProtocol {
 final class MockFamilyRepository: FamilyRepositoryProtocol {
     var stubbedFamily: Family?
     var stubbedMembers: [FamilyMember] = []
+    var deleteFamilyMemberCallCount = 0
+    var lastDeletedMemberUserId: String?
 
     nonisolated func getFamily(familyId: String) async throws -> Family? {
         await stubbedFamily
@@ -58,6 +60,13 @@ final class MockFamilyRepository: FamilyRepositoryProtocol {
 
     nonisolated func getFamilyMembers(familyId: String) async throws -> [FamilyMember] {
         await stubbedMembers
+    }
+
+    nonisolated func deleteFamilyMember(familyId: String, memberUserId: String) async throws {
+        await MainActor.run {
+            deleteFamilyMemberCallCount += 1
+            lastDeletedMemberUserId = memberUserId
+        }
     }
 }
 

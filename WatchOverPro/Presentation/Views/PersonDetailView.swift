@@ -9,6 +9,8 @@ struct PersonDetailView: View {
     @Environment(\.locationRepository) private var locationRepo
     @State private var showDeleteConfirmation = false
     @State private var showEditSheet = false
+    @State private var isDeleting = false
+    @State private var deleteError: String?
     @State private var routeChunks: [RouteChunk] = []
     @State private var stopEvents: [StopEvent] = []
     @State private var mapPosition: MapCameraPosition = .automatic
@@ -67,10 +69,24 @@ struct PersonDetailView: View {
         }
         .confirmationDialog("この見守り対象を削除しますか？", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
             Button("削除", role: .destructive) {
-                dismiss()
+                isDeleting = true
+                Task {
+                    do {
+                        try await watchOverViewModel.deleteMember(member)
+                        dismiss()
+                    } catch {
+                        deleteError = error.localizedDescription
+                    }
+                    isDeleting = false
+                }
             }
         } message: {
             Text("\(member.displayName)さんのデータがすべて削除されます。")
+        }
+        .alert("削除に失敗しました", isPresented: .init(get: { deleteError != nil }, set: { if !$0 { deleteError = nil } })) {
+            Button("OK") { deleteError = nil }
+        } message: {
+            Text(deleteError ?? "")
         }
         .sheet(isPresented: $showEditSheet) {
             PersonEditView(member: member)

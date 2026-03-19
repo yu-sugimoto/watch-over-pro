@@ -30,4 +30,15 @@ final class AppSyncFamilyRepository: FamilyRepositoryProtocol, Sendable {
         )
         return result.map { $0.toEntity() }
     }
+
+    func deleteFamilyMember(familyId: String, memberUserId: String) async throws {
+        let _: Bool = try await dataSource.mutate(
+            """
+            mutation DeleteFamilyMember($family_id: ID!, $member_user_id: ID!) {
+                deleteFamilyMember(family_id: $family_id, member_user_id: $member_user_id)
+            }
+            """,
+            variables: ["family_id": familyId, "member_user_id": memberUserId]
+        )
+    }
 }

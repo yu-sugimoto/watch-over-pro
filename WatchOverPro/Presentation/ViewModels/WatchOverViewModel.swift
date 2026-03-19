@@ -164,6 +164,15 @@ final class WatchOverViewModel {
         return member
     }
 
+    // MARK: - Member Deletion
+
+    func deleteMember(_ member: FamilyMember) async throws {
+        guard let familyId else { throw AppError.noFamilyId }
+        try await familyRepo.deleteFamilyMember(familyId: familyId, memberUserId: member.memberUserId)
+        familyMembers.removeAll { $0.memberUserId == member.memberUserId }
+        latestLocations.removeValue(forKey: member.memberUserId)
+    }
+
     // MARK: - Alerts
 
     func markAlertAsRead(_ alert: AlertEvent) {
