@@ -137,28 +137,22 @@ export class ApiStack extends cdk.Stack {
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList(),
     });
 
-    // Mutation: deleteFamilyMember
-    familyMemberDS.createResolver('DeleteFamilyMember', {
+    // Lambda: deleteFamilyMember
+    const deleteFamilyMemberFn = new lambdaNode.NodejsFunction(this, 'DeleteFamilyMemberFn', {
+      entry: path.join(__dirname, '../lambda/deleteFamilyMember/index.ts'),
+      handler: 'handler',
+      runtime: lambda.Runtime.NODEJS_24_X,
+      environment: {
+        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+      },
+      timeout: cdk.Duration.seconds(10),
+    });
+    props.tables.familyMembers.grantReadWriteData(deleteFamilyMemberFn);
+
+    const deleteFamilyMemberDS = this.api.addLambdaDataSource('DeleteFamilyMemberDS', deleteFamilyMemberFn);
+    deleteFamilyMemberDS.createResolver('DeleteFamilyMember', {
       typeName: 'Mutation',
       fieldName: 'deleteFamilyMember',
-      requestMappingTemplate: appsync.MappingTemplate.fromString(`
-        ## Verify caller is a member of the target family
-        #set($callerId = $ctx.identity.sub)
-        {
-          "version": "2017-02-28",
-          "operation": "DeleteItem",
-          "key": {
-            "family_id": $util.dynamodb.toDynamoDBJson($ctx.args.family_id),
-            "member_user_id": $util.dynamodb.toDynamoDBJson($ctx.args.member_user_id)
-          }
-        }
-      `),
-      responseMappingTemplate: appsync.MappingTemplate.fromString(`
-        #if($ctx.error)
-          $util.error($ctx.error.message, $ctx.error.type)
-        #end
-        true
-      `),
     });
 
     // Lambda: createPairingCode

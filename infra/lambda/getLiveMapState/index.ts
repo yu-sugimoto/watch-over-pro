@@ -6,6 +6,11 @@ const FAMILY_MEMBERS_TABLE = process.env.FAMILY_MEMBERS_TABLE!;
 const CURRENT_LOCATIONS_TABLE = process.env.CURRENT_LOCATIONS_TABLE!;
 
 export async function handler(event: AppSyncResolverEvent<{ family_id: string }>) {
+  const userId = event.identity && 'sub' in event.identity ? event.identity.sub : '';
+  if (!userId) {
+    throw new Error('Unauthorized');
+  }
+
   const familyId = event.arguments.family_id;
 
   // 1. Query all family members
@@ -25,6 +30,12 @@ export async function handler(event: AppSyncResolverEvent<{ family_id: string }>
     role: item.role?.S ?? '',
     joined_at: item.joined_at?.S ?? '',
   }));
+
+  // Verify caller is a member of this family
+  const callerIsMember = members.some((m: { member_user_id: string }) => m.member_user_id === userId);
+  if (!callerIsMember) {
+    throw new Error('Unauthorized: caller is not a member of this family');
+  }
 
   // 2. Get current locations for tracked members
   const trackedUserIds = members
