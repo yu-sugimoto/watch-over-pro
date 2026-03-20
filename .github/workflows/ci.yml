@@ -10,6 +10,9 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   test:
     name: Build & Test
@@ -17,11 +20,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Select Xcode 16.2
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '16.2'
 
       - name: Cache SPM dependencies
         uses: actions/cache@v4
@@ -42,9 +40,19 @@ jobs:
       - name: Boot simulator
         run: |
           DEVICE_ID=$(xcrun simctl list devices available -j \
-            | python3 -c "import sys,json; devs=json.load(sys.stdin)['devices']; print(next(d['udid'] for rt in devs for d in devs[rt] if 'iPhone' in d['name'] and d['isAvailable']))")
+            | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)['devices']
+          for runtime, devices in data.items():
+              for d in devices:
+                  if 'iPhone' in d['name'] and d['isAvailable']:
+                      print(d['udid'])
+                      sys.exit(0)
+          sys.exit(1)
+          ")
+          echo "Using simulator: $DEVICE_ID"
           echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
-          xcrun simctl boot "$DEVICE_ID"
+          xcrun simctl boot "$DEVICE_ID" || true
 
       - name: Build & Test
         timeout-minutes: 15
