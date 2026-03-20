@@ -43,7 +43,6 @@ struct PersonDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 12))
                 }
-                quietHoursCard
                 if !member.notes.isEmpty {
                     notesCard
                 }
@@ -104,15 +103,6 @@ struct PersonDetailView: View {
         .onDisappear {
             subscriptionTask?.cancel()
             subscriptionTask = nil
-        }
-        .navigationDestination(for: String.self) { value in
-            if value == "quietHours" {
-                QuietHoursListView(
-                    personId: member.memberUserId,
-                    personName: member.displayName,
-                    personColorHex: member.colorHex
-                )
-            }
         }
         .refreshable {
             await loadRouteData()
@@ -213,63 +203,6 @@ struct PersonDetailView: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 14)
         .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 12))
-    }
-
-    @ViewBuilder
-    private var quietHoursCard: some View {
-        let isInQuiet = watchOverViewModel.isInQuietHours(for: member.memberUserId)
-        let quietPeriod = watchOverViewModel.activeQuietPeriod(for: member.memberUserId)
-
-        if let quietPeriod, isInQuiet {
-            HStack(spacing: 12) {
-                Image(systemName: "moon.stars.fill")
-                    .font(.title3)
-                    .foregroundStyle(.indigo)
-
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("非カウント時間中")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.indigo)
-                    Text("\(quietPeriod.label)（\(quietPeriod.startTimeString)〜\(quietPeriod.endTimeString)）")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer()
-
-                NavigationLink(value: "quietHours") {
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundStyle(.quaternary)
-                }
-            }
-            .padding(14)
-            .background(Color.indigo.opacity(0.08), in: .rect(cornerRadius: 14))
-        } else {
-            let quietCount = QuietHoursStore.shared.periods(for: member.memberUserId).count
-            NavigationLink(value: "quietHours") {
-                HStack(spacing: 10) {
-                    Image(systemName: quietCount > 0 ? "moon.stars.fill" : "moon.stars")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                    Text(quietCount > 0 ? "非カウント時間" : "非カウント時間を設定")
-                        .font(.subheadline)
-                        .foregroundStyle(quietCount > 0 ? .primary : .secondary)
-                    Spacer()
-                    if quietCount > 0 {
-                        Text("\(quietCount)件設定済み")
-                            .font(.caption)
-                            .foregroundStyle(.tertiary)
-                    }
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundStyle(.quaternary)
-                }
-                .padding(14)
-                .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 14))
-            }
-            .buttonStyle(.plain)
-        }
     }
 
     @ViewBuilder

@@ -15,7 +15,6 @@ final class WatchOverViewModel {
     private let familyRepo: any FamilyRepositoryProtocol
     private let pairingRepo: any PairingRepositoryProtocol
     private let resolveStatus = ResolvePersonStatusUseCase()
-    private let quietHoursStore = QuietHoursStore.shared
 
     private var subscriptionTasks: [String: Task<Void, Never>] = [:]
 
@@ -46,14 +45,6 @@ final class WatchOverViewModel {
     func status(for member: FamilyMember) -> PersonStatus {
         let location = latestLocations[member.memberUserId]
         return resolveStatus.execute(lastUpdated: location?.updatedAt)
-    }
-
-    func isInQuietHours(for memberId: String) -> Bool {
-        quietHoursStore.isInQuietHours(for: memberId)
-    }
-
-    func activeQuietPeriod(for memberId: String) -> QuietHoursPeriod? {
-        quietHoursStore.activeQuietPeriod(for: memberId)
     }
 
     // MARK: - Data Loading
