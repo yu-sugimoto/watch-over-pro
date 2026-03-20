@@ -18,10 +18,11 @@ final class NotificationService {
         }
     }
 
-    func checkAuthorizationStatus() async {
+    nonisolated func checkAuthorizationStatus() async {
         let center = UNUserNotificationCenter.current()
         let settings = await center.notificationSettings()
-        isAuthorized = settings.authorizationStatus == .authorized
+        let authorized = settings.authorizationStatus == .authorized
+        await MainActor.run { isAuthorized = authorized }
     }
 
     func sendAlertNotification(personName: String, message: String, alertId: UUID) {
