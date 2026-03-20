@@ -5,7 +5,6 @@ import Foundation
 final class WatchOverViewModel {
     var familyMembers: [FamilyMember] = []
     var latestLocations: [String: CurrentLocation] = [:]
-    var alertEvents: [AlertEvent] = []
     var isLoading = false
     var showAddPerson = false
     var showAlert = false
@@ -17,7 +16,6 @@ final class WatchOverViewModel {
     private let pairingRepo: any PairingRepositoryProtocol
     private let resolveStatus = ResolvePersonStatusUseCase()
     private let quietHoursStore = QuietHoursStore.shared
-    private let notificationService = NotificationService.shared
 
     private var subscriptionTasks: [String: Task<Void, Never>] = [:]
 
@@ -32,10 +30,6 @@ final class WatchOverViewModel {
     }
 
     // MARK: - Computed Properties
-
-    var unreadAlertCount: Int {
-        alertEvents.filter { !$0.isRead }.count
-    }
 
     var onlineCount: Int {
         familyMembers.filter { status(for: $0) == .online }.count
@@ -54,18 +48,12 @@ final class WatchOverViewModel {
         return resolveStatus.execute(lastUpdated: location?.updatedAt)
     }
 
-    func alertsForMember(_ memberUserId: String) -> [AlertEvent] {
-        alertEvents.filter { $0.memberId == memberUserId }
-    }
-
     func isInQuietHours(for memberId: String) -> Bool {
-        guard let uuid = UUID(uuidString: memberId) else { return false }
-        return quietHoursStore.isInQuietHours(for: uuid)
+        quietHoursStore.isInQuietHours(for: memberId)
     }
 
     func activeQuietPeriod(for memberId: String) -> QuietHoursPeriod? {
-        guard let uuid = UUID(uuidString: memberId) else { return nil }
-        return quietHoursStore.activeQuietPeriod(for: uuid)
+        quietHoursStore.activeQuietPeriod(for: memberId)
     }
 
     // MARK: - Data Loading
@@ -108,22 +96,10 @@ final class WatchOverViewModel {
                     for try await location in stream {
                         guard let self, !Task.isCancelled else { return }
                         self.latestLocations[userId] = location
-
-                        let status = self.status(for: member)
-                        if status == .stale {
-                            let alert = AlertEvent(
-                                memberId: userId,
-                                type: .locationStale,
-                                message: "\(member.displayName)さんの位置情報が更新されていません",
-                                severity: 0.5
-                            )
-                            if !self.hasRecentAlert(type: .locationStale, memberId: userId) {
-                                self.alertEvents.insert(alert, at: 0)
-                                self.sendNotificationForAlert(alert, personName: member.displayName)
-                            }
-                        }
                     }
-                } catch {}
+                } catch {
+                    print("[WatchOver] Subscription error for \(userId): \(error.localizedDescription)")
+                }
             }
         }
     }
@@ -149,14 +125,16 @@ final class WatchOverViewModel {
         displayName: String? = nil,
         relationship: String? = nil,
         age: Int? = nil,
-        colorHex: String? = nil
+        colorHex: String? = nil,
+        notes: String? = nil
     ) async throws -> FamilyMember {
         let member = try await pairingRepo.consumePairingCode(
             code: code,
             displayName: displayName,
             relationship: relationship,
             age: age,
-            colorHex: colorHex
+            colorHex: colorHex,
+            notes: notes
         )
         if !familyMembers.contains(where: { $0.memberUserId == member.memberUserId }) {
             familyMembers.insert(member, at: 0)
@@ -164,53 +142,20 @@ final class WatchOverViewModel {
         return member
     }
 
-    // MARK: - Member Deletion
+    // MARK: - Member Management
+
+    func updateMember(_ member: FamilyMember) async throws {
+        let updated = try await familyRepo.updateFamilyMember(member)
+        if let index = familyMembers.firstIndex(where: { $0.memberUserId == updated.memberUserId }) {
+            familyMembers[index] = updated
+        }
+    }
 
     func deleteMember(_ member: FamilyMember) async throws {
         guard let familyId else { throw AppError.noFamilyId }
         try await familyRepo.deleteFamilyMember(familyId: familyId, memberUserId: member.memberUserId)
         familyMembers.removeAll { $0.memberUserId == member.memberUserId }
         latestLocations.removeValue(forKey: member.memberUserId)
-    }
-
-    // MARK: - Alerts
-
-    func markAlertAsRead(_ alert: AlertEvent) {
-        if let index = alertEvents.firstIndex(where: { $0.id == alert.id }) {
-            alertEvents[index].isRead = true
-        }
-    }
-
-    // MARK: - Private
-
-    private func hasRecentAlert(type: AlertType, memberId: String) -> Bool {
-        let oneHourAgo = Date().addingTimeInterval(-3600)
-        return alertEvents.contains { $0.memberId == memberId && $0.type == type && $0.createdAt > oneHourAgo }
-    }
-
-    private func sendNotificationForAlert(_ alert: AlertEvent, personName: String) {
-        if let uuid = UUID(uuidString: alert.memberId), quietHoursStore.isInQuietHours(for: uuid) {
-            return
-        }
-
-        switch alert.type {
-        case .locationStale:
-            notificationService.sendAlertNotification(
-                personName: personName,
-                message: alert.message,
-                alertId: alert.id
-            )
-        case .offline:
-            notificationService.sendOfflineNotification(personName: personName)
-        case .stopDetected:
-            notificationService.sendAlertNotification(
-                personName: personName,
-                message: alert.message,
-                alertId: alert.id
-            )
-        case .unknown:
-            break
-        }
     }
 }
 

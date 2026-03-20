@@ -4,7 +4,6 @@ struct PersonCardView: View {
     let member: FamilyMember
     let status: PersonStatus
     let location: CurrentLocation?
-    let alertCount: Int
 
     var body: some View {
         VStack(spacing: 0) {
@@ -48,20 +47,9 @@ struct PersonCardView: View {
 
                 Spacer()
 
-                VStack(alignment: .trailing, spacing: 4) {
-                    Image(systemName: status.icon)
-                        .font(.title3)
-                        .foregroundStyle(statusColor(status))
-
-                    if alertCount > 0 {
-                        Text("\(alertCount)")
-                            .font(.system(size: 10, weight: .bold))
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(.red, in: Capsule())
-                    }
-                }
+                Image(systemName: status.icon)
+                    .font(.title3)
+                    .foregroundStyle(statusColor(status))
             }
         }
         .padding(14)

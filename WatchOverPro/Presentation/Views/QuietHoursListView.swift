@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct QuietHoursListView: View {
-    let personId: UUID
+    let personId: String
     let personName: String
     let personColorHex: String
 

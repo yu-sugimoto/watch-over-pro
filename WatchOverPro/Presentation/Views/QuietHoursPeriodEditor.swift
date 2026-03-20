@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct QuietHoursPeriodEditor: View {
-    let personId: UUID
+    let personId: String
     let period: QuietHoursPeriod?
 
     @Environment(\.dismiss) private var dismiss
@@ -15,7 +15,7 @@ struct QuietHoursPeriodEditor: View {
 
     private var isEditing: Bool { period != nil }
 
-    init(personId: UUID, period: QuietHoursPeriod?) {
+    init(personId: String, period: QuietHoursPeriod?) {
         self.personId = personId
         self.period = period
 

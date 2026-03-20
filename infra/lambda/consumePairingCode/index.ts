@@ -11,10 +11,11 @@ interface ConsumePairingArgs {
   relationship?: string;
   age?: number;
   color_hex?: string;
+  notes?: string;
 }
 
 export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
-  const { code, display_name, relationship, age, color_hex } = event.arguments;
+  const { code, display_name, relationship, age, color_hex, notes } = event.arguments;
   const userId = event.identity && 'sub' in event.identity ? event.identity.sub : '';
 
   if (!userId) {
@@ -61,6 +62,7 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
   const memberRelationship = relationship ?? 'other';
   const memberAge = age ?? 0;
   const memberColorHex = color_hex ?? '34C759';
+  const memberNotes = notes ?? '';
 
   await ddb.send(new PutItemCommand({
     TableName: MEMBERS_TABLE,
@@ -71,6 +73,7 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
       relationship: { S: memberRelationship },
       age: { N: String(memberAge) },
       color_hex: { S: memberColorHex },
+      notes: { S: memberNotes },
       role: { S: 'watcher' },
       joined_at: { S: now },
     },
@@ -83,6 +86,7 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
     relationship: memberRelationship,
     age: memberAge,
     color_hex: memberColorHex,
+    notes: memberNotes,
     role: 'watcher',
     joined_at: now,
   };

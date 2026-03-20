@@ -16,14 +16,16 @@ struct PairingUseCase: Sendable {
         displayName: String? = nil,
         relationship: String? = nil,
         age: Int? = nil,
-        colorHex: String? = nil
+        colorHex: String? = nil,
+        notes: String? = nil
     ) async throws -> FamilyMember {
         try await repository.consumePairingCode(
             code: code,
             displayName: displayName,
             relationship: relationship,
             age: age,
-            colorHex: colorHex
+            colorHex: colorHex,
+            notes: notes
         )
     }
 }

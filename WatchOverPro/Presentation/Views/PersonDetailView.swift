@@ -15,13 +15,10 @@ struct PersonDetailView: View {
     @State private var stopEvents: [StopEvent] = []
     @State private var mapPosition: MapCameraPosition = .automatic
     @State private var subscriptionTask: Task<Void, Never>?
+    @State private var routeLoadError: String?
 
     private var location: CurrentLocation? {
         watchOverViewModel.latestLocations[member.memberUserId]
-    }
-
-    private var memberAlerts: [AlertEvent] {
-        watchOverViewModel.alertsForMember(member.memberUserId)
     }
 
     private var status: PersonStatus {
@@ -34,10 +31,19 @@ struct PersonDetailView: View {
                 statusBadge
                 mapCard
                 quickMetrics
-                quietHoursCard
-                if !memberAlerts.isEmpty {
-                    alertsCard
+                if let routeLoadError {
+                    HStack(spacing: 8) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                        Text(routeLoadError)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(12)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 12))
                 }
+                quietHoursCard
                 if !member.notes.isEmpty {
                     notesCard
                 }
@@ -89,7 +95,7 @@ struct PersonDetailView: View {
             Text(deleteError ?? "")
         }
         .sheet(isPresented: $showEditSheet) {
-            PersonEditView(member: member)
+            PersonEditView(member: member, watchOverViewModel: watchOverViewModel)
         }
         .task {
             await loadRouteData()
@@ -100,9 +106,9 @@ struct PersonDetailView: View {
             subscriptionTask = nil
         }
         .navigationDestination(for: String.self) { value in
-            if value == "quietHours", let uuid = UUID(uuidString: member.memberUserId) {
+            if value == "quietHours" {
                 QuietHoursListView(
-                    personId: uuid,
+                    personId: member.memberUserId,
                     personName: member.displayName,
                     personColorHex: member.colorHex
                 )
@@ -239,8 +245,8 @@ struct PersonDetailView: View {
             }
             .padding(14)
             .background(Color.indigo.opacity(0.08), in: .rect(cornerRadius: 14))
-        } else if let uuid = UUID(uuidString: member.memberUserId) {
-            let quietCount = QuietHoursStore.shared.periods(for: uuid).count
+        } else {
+            let quietCount = QuietHoursStore.shared.periods(for: member.memberUserId).count
             NavigationLink(value: "quietHours") {
                 HStack(spacing: 10) {
                     Image(systemName: quietCount > 0 ? "moon.stars.fill" : "moon.stars")
@@ -264,50 +270,6 @@ struct PersonDetailView: View {
             }
             .buttonStyle(.plain)
         }
-    }
-
-    private var alertsCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text("最近のアラート")
-                    .font(.headline)
-                Spacer()
-                Text("\(memberAlerts.count)件")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-
-            ForEach(memberAlerts.prefix(5)) { alert in
-                HStack(spacing: 10) {
-                    Circle()
-                        .fill(alert.isRead ? Color(.systemGray4) : .orange)
-                        .frame(width: 8, height: 8)
-
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(alert.message)
-                            .font(.subheadline)
-                            .lineLimit(2)
-                        Text(alert.createdAt.relativeFormatted)
-                            .font(.caption2)
-                            .foregroundStyle(.tertiary)
-                    }
-
-                    Spacer()
-
-                    if !alert.isRead {
-                        Button {
-                            watchOverViewModel.markAlertAsRead(alert)
-                        } label: {
-                            Text("既読")
-                                .font(.caption2)
-                                .foregroundStyle(.blue)
-                        }
-                    }
-                }
-            }
-        }
-        .padding(16)
-        .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 16))
     }
 
     @ViewBuilder
@@ -350,6 +312,7 @@ struct PersonDetailView: View {
 
     private func loadRouteData() async {
         let today = DateFormatters.yyyyMMdd.string(from: Date())
+        routeLoadError = nil
 
         do {
             routeChunks = try await locationRepo.getRoute24h(
@@ -360,7 +323,9 @@ struct PersonDetailView: View {
                 trackedUserId: member.memberUserId,
                 date: today
             )
-        } catch {}
+        } catch {
+            routeLoadError = "ルートデータの取得に失敗しました: \(error.localizedDescription)"
+        }
     }
 
     private func updateMapPosition() {

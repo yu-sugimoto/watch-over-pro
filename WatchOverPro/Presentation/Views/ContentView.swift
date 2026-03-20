@@ -119,11 +119,7 @@ struct ContentView: View {
                 )
             }
 
-            Tab("アラート", systemImage: "bell.badge", value: 1) {
-                AlertsTabView(watchOverViewModel: viewModel)
-            }
-
-            Tab("設定", systemImage: "gearshape", value: 2) {
+            Tab("設定", systemImage: "gearshape", value: 1) {
                 SettingsView(appModeManager: appModeManager)
             }
         }

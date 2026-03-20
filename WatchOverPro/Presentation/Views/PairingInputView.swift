@@ -149,7 +149,8 @@ struct PairingInputView: View {
                 displayName: personName,
                 relationship: personRelationship?.rawValue,
                 age: personAge,
-                colorHex: personColorHex
+                colorHex: personColorHex,
+                notes: personNotes
             )
 
             if let name = personName {
