@@ -12,7 +12,7 @@ struct DetectStopEventUseCaseTests {
         #expect(mockRepo.putStopEventCallCount == 0)
     }
 
-    @Test @MainActor func stopOverThreeMinutes_createsStopEvent() async throws {
+    @Test @MainActor func stopUnderThreeMinutes_doesNotCreateStopEvent() async throws {
         let mockRepo = MockLocationRepository()
         let sut = DetectStopEventUseCase(repository: mockRepo)
 
