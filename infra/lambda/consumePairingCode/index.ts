@@ -5,8 +5,16 @@ const ddb = new DynamoDBClient({});
 const PAIRING_TABLE = process.env.PAIRING_CODES_TABLE!;
 const MEMBERS_TABLE = process.env.FAMILY_MEMBERS_TABLE!;
 
-export async function handler(event: AppSyncResolverEvent<{ code: string }>) {
-  const code = event.arguments.code;
+interface ConsumePairingArgs {
+  code: string;
+  display_name?: string;
+  relationship?: string;
+  age?: number;
+  color_hex?: string;
+}
+
+export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
+  const { code, display_name, relationship, age, color_hex } = event.arguments;
   const userId = event.identity && 'sub' in event.identity ? event.identity.sub : '';
 
   if (!userId) {
@@ -49,15 +57,20 @@ export async function handler(event: AppSyncResolverEvent<{ code: string }>) {
 
   // Add member to family
   const now = new Date().toISOString();
+  const memberDisplayName = display_name ?? '';
+  const memberRelationship = relationship ?? 'other';
+  const memberAge = age ?? 0;
+  const memberColorHex = color_hex ?? '34C759';
+
   await ddb.send(new PutItemCommand({
     TableName: MEMBERS_TABLE,
     Item: {
       family_id: { S: familyId },
       member_user_id: { S: userId },
-      display_name: { S: '' },
-      relationship: { S: 'other' },
-      age: { N: '0' },
-      color_hex: { S: '34C759' },
+      display_name: { S: memberDisplayName },
+      relationship: { S: memberRelationship },
+      age: { N: String(memberAge) },
+      color_hex: { S: memberColorHex },
       role: { S: 'watcher' },
       joined_at: { S: now },
     },
@@ -66,10 +79,10 @@ export async function handler(event: AppSyncResolverEvent<{ code: string }>) {
   return {
     family_id: familyId,
     member_user_id: userId,
-    display_name: '',
-    relationship: 'other',
-    age: 0,
-    color_hex: '34C759',
+    display_name: memberDisplayName,
+    relationship: memberRelationship,
+    age: memberAge,
+    color_hex: memberColorHex,
     role: 'watcher',
     joined_at: now,
   };

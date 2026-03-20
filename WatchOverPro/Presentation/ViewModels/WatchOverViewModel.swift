@@ -76,12 +76,18 @@ final class WatchOverViewModel {
 
         do {
             familyMembers = try await familyRepo.getFamilyMembers(familyId: familyId)
+        } catch {
+            alertMessage = "メンバー取得に失敗しました: \(error.localizedDescription)"
+            showAlert = true
+        }
+
+        do {
             let locations = try await locationRepo.getLiveMapState(familyId: familyId)
             for loc in locations {
                 latestLocations[loc.trackedUserId] = loc
             }
         } catch {
-            alertMessage = "データ取得に失敗しました: \(error.localizedDescription)"
+            alertMessage = "位置情報取得に失敗しました: \(error.localizedDescription)"
             showAlert = true
         }
 
@@ -138,12 +144,33 @@ final class WatchOverViewModel {
         return try await pairingRepo.createPairingCode(familyId: familyId)
     }
 
-    func consumePairingCode(_ code: String) async throws -> FamilyMember {
-        let member = try await pairingRepo.consumePairingCode(code: code)
+    func consumePairingCode(
+        _ code: String,
+        displayName: String? = nil,
+        relationship: String? = nil,
+        age: Int? = nil,
+        colorHex: String? = nil
+    ) async throws -> FamilyMember {
+        let member = try await pairingRepo.consumePairingCode(
+            code: code,
+            displayName: displayName,
+            relationship: relationship,
+            age: age,
+            colorHex: colorHex
+        )
         if !familyMembers.contains(where: { $0.memberUserId == member.memberUserId }) {
             familyMembers.insert(member, at: 0)
         }
         return member
+    }
+
+    // MARK: - Member Deletion
+
+    func deleteMember(_ member: FamilyMember) async throws {
+        guard let familyId else { throw AppError.noFamilyId }
+        try await familyRepo.deleteFamilyMember(familyId: familyId, memberUserId: member.memberUserId)
+        familyMembers.removeAll { $0.memberUserId == member.memberUserId }
+        latestLocations.removeValue(forKey: member.memberUserId)
     }
 
     // MARK: - Alerts

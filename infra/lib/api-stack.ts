@@ -137,6 +137,24 @@ export class ApiStack extends cdk.Stack {
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList(),
     });
 
+    // Lambda: deleteFamilyMember
+    const deleteFamilyMemberFn = new lambdaNode.NodejsFunction(this, 'DeleteFamilyMemberFn', {
+      entry: path.join(__dirname, '../lambda/deleteFamilyMember/index.ts'),
+      handler: 'handler',
+      runtime: lambda.Runtime.NODEJS_24_X,
+      environment: {
+        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+      },
+      timeout: cdk.Duration.seconds(10),
+    });
+    props.tables.familyMembers.grantReadWriteData(deleteFamilyMemberFn);
+
+    const deleteFamilyMemberDS = this.api.addLambdaDataSource('DeleteFamilyMemberDS', deleteFamilyMemberFn);
+    deleteFamilyMemberDS.createResolver('DeleteFamilyMember', {
+      typeName: 'Mutation',
+      fieldName: 'deleteFamilyMember',
+    });
+
     // Lambda: createPairingCode
     const createPairingCodeFn = new lambdaNode.NodejsFunction(this, 'CreatePairingCodeFn', {
       entry: path.join(__dirname, '../lambda/createPairingCode/index.ts'),
@@ -145,11 +163,13 @@ export class ApiStack extends cdk.Stack {
       environment: {
         PAIRING_CODES_TABLE: props.tables.pairingCodes.tableName,
         FAMILIES_TABLE: props.tables.families.tableName,
+        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
       },
       timeout: cdk.Duration.seconds(10),
     });
     props.tables.pairingCodes.grantWriteData(createPairingCodeFn);
-    props.tables.families.grantReadData(createPairingCodeFn);
+    props.tables.families.grantWriteData(createPairingCodeFn);
+    props.tables.familyMembers.grantWriteData(createPairingCodeFn);
 
     const createPairingDS = this.api.addLambdaDataSource('CreatePairingDS', createPairingCodeFn);
     createPairingDS.createResolver('CreatePairingCode', {
@@ -175,6 +195,26 @@ export class ApiStack extends cdk.Stack {
     consumePairingDS.createResolver('ConsumePairingCode', {
       typeName: 'Mutation',
       fieldName: 'consumePairingCode',
+    });
+
+    // Lambda: getLiveMapState
+    const getLiveMapStateFn = new lambdaNode.NodejsFunction(this, 'GetLiveMapStateFn', {
+      entry: path.join(__dirname, '../lambda/getLiveMapState/index.ts'),
+      handler: 'handler',
+      runtime: lambda.Runtime.NODEJS_24_X,
+      environment: {
+        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+        CURRENT_LOCATIONS_TABLE: props.tables.currentLocations.tableName,
+      },
+      timeout: cdk.Duration.seconds(10),
+    });
+    props.tables.familyMembers.grantReadData(getLiveMapStateFn);
+    props.tables.currentLocations.grantReadData(getLiveMapStateFn);
+
+    const getLiveMapStateDS = this.api.addLambdaDataSource('GetLiveMapStateDS', getLiveMapStateFn);
+    getLiveMapStateDS.createResolver('GetLiveMapState', {
+      typeName: 'Query',
+      fieldName: 'getLiveMapState',
     });
 
     new cdk.CfnOutput(this, 'GraphQLEndpoint', { value: this.api.graphqlUrl });

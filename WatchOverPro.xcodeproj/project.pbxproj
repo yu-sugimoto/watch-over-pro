@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		0181A001DE4C9634CEEEFFD3 /* QuietHoursPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153C50E4078C68F5F71F368 /* QuietHoursPeriod.swift */; };
 		02A3782AD73B2754AFF0E0AF /* ManageRouteChunksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */; };
+		0612860C3E68E57284BFC2E0 /* ManageRouteChunksUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BFE31619B2FA720E26ED7 /* ManageRouteChunksUseCaseTests.swift */; };
 		0B8597B860F8CFB95191E5AD /* AWSCloudWatchLoggingPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 701C289CD99A2E8A5B53C2A4 /* AWSCloudWatchLoggingPlugin */; };
 		1424A42BBA3900C8EE192E1D /* MetricCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD251454701504183C8437CD /* MetricCardView.swift */; };
 		16F20405BEA9EF6DBCA156F1 /* QuietHoursRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476918D724378E2967BE5C2 /* QuietHoursRow.swift */; };
+		17F21680A3125CF27F65AD3E /* DetectStopEventUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B661553D815A9AE58D9FCDA7 /* DetectStopEventUseCaseTests.swift */; };
 		1DC8737D51E03E5717DF8A08 /* MemberRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */; };
+		207BA31DA96BCAED35E07D91 /* PersonStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49837F88655C1C0E3E1382 /* PersonStatusTests.swift */; };
 		26F111C80647653073233DC3 /* QuietHoursListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F30609715E5CC4BE88989 /* QuietHoursListView.swift */; };
 		2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4566722C5699D477C0E003FF /* CurrentLocation.swift */; };
 		291A4A89D8E2F730E0ABC60C /* WatchOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457581D236E53239946C77C /* WatchOverView.swift */; };
@@ -34,12 +37,16 @@
 		6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */; };
 		6257D5419D8D498BCC3C1A61 /* AlertsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8CBA1135B35E881CF6D88 /* AlertsTabView.swift */; };
 		6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */; };
+		677BE360F2D8D4612B471A5A /* MockRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4454B8EF718ADAA04F20EA8 /* MockRepositories.swift */; };
 		67CFF4993F80DDEC45A1B6CD /* PersonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9266825B51F419DB5F3224C1 /* PersonStatus.swift */; };
+		686F177DAA945F19A32B737E /* WatchOverProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED497BC3C7B381C5BF949DD2 /* WatchOverProTests.swift */; };
+		6D65AD9A43D64C4DED6744C3 /* QuietHoursPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE44516FEFA74B1C6A113B0C /* QuietHoursPeriodTests.swift */; };
 		6F695D3053FA403591A8B525 /* CompactMetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */; };
 		7379E466A2FA215CAEFE6511 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933E05A9D4B9735B16C954EE /* AuthRepositoryProtocol.swift */; };
 		779B09B9E9DBFFB67BFB1A5C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5D87160C5EF10368639ECA11 /* Amplify */; };
 		7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */; };
 		8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */; };
+		8FD26DFBFF8FFF9C63392EF9 /* AlertTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC9DB86D8DC475FD723B84 /* AlertTypeTests.swift */; };
 		8FFEDDD4C08D09AD19CC82C9 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D2E74AEF53ACDECA2FA59 /* AlertType.swift */; };
 		963F3705F99B3A1E0696144F /* AppSyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */; };
 		9917452F48B32EC0DDA12A56 /* UpdateLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */; };
@@ -60,6 +67,7 @@
 		B5CBDDEB14909E887A628736 /* PairingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C7FA33BE75193A8553FCAB /* PairingCode.swift */; };
 		B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */; };
 		B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */; };
+		BFD4EF6F2CA687CB33C60DF1 /* ResolvePersonStatusUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */; };
 		BFD5B281ECAF66D629AA7B18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106CC5580EE0D2E163152017 /* SettingsView.swift */; };
 		C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */; };
 		C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */; };
@@ -82,6 +90,16 @@
 		FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */; };
 		FE5C4D7698D96F6A82E4BB7C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B0A7309CF7B1BF96BFEE9 /* LocationService.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		716A550413A3B09672FD027D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D771B2E24E28E64118392392 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBAF1AB80DC14448BD80C1CC;
+			remoteInfo = WatchOverPro;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingCodeGeneratorView.swift; sourceTree = "<group>"; };
@@ -111,6 +129,7 @@
 		4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncDataSource.swift; sourceTree = "<group>"; };
 		4F802AA72AF9FEC28FE4F63D /* AppModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeManager.swift; sourceTree = "<group>"; };
 		4FD0D4575361EA463E63B702 /* RouteChunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteChunk.swift; sourceTree = "<group>"; };
+		54281BD91F8564EABA8EDF19 /* WatchOverProTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WatchOverProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F9432A78A24A46E394B480 /* AppModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeSelectionView.swift; sourceTree = "<group>"; };
 		596D50546B9173D5879B053C /* WatchOverProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverProApp.swift; sourceTree = "<group>"; };
 		5AAF727E7DD7B35256523CA8 /* AlertEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEvent.swift; sourceTree = "<group>"; };
@@ -121,6 +140,7 @@
 		6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHelper.swift; sourceTree = "<group>"; };
 		6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncFamilyRepository.swift; sourceTree = "<group>"; };
+		7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCaseTests.swift; sourceTree = "<group>"; };
 		7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
 		86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManagementUseCase.swift; sourceTree = "<group>"; };
 		873BB2AC62B792306E6600DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -136,14 +156,19 @@
 		9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeys.swift; sourceTree = "<group>"; };
 		A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Relative.swift"; sourceTree = "<group>"; };
 		A35705F896169497FABC8176 /* LocationSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSyncService.swift; sourceTree = "<group>"; };
+		A4454B8EF718ADAA04F20EA8 /* MockRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepositories.swift; sourceTree = "<group>"; };
 		A457581D236E53239946C77C /* WatchOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverView.swift; sourceTree = "<group>"; };
+		A54BFE31619B2FA720E26ED7 /* ManageRouteChunksUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCaseTests.swift; sourceTree = "<group>"; };
 		A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationUseCase.swift; sourceTree = "<group>"; };
 		A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailMapCard.swift; sourceTree = "<group>"; };
 		AB9F30609715E5CC4BE88989 /* QuietHoursListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuietHoursListView.swift; sourceTree = "<group>"; };
 		AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingUseCase.swift; sourceTree = "<group>"; };
+		ACEC9DB86D8DC475FD723B84 /* AlertTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypeTests.swift; sourceTree = "<group>"; };
 		AD251454701504183C8437CD /* MetricCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCardView.swift; sourceTree = "<group>"; };
+		AE44516FEFA74B1C6A113B0C /* QuietHoursPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuietHoursPeriodTests.swift; sourceTree = "<group>"; };
 		AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonEditView.swift; sourceTree = "<group>"; };
 		B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTypes.swift; sourceTree = "<group>"; };
+		B661553D815A9AE58D9FCDA7 /* DetectStopEventUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCaseTests.swift; sourceTree = "<group>"; };
 		C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCase.swift; sourceTree = "<group>"; };
 		CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
@@ -151,12 +176,14 @@
 		D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISO8601+Shared.swift"; sourceTree = "<group>"; };
 		DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSummaryCard.swift; sourceTree = "<group>"; };
 		DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		ED497BC3C7B381C5BF949DD2 /* WatchOverProTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverProTests.swift; sourceTree = "<group>"; };
 		ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskService.swift; sourceTree = "<group>"; };
 		F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCase.swift; sourceTree = "<group>"; };
 		F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyMember.swift; sourceTree = "<group>"; };
 		FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncLocationRepository.swift; sourceTree = "<group>"; };
 		FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyRepositoryProtocol.swift; sourceTree = "<group>"; };
 		FC8BCBB0D872B273AB6CB773 /* LocationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryProtocol.swift; sourceTree = "<group>"; };
+		FD49837F88655C1C0E3E1382 /* PersonStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonStatusTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +201,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0239FC017033DE2C6C9A5D12 /* WatchOverProTests */ = {
+			isa = PBXGroup;
+			children = (
+				ACEC9DB86D8DC475FD723B84 /* AlertTypeTests.swift */,
+				B661553D815A9AE58D9FCDA7 /* DetectStopEventUseCaseTests.swift */,
+				A54BFE31619B2FA720E26ED7 /* ManageRouteChunksUseCaseTests.swift */,
+				FD49837F88655C1C0E3E1382 /* PersonStatusTests.swift */,
+				AE44516FEFA74B1C6A113B0C /* QuietHoursPeriodTests.swift */,
+				7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */,
+				ED497BC3C7B381C5BF949DD2 /* WatchOverProTests.swift */,
+				9647365AE2D3169ABEF9C2C2 /* Mocks */,
+			);
+			path = WatchOverProTests;
+			sourceTree = "<group>";
+		};
 		12E8CA44C18497CEE1D26A56 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				1B02EA95D0189886EC916B01 /* WatchOverPro */,
+				0239FC017033DE2C6C9A5D12 /* WatchOverProTests */,
 				A76A2975607EF4F3D8FB26EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -322,6 +365,14 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		9647365AE2D3169ABEF9C2C2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A4454B8EF718ADAA04F20EA8 /* MockRepositories.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		9BBB2024E17A3AC9706A669A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				049C1A4857A4D898FBDC48E0 /* WatchOverPro.app */,
+				54281BD91F8564EABA8EDF19 /* WatchOverProTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -424,6 +476,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		811C476EE18B709E0ACA8DFE /* WatchOverProTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 594572E83D566FF289D9CD49 /* Build configuration list for PBXNativeTarget "WatchOverProTests" */;
+			buildPhases = (
+				7A8B5BBDC2BE02A4D3F2676F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				588B6B983F02FACC385EF2D2 /* PBXTargetDependency */,
+			);
+			name = WatchOverProTests;
+			packageProductDependencies = (
+			);
+			productName = WatchOverProTests;
+			productReference = 54281BD91F8564EABA8EDF19 /* WatchOverProTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CBAF1AB80DC14448BD80C1CC /* WatchOverPro */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ECE1C6823AB1CA399E67399 /* Build configuration list for PBXNativeTarget "WatchOverPro" */;
@@ -480,6 +550,7 @@
 			projectRoot = "";
 			targets = (
 				CBAF1AB80DC14448BD80C1CC /* WatchOverPro */,
+				811C476EE18B709E0ACA8DFE /* WatchOverProTests */,
 			);
 		};
 /* End PBXProject section */
@@ -572,7 +643,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A8B5BBDC2BE02A4D3F2676F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FD26DFBFF8FFF9C63392EF9 /* AlertTypeTests.swift in Sources */,
+				17F21680A3125CF27F65AD3E /* DetectStopEventUseCaseTests.swift in Sources */,
+				0612860C3E68E57284BFC2E0 /* ManageRouteChunksUseCaseTests.swift in Sources */,
+				677BE360F2D8D4612B471A5A /* MockRepositories.swift in Sources */,
+				207BA31DA96BCAED35E07D91 /* PersonStatusTests.swift in Sources */,
+				6D65AD9A43D64C4DED6744C3 /* QuietHoursPeriodTests.swift in Sources */,
+				BFD4EF6F2CA687CB33C60DF1 /* ResolvePersonStatusUseCaseTests.swift in Sources */,
+				686F177DAA945F19A32B737E /* WatchOverProTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		588B6B983F02FACC385EF2D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBAF1AB80DC14448BD80C1CC /* WatchOverPro */;
+			targetProxy = 716A550413A3B09672FD027D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		16EA2A72D0577CCEDD053534 /* Release */ = {
@@ -607,6 +701,24 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		1881C6D18D258BC34A745BCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.watchoverpro.WatchOverProTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchOverPro.app/WatchOverPro";
+			};
+			name = Debug;
 		};
 		58D25D9D3F936365DBB2B871 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -727,6 +839,24 @@
 			};
 			name = Debug;
 		};
+		C33CC2051CD525441AE7214C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.watchoverpro.WatchOverProTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchOverPro.app/WatchOverPro";
+			};
+			name = Release;
+		};
 		E11CEF760DEC141FB6D91B62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -777,6 +907,15 @@
 			buildConfigurations = (
 				E11CEF760DEC141FB6D91B62 /* Debug */,
 				16EA2A72D0577CCEDD053534 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		594572E83D566FF289D9CD49 /* Build configuration list for PBXNativeTarget "WatchOverProTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1881C6D18D258BC34A745BCD /* Debug */,
+				C33CC2051CD525441AE7214C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

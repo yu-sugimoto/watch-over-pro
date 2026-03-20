@@ -144,7 +144,13 @@ struct PairingInputView: View {
         errorMessage = nil
 
         do {
-            let member = try await pairingRepo.consumePairingCode(code: fullCode)
+            let member = try await pairingRepo.consumePairingCode(
+                code: fullCode,
+                displayName: personName,
+                relationship: personRelationship?.rawValue,
+                age: personAge,
+                colorHex: personColorHex
+            )
 
             if let name = personName {
                 pairedPersonName = name

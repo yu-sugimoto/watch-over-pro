@@ -59,9 +59,10 @@ final class AppSyncDataSource: Sendable {
             responseType: JSONValue.self,
             decodePath: operationName
         )
+        nonisolated(unsafe) let sendableRequest = request
         return AsyncThrowingStream { continuation in
-            let task = Task {
-                let subscription = Amplify.API.subscribe(request: request)
+            let task = Task { @Sendable in
+                let subscription = Amplify.API.subscribe(request: sendableRequest)
                 do {
                     for try await event in subscription {
                         switch event {

@@ -3,6 +3,7 @@ import SwiftUI
 struct WatchedModeView: View {
     let appModeManager: AppModeManager
     @Environment(\.locationRepository) private var locationRepo
+    @Environment(\.familyRepository) private var familyRepo
 
     @State private var locationService = LocationService()
     @State private var syncService: LocationSyncService?
@@ -10,6 +11,7 @@ struct WatchedModeView: View {
     @State private var showPairingCode = false
     @State private var isTracking = false
     @State private var permissionsReady = false
+    @State private var resetError: String?
 
     var body: some View {
         NavigationStack {
@@ -238,10 +240,25 @@ struct WatchedModeView: View {
             Button("解除する", role: .destructive) {
                 syncService?.stopSync()
                 isTracking = false
-                appModeManager.resetAll()
+                Task {
+                    if let familyId = appModeManager.familyId,
+                       let trackedUserId = appModeManager.trackedUserId {
+                        do {
+                            try await familyRepo.deleteFamilyMember(familyId: familyId, memberUserId: trackedUserId)
+                        } catch {
+                            resetError = error.localizedDescription
+                        }
+                    }
+                    appModeManager.resetAll()
+                }
             }
         } message: {
             Text("見守り接続が切断されます。再度コードの入力が必要です。")
+        }
+        .alert("解除中にエラーが発生しました", isPresented: .init(get: { resetError != nil }, set: { if !$0 { resetError = nil } })) {
+            Button("OK") { resetError = nil }
+        } message: {
+            Text(resetError ?? "")
         }
     }
 
