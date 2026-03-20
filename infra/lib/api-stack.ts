@@ -137,6 +137,24 @@ export class ApiStack extends cdk.Stack {
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList(),
     });
 
+    // Lambda: updateFamilyMember
+    const updateFamilyMemberFn = new lambdaNode.NodejsFunction(this, 'UpdateFamilyMemberFn', {
+      entry: path.join(__dirname, '../lambda/updateFamilyMember/index.ts'),
+      handler: 'handler',
+      runtime: lambda.Runtime.NODEJS_24_X,
+      environment: {
+        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+      },
+      timeout: cdk.Duration.seconds(10),
+    });
+    props.tables.familyMembers.grantReadWriteData(updateFamilyMemberFn);
+
+    const updateFamilyMemberDS = this.api.addLambdaDataSource('UpdateFamilyMemberDS', updateFamilyMemberFn);
+    updateFamilyMemberDS.createResolver('UpdateFamilyMember', {
+      typeName: 'Mutation',
+      fieldName: 'updateFamilyMember',
+    });
+
     // Lambda: deleteFamilyMember
     const deleteFamilyMemberFn = new lambdaNode.NodejsFunction(this, 'DeleteFamilyMemberFn', {
       entry: path.join(__dirname, '../lambda/deleteFamilyMember/index.ts'),

@@ -62,6 +62,10 @@ final class MockFamilyRepository: FamilyRepositoryProtocol {
         await stubbedMembers
     }
 
+    nonisolated func updateFamilyMember(_ member: FamilyMember) async throws -> FamilyMember {
+        member
+    }
+
     nonisolated func deleteFamilyMember(familyId: String, memberUserId: String) async throws {
         await MainActor.run {
             deleteFamilyMemberCallCount += 1
@@ -90,7 +94,8 @@ final class MockPairingRepository: PairingRepositoryProtocol {
         displayName: String?,
         relationship: String?,
         age: Int?,
-        colorHex: String?
+        colorHex: String?,
+        notes: String?
     ) async throws -> FamilyMember {
         await stubbedFamilyMember
     }

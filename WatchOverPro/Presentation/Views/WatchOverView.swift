@@ -10,7 +10,6 @@ struct WatchOverView: View {
                 VStack(spacing: 20) {
                     if !watchOverViewModel.familyMembers.isEmpty {
                         overviewHeader
-                        alertBanner
                         membersSection
                     } else {
                         emptyState
@@ -82,43 +81,6 @@ struct WatchOverView: View {
         }
     }
 
-    @ViewBuilder
-    private var alertBanner: some View {
-        let unreadAlerts = watchOverViewModel.alertEvents.filter { !$0.isRead }
-        if let latestAlert = unreadAlerts.first {
-            let memberName = watchOverViewModel.familyMembers.first(where: { $0.memberUserId == latestAlert.memberId })?.displayName ?? ""
-
-            HStack(spacing: 12) {
-                Image(systemName: "bell.badge.fill")
-                    .font(.title3)
-                    .foregroundStyle(.orange)
-                    .symbolEffect(.bounce, options: .repeating.speed(0.5), value: true)
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("最新のアラート")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Text(latestAlert.message)
-                        .font(.subheadline.weight(.medium))
-                        .lineLimit(2)
-                }
-
-                Spacer()
-
-                if !memberName.isEmpty {
-                    Text(memberName)
-                        .font(.caption.bold())
-                        .foregroundStyle(.orange)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(.orange.opacity(0.12), in: Capsule())
-                }
-            }
-            .padding(14)
-            .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 14))
-        }
-    }
-
     private var membersSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("見守り対象")
@@ -130,8 +92,7 @@ struct WatchOverView: View {
                     PersonCardView(
                         member: member,
                         status: watchOverViewModel.status(for: member),
-                        location: watchOverViewModel.latestLocations[member.memberUserId],
-                        alertCount: watchOverViewModel.alertsForMember(member.memberUserId).filter { !$0.isRead }.count
+                        location: watchOverViewModel.latestLocations[member.memberUserId]
                     )
                 }
                 .buttonStyle(.plain)

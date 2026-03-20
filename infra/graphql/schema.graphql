@@ -15,6 +15,7 @@ type FamilyMember {
   color_hex: String!
   role: String!
   joined_at: AWSDateTime!
+  notes: String
 }
 
 type CurrentLocation {
@@ -87,6 +88,16 @@ input RoutePointInput {
   timestamp: AWSDateTime!
 }
 
+input UpdateFamilyMemberInput {
+  family_id: ID!
+  member_user_id: ID!
+  display_name: String
+  relationship: String
+  age: Int
+  color_hex: String
+  notes: String
+}
+
 input PutStopEventInput {
   tracked_user_id_date: String!
   stop_start_epoch_ms: Float!
@@ -115,7 +126,8 @@ type Mutation {
   appendRouteChunk(input: AppendRouteChunkInput!): RouteChunk!
   putStopEvent(input: PutStopEventInput!): StopEvent!
   createPairingCode(family_id: ID!): PairingCode!
-  consumePairingCode(code: String!, display_name: String, relationship: String, age: Int, color_hex: String): FamilyMember!
+  consumePairingCode(code: String!, display_name: String, relationship: String, age: Int, color_hex: String, notes: String): FamilyMember!
+  updateFamilyMember(input: UpdateFamilyMemberInput!): FamilyMember!
   deleteFamilyMember(family_id: ID!, member_user_id: ID!): Boolean!
 }
 

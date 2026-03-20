@@ -22,13 +22,39 @@ final class AppSyncFamilyRepository: FamilyRepositoryProtocol, Sendable {
             """
             query GetFamilyMembers($family_id: ID!) {
                 getFamilyMembers(family_id: $family_id) {
-                    family_id member_user_id display_name relationship age color_hex role joined_at
+                    family_id member_user_id display_name relationship age color_hex role joined_at notes
                 }
             }
             """,
             variables: ["family_id": familyId]
         )
         return result.map { $0.toEntity() }
+    }
+
+    func updateFamilyMember(_ member: FamilyMember) async throws -> FamilyMember {
+        let variables: [String: Any] = [
+            "input": [
+                "family_id": member.familyId,
+                "member_user_id": member.memberUserId,
+                "display_name": member.displayName,
+                "relationship": member.relationship.rawValue,
+                "age": member.age,
+                "color_hex": member.colorHex,
+                "notes": member.notes,
+            ] as [String: Any]
+        ]
+
+        let result: GQLFamilyMember = try await dataSource.mutate(
+            """
+            mutation UpdateFamilyMember($input: UpdateFamilyMemberInput!) {
+                updateFamilyMember(input: $input) {
+                    family_id member_user_id display_name relationship age color_hex role joined_at notes
+                }
+            }
+            """,
+            variables: variables
+        )
+        return result.toEntity()
     }
 
     func deleteFamilyMember(familyId: String, memberUserId: String) async throws {

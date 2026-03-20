@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PersonEditView: View {
     let member: FamilyMember
+    let watchOverViewModel: WatchOverViewModel
     @Environment(\.dismiss) private var dismiss
 
     @State private var name: String
@@ -9,9 +10,11 @@ struct PersonEditView: View {
     @State private var age: Int
     @State private var notes: String
     @State private var isSaving = false
+    @State private var saveError: String?
 
-    init(member: FamilyMember) {
+    init(member: FamilyMember, watchOverViewModel: WatchOverViewModel) {
         self.member = member
+        self.watchOverViewModel = watchOverViewModel
         _name = State(initialValue: member.displayName)
         _relationship = State(initialValue: member.relationship)
         _age = State(initialValue: member.age)
@@ -43,8 +46,7 @@ struct PersonEditView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
-                        // TODO: Save changes via FamilyRepository
-                        dismiss()
+                        Task { await save() }
                     } label: {
                         if isSaving {
                             ProgressView()
@@ -55,6 +57,28 @@ struct PersonEditView: View {
                     .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty || isSaving)
                 }
             }
+            .alert("保存に失敗しました", isPresented: .init(get: { saveError != nil }, set: { if !$0 { saveError = nil } })) {
+                Button("OK") { saveError = nil }
+            } message: {
+                Text(saveError ?? "")
+            }
         }
+    }
+
+    private func save() async {
+        isSaving = true
+        var updated = member
+        updated.displayName = name.trimmingCharacters(in: .whitespaces)
+        updated.relationship = relationship
+        updated.age = age
+        updated.notes = notes
+
+        do {
+            try await watchOverViewModel.updateMember(updated)
+            dismiss()
+        } catch {
+            saveError = error.localizedDescription
+        }
+        isSaving = false
     }
 }

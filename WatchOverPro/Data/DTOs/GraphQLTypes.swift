@@ -111,6 +111,7 @@ struct GQLFamilyMember: Decodable {
     let color_hex: String
     let role: String
     let joined_at: String
+    let notes: String?
 
     func toEntity() -> FamilyMember {
         FamilyMember(
@@ -121,7 +122,8 @@ struct GQLFamilyMember: Decodable {
             age: age,
             colorHex: color_hex,
             role: MemberRole(rawValue: role) ?? .watcher,
-            joinedAt: ISO8601.date(from: joined_at) ?? Date()
+            joinedAt: ISO8601.date(from: joined_at) ?? Date(),
+            notes: notes ?? ""
         )
     }
 }

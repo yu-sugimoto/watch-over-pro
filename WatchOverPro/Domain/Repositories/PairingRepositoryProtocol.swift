@@ -7,6 +7,7 @@ protocol PairingRepositoryProtocol: Sendable {
         displayName: String?,
         relationship: String?,
         age: Int?,
-        colorHex: String?
+        colorHex: String?,
+        notes: String?
     ) async throws -> FamilyMember
 }
