@@ -4,6 +4,8 @@ enum DateFormatters {
     static let yyyyMMdd: DateFormatter = {
         let f = DateFormatter()
         f.dateFormat = "yyyyMMdd"
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.calendar = Calendar(identifier: .gregorian)
         return f
     }()
 

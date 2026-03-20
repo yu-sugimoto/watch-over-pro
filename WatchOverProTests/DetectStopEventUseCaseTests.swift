@@ -42,7 +42,7 @@ struct DetectStopEventUseCaseTests {
     func sameCoords_underThreeMinutes_noStopEvent() async throws {
         let (sut, repo, clock) = Self.makeSUT()
 
-        // 4 evaluations at 15s intervals = 45s of stop
+        // 4 evaluations at 15s intervals; stopStartTime set on 2nd → duration ≈ 30s
         for _ in 0..<4 {
             try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
             clock.advance(by: 15)
@@ -62,7 +62,7 @@ struct DetectStopEventUseCaseTests {
             clock.advance(by: 15)
         }
 
-        // 13 intervals × 15s = 195s ≥ 180s, should create event
+        // stopStartTime set on 2nd eval (t=15s), 14th eval at t=195s → duration = 180s ≥ 180s
         #expect(repo.putStopEventCallCount == 1)
         #expect(repo.lastPutStopEvent?.endedAt == nil)
     }
