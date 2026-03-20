@@ -72,8 +72,7 @@ final class LocationSyncService {
             try await detectStopEvent.evaluate(
                 trackedUserId: trackedUserId,
                 lat: lat,
-                lng: lng,
-                speed: nil
+                lng: lng
             )
 
             syncError = nil

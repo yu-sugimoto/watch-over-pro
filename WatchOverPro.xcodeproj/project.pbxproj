@@ -46,6 +46,7 @@
 		779B09B9E9DBFFB67BFB1A5C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5D87160C5EF10368639ECA11 /* Amplify */; };
 		7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */; };
 		8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */; };
+		F2E1D0C9B8A7F6E5D4C3B2A1 /* DateFormatter+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* DateFormatter+Shared.swift */; };
 		8FD26DFBFF8FFF9C63392EF9 /* AlertTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEC9DB86D8DC475FD723B84 /* AlertTypeTests.swift */; };
 		8FFEDDD4C08D09AD19CC82C9 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D2E74AEF53ACDECA2FA59 /* AlertType.swift */; };
 		963F3705F99B3A1E0696144F /* AppSyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */; };
@@ -173,6 +174,7 @@
 		CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		CEF8CBA1135B35E881CF6D88 /* AlertsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTabView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* DateFormatter+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Shared.swift"; sourceTree = "<group>"; };
 		D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISO8601+Shared.swift"; sourceTree = "<group>"; };
 		DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSummaryCard.swift; sourceTree = "<group>"; };
 		DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			children = (
 				1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */,
 				A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* DateFormatter+Shared.swift */,
 				D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */,
 				6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */,
 				CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */,
@@ -599,6 +602,7 @@
 				FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */,
 				B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */,
 				40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */,
+				F2E1D0C9B8A7F6E5D4C3B2A1 /* DateFormatter+Shared.swift in Sources */,
 				8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */,
 				EC4976B963765E103289A6FC /* LocationPermissionHelper.swift in Sources */,
 				E8B06E32324A74578B21AF44 /* LocationRepositoryProtocol.swift in Sources */,

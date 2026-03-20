@@ -349,9 +349,7 @@ struct PersonDetailView: View {
     }
 
     private func loadRouteData() async {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let today = dateFormatter.string(from: Date())
+        let today = DateFormatters.yyyyMMdd.string(from: Date())
 
         do {
             routeChunks = try await locationRepo.getRoute24h(

@@ -155,11 +155,9 @@ struct PersonDetailMapCard: View {
     }
 
     private func stopTimeRange(_ stop: StopEvent) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "H:mm"
-        let start = formatter.string(from: stop.startedAt)
+        let start = DateFormatters.hourMinute.string(from: stop.startedAt)
         if let end = stop.endedAt {
-            let endStr = formatter.string(from: end)
+            let endStr = DateFormatters.hourMinute.string(from: end)
             return "\(start) 〜 \(endStr)"
         }
         return "\(start) 〜 継続中"

@@ -3,59 +3,152 @@ import Foundation
 @testable import WatchOverPro
 
 struct DetectStopEventUseCaseTests {
-    @Test @MainActor func lowSpeed_startsStopTracking() async throws {
-        let mockRepo = MockLocationRepository()
-        let sut = DetectStopEventUseCase(repository: mockRepo)
 
-        // First call with low speed — should start tracking but not yet create event
-        try await sut.evaluate(trackedUserId: "user-1", lat: 35.0, lng: 139.0, speed: 0.2)
-        #expect(mockRepo.putStopEventCallCount == 0)
+    // MARK: - Helpers
+
+    @MainActor
+    private final class MockClock {
+        var now: Date
+        init(_ start: Date) { self.now = start }
+        func advance(by seconds: TimeInterval) { now = now.addingTimeInterval(seconds) }
     }
 
-    @Test @MainActor func stopUnderThreeMinutes_doesNotCreateStopEvent() async throws {
-        let mockRepo = MockLocationRepository()
-        let sut = DetectStopEventUseCase(repository: mockRepo)
-
-        // Simulate: first call sets stopStartTime to "now"
-        try await sut.evaluate(trackedUserId: "user-1", lat: 35.0, lng: 139.0, speed: 0.1)
-
-        // Manually manipulate time by calling evaluate after setting up internal state
-        // Since we can't easily mock Date(), we test the flow:
-        // The first call should NOT create a stop event (duration < 3 min)
-        #expect(mockRepo.putStopEventCallCount == 0)
-
-        // Simulate continued low speed — still under threshold since time hasn't passed
-        try await sut.evaluate(trackedUserId: "user-1", lat: 35.0, lng: 139.0, speed: 0.1)
-        // Duration is ~0 seconds, so no event created yet
-        #expect(mockRepo.putStopEventCallCount == 0)
+    @MainActor
+    private static func makeSUT(
+        startDate: Date = Date(timeIntervalSince1970: 1_000_000)
+    ) -> (sut: DetectStopEventUseCase, repo: MockLocationRepository, clock: MockClock) {
+        let repo = MockLocationRepository()
+        let sut = DetectStopEventUseCase(repository: repo)
+        let clock = MockClock(startDate)
+        sut.dateProvider = { clock.now }
+        return (sut, repo, clock)
     }
 
-    @Test @MainActor func highSpeed_endsStop() async throws {
-        let mockRepo = MockLocationRepository()
-        let sut = DetectStopEventUseCase(repository: mockRepo)
+    // MARK: - Stop detection (same coordinates = 0m movement)
 
-        // Start with low speed
-        try await sut.evaluate(trackedUserId: "user-1", lat: 35.0, lng: 139.0, speed: 0.1)
+    @Test @MainActor
+    func sameCoords_twoPoints_detectsStop() async throws {
+        let (sut, repo, clock) = Self.makeSUT()
 
-        // Move at high speed — should end stop tracking
-        try await sut.evaluate(trackedUserId: "user-1", lat: 35.0, lng: 139.0, speed: 5.0)
+        try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
+        clock.advance(by: 15)
+        try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
 
-        // No stop event was long enough to be persisted, so count stays 0
-        #expect(mockRepo.putStopEventCallCount == 0)
+        // Stop detected but duration < 3min → no StopEvent yet
+        #expect(repo.putStopEventCallCount == 0)
     }
 
-    @Test @MainActor func reset_clearsState() async throws {
-        let mockRepo = MockLocationRepository()
-        let sut = DetectStopEventUseCase(repository: mockRepo)
+    @Test @MainActor
+    func sameCoords_underThreeMinutes_noStopEvent() async throws {
+        let (sut, repo, clock) = Self.makeSUT()
 
-        // Start tracking
-        try await sut.evaluate(trackedUserId: "user-1", lat: 35.0, lng: 139.0, speed: 0.1)
+        // 4 evaluations at 15s intervals = 45s of stop
+        for _ in 0..<4 {
+            try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
+            clock.advance(by: 15)
+        }
 
-        // Reset
+        #expect(repo.putStopEventCallCount == 0)
+    }
+
+    @Test @MainActor
+    func sameCoords_threeMinutes_createsStopEvent() async throws {
+        let (sut, repo, clock) = Self.makeSUT()
+
+        // Need >= 2 recent points and duration >= 180s
+        // Feed points at 15s intervals for 3+ minutes
+        for _ in 0..<14 {
+            try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
+            clock.advance(by: 15)
+        }
+
+        // 13 intervals × 15s = 195s ≥ 180s, should create event
+        #expect(repo.putStopEventCallCount == 1)
+        #expect(repo.lastPutStopEvent?.endedAt == nil)
+    }
+
+    // MARK: - Movement breaks stop
+
+    @Test @MainActor
+    func movementAfterStop_endsStopEvent() async throws {
+        let (sut, repo, clock) = Self.makeSUT()
+
+        // Build up a stop event (3+ minutes stationary)
+        for _ in 0..<14 {
+            try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
+            clock.advance(by: 15)
+        }
+
+        #expect(repo.putStopEventCallCount == 1)
+
+        // Now move significantly (> 20m away)
+        try await sut.evaluate(trackedUserId: "u1", lat: 35.001, lng: 139.001)
+
+        // Should have called putStopEvent again with endedAt set
+        #expect(repo.putStopEventCallCount == 2)
+        #expect(repo.lastPutStopEvent?.endedAt != nil)
+    }
+
+    @Test @MainActor
+    func largeMovement_neverCreatesStopEvent() async throws {
+        let (sut, repo, clock) = Self.makeSUT()
+        var lat = 35.0
+
+        // Each step moves ~111m (0.001° latitude ≈ 111m)
+        for _ in 0..<14 {
+            try await sut.evaluate(trackedUserId: "u1", lat: lat, lng: 139.0)
+            clock.advance(by: 15)
+            lat += 0.001
+        }
+
+        #expect(repo.putStopEventCallCount == 0)
+    }
+
+    // MARK: - Single point (not enough data)
+
+    @Test @MainActor
+    func singlePoint_notEnoughData_noStop() async throws {
+        let (sut, repo, _) = Self.makeSUT()
+
+        try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
+
+        #expect(repo.putStopEventCallCount == 0)
+    }
+
+    // MARK: - Reset
+
+    @Test @MainActor
+    func reset_clearsAllState() async throws {
+        let (sut, repo, clock) = Self.makeSUT()
+
+        // Start a stop
+        for _ in 0..<4 {
+            try await sut.evaluate(trackedUserId: "u1", lat: 35.0, lng: 139.0)
+            clock.advance(by: 15)
+        }
+
         sut.reset()
 
-        // After reset, high speed should not trigger putStopEvent
-        try await sut.evaluate(trackedUserId: "user-1", lat: 35.0, lng: 139.0, speed: 5.0)
-        #expect(mockRepo.putStopEventCallCount == 0)
+        // After reset, moving should not trigger an endedAt update
+        try await sut.evaluate(trackedUserId: "u1", lat: 36.0, lng: 140.0)
+        #expect(repo.putStopEventCallCount == 0)
+    }
+
+    // MARK: - Edge: small movement within threshold
+
+    @Test @MainActor
+    func smallMovement_withinThreshold_stillDetectsStop() async throws {
+        let (sut, repo, clock) = Self.makeSUT()
+
+        // ~1.1m movement per step, total over 60s window ≈ 4.4m < 20m
+        var lat = 35.0
+        for _ in 0..<14 {
+            try await sut.evaluate(trackedUserId: "u1", lat: lat, lng: 139.0)
+            clock.advance(by: 15)
+            lat += 0.00001 // ~1.1m per step
+        }
+
+        // Total distance in any 60s window is ~4.4m, well under 20m threshold
+        #expect(repo.putStopEventCallCount == 1)
     }
 }

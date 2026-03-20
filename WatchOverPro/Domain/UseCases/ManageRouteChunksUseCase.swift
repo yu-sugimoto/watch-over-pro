@@ -33,9 +33,7 @@ final class ManageRouteChunksUseCase {
     func flush(trackedUserId: String) async throws {
         guard !pendingPoints.isEmpty, let start = chunkStartTime else { return }
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let dateString = dateFormatter.string(from: start)
+        let dateString = DateFormatters.yyyyMMdd.string(from: start)
 
         let chunk = RouteChunk(
             trackedUserIdDate: "\(trackedUserId)#\(dateString)",
