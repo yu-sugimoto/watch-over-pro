@@ -87,23 +87,28 @@ export async function handler(event: AppSyncResolverEvent<UpdateFamilyMemberArgs
     return itemToMember(current.Item);
   }
 
-  const result = await ddb.send(new UpdateItemCommand({
-    TableName: FAMILY_MEMBERS_TABLE,
-    Key: {
-      family_id: { S: family_id },
-      member_user_id: { S: member_user_id },
-    },
-    UpdateExpression: 'SET ' + expressionParts.join(', '),
-    ExpressionAttributeValues: expressionValues,
-    ExpressionAttributeNames: expressionNames,
-    ReturnValues: 'ALL_NEW',
-  }));
-
-  if (!result.Attributes) {
-    throw new Error('Member not found');
+  let result;
+  try {
+    result = await ddb.send(new UpdateItemCommand({
+      TableName: FAMILY_MEMBERS_TABLE,
+      Key: {
+        family_id: { S: family_id },
+        member_user_id: { S: member_user_id },
+      },
+      UpdateExpression: 'SET ' + expressionParts.join(', '),
+      ExpressionAttributeValues: expressionValues,
+      ExpressionAttributeNames: expressionNames,
+      ReturnValues: 'ALL_NEW',
+      ConditionExpression: 'attribute_exists(family_id) AND attribute_exists(member_user_id)',
+    }));
+  } catch (err: any) {
+    if (err.name === 'ConditionalCheckFailedException') {
+      throw new Error('Member not found');
+    }
+    throw err;
   }
 
-  return itemToMember(result.Attributes);
+  return itemToMember(result.Attributes!);
 }
 
 function itemToMember(item: Record<string, any>) {
