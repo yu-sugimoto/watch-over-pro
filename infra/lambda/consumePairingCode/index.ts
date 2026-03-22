@@ -63,7 +63,14 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
   const memberColorHex = color_hex ?? '34C759';
   const memberNotes = notes ?? '';
 
-  const trackedUserId = result.Item.created_by!.S!;
+  const trackedUserId = result.Item.created_by?.S;
+  if (!trackedUserId) {
+    throw new Error('Invalid pairing code data');
+  }
+
+  if (userId === trackedUserId) {
+    throw new Error('Cannot consume own pairing code');
+  }
 
   // Update tracked member with watcher-provided info
   await ddb.send(new UpdateItemCommand({
