@@ -48,13 +48,24 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
     throw new Error('Invalid pairing code data');
   }
 
-  // Mark code as used
-  await ddb.send(new UpdateItemCommand({
-    TableName: PAIRING_TABLE,
-    Key: { code: { S: code } },
-    UpdateExpression: 'SET is_used = :used',
-    ExpressionAttributeValues: { ':used': { BOOL: true } },
-  }));
+  // Mark code as used (with conditional check to prevent race condition)
+  try {
+    await ddb.send(new UpdateItemCommand({
+      TableName: PAIRING_TABLE,
+      Key: { code: { S: code } },
+      UpdateExpression: 'SET is_used = :used',
+      ConditionExpression: 'is_used = :not_used',
+      ExpressionAttributeValues: {
+        ':used': { BOOL: true },
+        ':not_used': { BOOL: false },
+      },
+    }));
+  } catch (e: any) {
+    if (e.name === 'ConditionalCheckFailedException') {
+      throw new Error('Pairing code already used');
+    }
+    throw e;
+  }
 
   const now = new Date().toISOString();
   const memberDisplayName = display_name ?? '';
