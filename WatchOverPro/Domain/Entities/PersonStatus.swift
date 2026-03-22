@@ -9,7 +9,7 @@ enum PersonStatus: String, Codable, Sendable {
     var label: String {
         switch self {
         case .online: "オンライン"
-        case .paused: "送信停止中"
+        case .paused: "共有停止中"
         case .stale: "更新なし"
         case .offline: "オフライン"
         }

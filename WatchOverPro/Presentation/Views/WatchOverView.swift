@@ -68,7 +68,7 @@ struct WatchOverView: View {
             )
             StatusSummaryCard(
                 count: watchOverViewModel.pausedCount,
-                label: "送信停止",
+                label: "共有停止",
                 icon: "pause.circle.fill",
                 color: .blue
             )

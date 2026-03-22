@@ -56,7 +56,7 @@ final class LocationSyncService {
         manageRouteChunks.reset()
         detectStopEvent.reset()
 
-        // Send isActive: false so watchers see "送信停止中" immediately
+        // Send isActive: false so watchers see "共有停止中" immediately
         guard !userId.isEmpty else { return }
         Task {
             try? await useCase.execute(
