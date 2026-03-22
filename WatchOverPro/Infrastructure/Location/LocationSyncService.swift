@@ -46,8 +46,8 @@ final class LocationSyncService {
         syncTask?.cancel()
         syncTask = nil
 
-        let lastLat = locationService.currentLatitude ?? 0
-        let lastLng = locationService.currentLongitude ?? 0
+        let lastLat = locationService.currentLatitude
+        let lastLng = locationService.currentLongitude
         let userId = trackedUserId
         let useCase = updateLocationUseCase
 
@@ -57,7 +57,9 @@ final class LocationSyncService {
         detectStopEvent.reset()
 
         // Send isActive: false so watchers see "共有停止中" immediately
-        guard !userId.isEmpty else { return }
+        // 位置未取得なら送信しない（見守り側は5分後に自動でoffline判定）
+        guard !userId.isEmpty,
+              let lastLat, let lastLng else { return }
         Task {
             try? await useCase.execute(
                 trackedUserId: userId,
