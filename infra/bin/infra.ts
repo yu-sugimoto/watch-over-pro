@@ -14,7 +14,7 @@ const env = {
 
 const authStack = new AuthStack(app, 'WatchOverPro-Auth', { env });
 const dataStack = new DataStack(app, 'WatchOverPro-Data', { env });
-const apiStack = new ApiStack(app, 'WatchOverPro-Api', {
+new ApiStack(app, 'WatchOverPro-Api', {
   env,
   userPool: authStack.userPool,
   tables: dataStack.tables,

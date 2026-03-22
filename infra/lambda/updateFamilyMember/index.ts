@@ -1,4 +1,9 @@
-import { DynamoDBClient, GetItemCommand, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
+import {
+  DynamoDBClient,
+  GetItemCommand,
+  UpdateItemCommand,
+  AttributeValue,
+} from '@aws-sdk/client-dynamodb';
 import { AppSyncResolverEvent } from 'aws-lambda';
 
 const ddb = new DynamoDBClient({});
@@ -18,22 +23,35 @@ interface UpdateFamilyMemberArgs {
   input: UpdateFamilyMemberInput;
 }
 
-export async function handler(event: AppSyncResolverEvent<UpdateFamilyMemberArgs>) {
-  const userId = event.identity && 'sub' in event.identity ? event.identity.sub : '';
+export async function handler(
+  event: AppSyncResolverEvent<UpdateFamilyMemberArgs>,
+) {
+  const userId =
+    event.identity && 'sub' in event.identity ? event.identity.sub : '';
   if (!userId) {
     throw new Error('Unauthorized');
   }
 
-  const { family_id, member_user_id, display_name, relationship, age, color_hex, notes } = event.arguments.input;
+  const {
+    family_id,
+    member_user_id,
+    display_name,
+    relationship,
+    age,
+    color_hex,
+    notes,
+  } = event.arguments.input;
 
   // Verify caller is a member of this family
-  const callerResult = await ddb.send(new GetItemCommand({
-    TableName: FAMILY_MEMBERS_TABLE,
-    Key: {
-      family_id: { S: family_id },
-      member_user_id: { S: userId },
-    },
-  }));
+  const callerResult = await ddb.send(
+    new GetItemCommand({
+      TableName: FAMILY_MEMBERS_TABLE,
+      Key: {
+        family_id: { S: family_id },
+        member_user_id: { S: userId },
+      },
+    }),
+  );
 
   if (!callerResult.Item) {
     throw new Error('Unauthorized: caller is not a member of this family');
@@ -41,7 +59,7 @@ export async function handler(event: AppSyncResolverEvent<UpdateFamilyMemberArgs
 
   // Build update expression dynamically
   const expressionParts: string[] = [];
-  const expressionValues: Record<string, any> = {};
+  const expressionValues: Record<string, AttributeValue> = {};
   const expressionNames: Record<string, string> = {};
 
   if (display_name !== undefined) {
@@ -72,13 +90,15 @@ export async function handler(event: AppSyncResolverEvent<UpdateFamilyMemberArgs
 
   if (expressionParts.length === 0) {
     // Nothing to update, fetch and return current item
-    const current = await ddb.send(new GetItemCommand({
-      TableName: FAMILY_MEMBERS_TABLE,
-      Key: {
-        family_id: { S: family_id },
-        member_user_id: { S: member_user_id },
-      },
-    }));
+    const current = await ddb.send(
+      new GetItemCommand({
+        TableName: FAMILY_MEMBERS_TABLE,
+        Key: {
+          family_id: { S: family_id },
+          member_user_id: { S: member_user_id },
+        },
+      }),
+    );
 
     if (!current.Item) {
       throw new Error('Member not found');
@@ -89,20 +109,26 @@ export async function handler(event: AppSyncResolverEvent<UpdateFamilyMemberArgs
 
   let result;
   try {
-    result = await ddb.send(new UpdateItemCommand({
-      TableName: FAMILY_MEMBERS_TABLE,
-      Key: {
-        family_id: { S: family_id },
-        member_user_id: { S: member_user_id },
-      },
-      UpdateExpression: 'SET ' + expressionParts.join(', '),
-      ExpressionAttributeValues: expressionValues,
-      ExpressionAttributeNames: expressionNames,
-      ReturnValues: 'ALL_NEW',
-      ConditionExpression: 'attribute_exists(family_id) AND attribute_exists(member_user_id)',
-    }));
-  } catch (err: any) {
-    if (err.name === 'ConditionalCheckFailedException') {
+    result = await ddb.send(
+      new UpdateItemCommand({
+        TableName: FAMILY_MEMBERS_TABLE,
+        Key: {
+          family_id: { S: family_id },
+          member_user_id: { S: member_user_id },
+        },
+        UpdateExpression: 'SET ' + expressionParts.join(', '),
+        ExpressionAttributeValues: expressionValues,
+        ExpressionAttributeNames: expressionNames,
+        ReturnValues: 'ALL_NEW',
+        ConditionExpression:
+          'attribute_exists(family_id) AND attribute_exists(member_user_id)',
+      }),
+    );
+  } catch (err: unknown) {
+    if (
+      err instanceof Error &&
+      err.name === 'ConditionalCheckFailedException'
+    ) {
       throw new Error('Member not found');
     }
     throw err;
@@ -111,7 +137,7 @@ export async function handler(event: AppSyncResolverEvent<UpdateFamilyMemberArgs
   return itemToMember(result.Attributes!);
 }
 
-function itemToMember(item: Record<string, any>) {
+function itemToMember(item: Record<string, AttributeValue>) {
   return {
     family_id: item.family_id?.S ?? '',
     member_user_id: item.member_user_id?.S ?? '',

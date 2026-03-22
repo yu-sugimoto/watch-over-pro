@@ -1,4 +1,9 @@
-import { DynamoDBClient, GetItemCommand, UpdateItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb';
+import {
+  DynamoDBClient,
+  GetItemCommand,
+  UpdateItemCommand,
+  PutItemCommand,
+} from '@aws-sdk/client-dynamodb';
 import { AppSyncResolverEvent } from 'aws-lambda';
 
 const ddb = new DynamoDBClient({});
@@ -15,18 +20,22 @@ interface ConsumePairingArgs {
 }
 
 export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
-  const { code, display_name, relationship, age, color_hex, notes } = event.arguments;
-  const userId = event.identity && 'sub' in event.identity ? event.identity.sub : '';
+  const { code, display_name, relationship, age, color_hex, notes } =
+    event.arguments;
+  const userId =
+    event.identity && 'sub' in event.identity ? event.identity.sub : '';
 
   if (!userId) {
     throw new Error('Unauthorized');
   }
 
   // Look up pairing code
-  const result = await ddb.send(new GetItemCommand({
-    TableName: PAIRING_TABLE,
-    Key: { code: { S: code } },
-  }));
+  const result = await ddb.send(
+    new GetItemCommand({
+      TableName: PAIRING_TABLE,
+      Key: { code: { S: code } },
+    }),
+  );
 
   if (!result.Item) {
     throw new Error('Invalid pairing code');
@@ -50,18 +59,20 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
 
   // Mark code as used (with conditional check to prevent race condition)
   try {
-    await ddb.send(new UpdateItemCommand({
-      TableName: PAIRING_TABLE,
-      Key: { code: { S: code } },
-      UpdateExpression: 'SET is_used = :used',
-      ConditionExpression: 'is_used = :not_used',
-      ExpressionAttributeValues: {
-        ':used': { BOOL: true },
-        ':not_used': { BOOL: false },
-      },
-    }));
-  } catch (e: any) {
-    if (e.name === 'ConditionalCheckFailedException') {
+    await ddb.send(
+      new UpdateItemCommand({
+        TableName: PAIRING_TABLE,
+        Key: { code: { S: code } },
+        UpdateExpression: 'SET is_used = :used',
+        ConditionExpression: 'is_used = :not_used',
+        ExpressionAttributeValues: {
+          ':used': { BOOL: true },
+          ':not_used': { BOOL: false },
+        },
+      }),
+    );
+  } catch (e: unknown) {
+    if (e instanceof Error && e.name === 'ConditionalCheckFailedException') {
       throw new Error('Pairing code already used');
     }
     throw e;
@@ -84,37 +95,42 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
   }
 
   // Update tracked member with watcher-provided info
-  await ddb.send(new UpdateItemCommand({
-    TableName: MEMBERS_TABLE,
-    Key: {
-      family_id: { S: familyId },
-      member_user_id: { S: trackedUserId },
-    },
-    UpdateExpression: 'SET display_name = :dn, relationship = :rel, age = :age, color_hex = :ch, notes = :notes',
-    ExpressionAttributeValues: {
-      ':dn': { S: memberDisplayName },
-      ':rel': { S: memberRelationship },
-      ':age': { N: String(memberAge) },
-      ':ch': { S: memberColorHex },
-      ':notes': { S: memberNotes },
-    },
-  }));
+  await ddb.send(
+    new UpdateItemCommand({
+      TableName: MEMBERS_TABLE,
+      Key: {
+        family_id: { S: familyId },
+        member_user_id: { S: trackedUserId },
+      },
+      UpdateExpression:
+        'SET display_name = :dn, relationship = :rel, age = :age, color_hex = :ch, notes = :notes',
+      ExpressionAttributeValues: {
+        ':dn': { S: memberDisplayName },
+        ':rel': { S: memberRelationship },
+        ':age': { N: String(memberAge) },
+        ':ch': { S: memberColorHex },
+        ':notes': { S: memberNotes },
+      },
+    }),
+  );
 
   // Add watcher to family (no display_name needed)
-  await ddb.send(new PutItemCommand({
-    TableName: MEMBERS_TABLE,
-    Item: {
-      family_id: { S: familyId },
-      member_user_id: { S: userId },
-      display_name: { S: '' },
-      relationship: { S: 'self' },
-      age: { N: '0' },
-      color_hex: { S: '34C759' },
-      notes: { S: '' },
-      role: { S: 'watcher' },
-      joined_at: { S: now },
-    },
-  }));
+  await ddb.send(
+    new PutItemCommand({
+      TableName: MEMBERS_TABLE,
+      Item: {
+        family_id: { S: familyId },
+        member_user_id: { S: userId },
+        display_name: { S: '' },
+        relationship: { S: 'self' },
+        age: { N: '0' },
+        color_hex: { S: '34C759' },
+        notes: { S: '' },
+        role: { S: 'watcher' },
+        joined_at: { S: now },
+      },
+    }),
+  );
 
   return {
     family_id: familyId,

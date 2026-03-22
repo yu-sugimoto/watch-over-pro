@@ -15,26 +15,38 @@ export class AuthStack extends cdk.Stack {
 
     // --- Lambda triggers for Custom Auth (Apple Sign In) ---
 
-    const defineAuthChallenge = new lambda.NodejsFunction(this, 'DefineAuthChallenge', {
-      entry: path.join(__dirname, '../lambda/defineAuthChallenge/index.ts'),
-      handler: 'handler',
-      runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
-      bundling: { minify: true },
-    });
+    const defineAuthChallenge = new lambda.NodejsFunction(
+      this,
+      'DefineAuthChallenge',
+      {
+        entry: path.join(__dirname, '../lambda/defineAuthChallenge/index.ts'),
+        handler: 'handler',
+        runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
+        bundling: { minify: true },
+      },
+    );
 
-    const createAuthChallenge = new lambda.NodejsFunction(this, 'CreateAuthChallenge', {
-      entry: path.join(__dirname, '../lambda/createAuthChallenge/index.ts'),
-      handler: 'handler',
-      runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
-      bundling: { minify: true },
-    });
+    const createAuthChallenge = new lambda.NodejsFunction(
+      this,
+      'CreateAuthChallenge',
+      {
+        entry: path.join(__dirname, '../lambda/createAuthChallenge/index.ts'),
+        handler: 'handler',
+        runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
+        bundling: { minify: true },
+      },
+    );
 
-    const verifyAuthChallenge = new lambda.NodejsFunction(this, 'VerifyAuthChallenge', {
-      entry: path.join(__dirname, '../lambda/verifyAuthChallenge/index.ts'),
-      handler: 'handler',
-      runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
-      bundling: { minify: true },
-    });
+    const verifyAuthChallenge = new lambda.NodejsFunction(
+      this,
+      'VerifyAuthChallenge',
+      {
+        entry: path.join(__dirname, '../lambda/verifyAuthChallenge/index.ts'),
+        handler: 'handler',
+        runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
+        bundling: { minify: true },
+      },
+    );
 
     const preSignUp = new lambda.NodejsFunction(this, 'PreSignUp', {
       entry: path.join(__dirname, '../lambda/preSignUp/index.ts'),
@@ -112,7 +124,7 @@ export class AuthStack extends cdk.Stack {
       assumedBy: new iam.FederatedPrincipal(
         'cognito-identity.amazonaws.com',
         {
-          'StringEquals': {
+          StringEquals: {
             'cognito-identity.amazonaws.com:aud': this.identityPool.ref,
           },
           'ForAnyValue:StringLike': {
@@ -139,17 +151,23 @@ export class AuthStack extends cdk.Stack {
     });
 
     // Attach roles to Identity Pool
-    new cognito.CfnIdentityPoolRoleAttachment(this, 'IdentityPoolRoleAttachment', {
-      identityPoolId: this.identityPool.ref,
-      roles: {
-        authenticated: authenticatedRole.roleArn,
+    new cognito.CfnIdentityPoolRoleAttachment(
+      this,
+      'IdentityPoolRoleAttachment',
+      {
+        identityPoolId: this.identityPool.ref,
+        roles: {
+          authenticated: authenticatedRole.roleArn,
+        },
       },
-    });
+    );
 
     // --- Outputs ---
 
     new cdk.CfnOutput(this, 'UserPoolId', { value: this.userPool.userPoolId });
-    new cdk.CfnOutput(this, 'UserPoolClientId', { value: this.userPoolClient.userPoolClientId });
+    new cdk.CfnOutput(this, 'UserPoolClientId', {
+      value: this.userPoolClient.userPoolClientId,
+    });
     new cdk.CfnOutput(this, 'IdentityPoolId', { value: this.identityPool.ref });
   }
 }

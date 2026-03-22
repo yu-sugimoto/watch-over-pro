@@ -1,7 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as cognito from 'aws-cdk-lib/aws-cognito';
-import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as path from 'path';
@@ -22,7 +21,7 @@ export class ApiStack extends cdk.Stack {
     this.api = new appsync.GraphqlApi(this, 'Api', {
       name: 'watch-over-pro-api',
       definition: appsync.Definition.fromFile(
-        path.join(__dirname, '../graphql/schema.graphql')
+        path.join(__dirname, '../graphql/schema.graphql'),
       ),
       authorizationConfig: {
         defaultAuthorization: {
@@ -36,20 +35,38 @@ export class ApiStack extends cdk.Stack {
     });
 
     // DynamoDB data sources
-    const currentLocDS = this.api.addDynamoDbDataSource('CurrentLocDS', props.tables.currentLocations);
-    const routeChunkDS = this.api.addDynamoDbDataSource('RouteChunkDS', props.tables.routeChunks);
-    const stopEventDS = this.api.addDynamoDbDataSource('StopEventDS', props.tables.stopEvents);
-    const familyDS = this.api.addDynamoDbDataSource('FamilyDS', props.tables.families);
-    const familyMemberDS = this.api.addDynamoDbDataSource('FamilyMemberDS', props.tables.familyMembers);
+    const currentLocDS = this.api.addDynamoDbDataSource(
+      'CurrentLocDS',
+      props.tables.currentLocations,
+    );
+    const routeChunkDS = this.api.addDynamoDbDataSource(
+      'RouteChunkDS',
+      props.tables.routeChunks,
+    );
+    const stopEventDS = this.api.addDynamoDbDataSource(
+      'StopEventDS',
+      props.tables.stopEvents,
+    );
+    const familyDS = this.api.addDynamoDbDataSource(
+      'FamilyDS',
+      props.tables.families,
+    );
+    const familyMemberDS = this.api.addDynamoDbDataSource(
+      'FamilyMemberDS',
+      props.tables.familyMembers,
+    );
 
     // Mutation: updateCurrentLocation
     currentLocDS.createResolver('UpdateCurrentLocation', {
       typeName: 'Mutation',
       fieldName: 'updateCurrentLocation',
       requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(
-        appsync.PrimaryKey.partition('tracked_user_id').is('input.tracked_user_id'),
+        appsync.PrimaryKey.partition('tracked_user_id').is(
+          'input.tracked_user_id',
+        ),
         appsync.Values.projecting('input')
-          .attribute('updated_at').is('$util.time.nowISO8601()')
+          .attribute('updated_at')
+          .is('$util.time.nowISO8601()'),
       ),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
     });
@@ -59,11 +76,13 @@ export class ApiStack extends cdk.Stack {
       typeName: 'Mutation',
       fieldName: 'appendRouteChunk',
       requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(
-        appsync.PrimaryKey
-          .partition('tracked_user_id_date').is('input.tracked_user_id_date')
-          .sort('chunk_start_epoch_ms').is('input.chunk_start_epoch_ms'),
+        appsync.PrimaryKey.partition('tracked_user_id_date')
+          .is('input.tracked_user_id_date')
+          .sort('chunk_start_epoch_ms')
+          .is('input.chunk_start_epoch_ms'),
         appsync.Values.projecting('input')
-          .attribute('created_at').is('$util.time.nowISO8601()')
+          .attribute('created_at')
+          .is('$util.time.nowISO8601()'),
       ),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
     });
@@ -73,10 +92,11 @@ export class ApiStack extends cdk.Stack {
       typeName: 'Mutation',
       fieldName: 'putStopEvent',
       requestMappingTemplate: appsync.MappingTemplate.dynamoDbPutItem(
-        appsync.PrimaryKey
-          .partition('tracked_user_id_date').is('input.tracked_user_id_date')
-          .sort('stop_start_epoch_ms').is('input.stop_start_epoch_ms'),
-        appsync.Values.projecting('input')
+        appsync.PrimaryKey.partition('tracked_user_id_date')
+          .is('input.tracked_user_id_date')
+          .sort('stop_start_epoch_ms')
+          .is('input.stop_start_epoch_ms'),
+        appsync.Values.projecting('input'),
       ),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
     });
@@ -85,7 +105,10 @@ export class ApiStack extends cdk.Stack {
     familyDS.createResolver('GetFamily', {
       typeName: 'Query',
       fieldName: 'getFamily',
-      requestMappingTemplate: appsync.MappingTemplate.dynamoDbGetItem('family_id', 'family_id'),
+      requestMappingTemplate: appsync.MappingTemplate.dynamoDbGetItem(
+        'family_id',
+        'family_id',
+      ),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
     });
 
@@ -94,7 +117,7 @@ export class ApiStack extends cdk.Stack {
       typeName: 'Query',
       fieldName: 'getFamilyMembers',
       requestMappingTemplate: appsync.MappingTemplate.dynamoDbQuery(
-        appsync.KeyCondition.eq('family_id', 'family_id')
+        appsync.KeyCondition.eq('family_id', 'family_id'),
       ),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultList(),
     });
@@ -138,98 +161,133 @@ export class ApiStack extends cdk.Stack {
     });
 
     // Lambda: updateFamilyMember
-    const updateFamilyMemberFn = new lambdaNode.NodejsFunction(this, 'UpdateFamilyMemberFn', {
-      entry: path.join(__dirname, '../lambda/updateFamilyMember/index.ts'),
-      handler: 'handler',
-      runtime: lambda.Runtime.NODEJS_24_X,
-      environment: {
-        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+    const updateFamilyMemberFn = new lambdaNode.NodejsFunction(
+      this,
+      'UpdateFamilyMemberFn',
+      {
+        entry: path.join(__dirname, '../lambda/updateFamilyMember/index.ts'),
+        handler: 'handler',
+        runtime: lambda.Runtime.NODEJS_24_X,
+        environment: {
+          FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+        },
+        timeout: cdk.Duration.seconds(10),
       },
-      timeout: cdk.Duration.seconds(10),
-    });
+    );
     props.tables.familyMembers.grantReadWriteData(updateFamilyMemberFn);
 
-    const updateFamilyMemberDS = this.api.addLambdaDataSource('UpdateFamilyMemberDS', updateFamilyMemberFn);
+    const updateFamilyMemberDS = this.api.addLambdaDataSource(
+      'UpdateFamilyMemberDS',
+      updateFamilyMemberFn,
+    );
     updateFamilyMemberDS.createResolver('UpdateFamilyMember', {
       typeName: 'Mutation',
       fieldName: 'updateFamilyMember',
     });
 
     // Lambda: deleteFamilyMember
-    const deleteFamilyMemberFn = new lambdaNode.NodejsFunction(this, 'DeleteFamilyMemberFn', {
-      entry: path.join(__dirname, '../lambda/deleteFamilyMember/index.ts'),
-      handler: 'handler',
-      runtime: lambda.Runtime.NODEJS_24_X,
-      environment: {
-        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+    const deleteFamilyMemberFn = new lambdaNode.NodejsFunction(
+      this,
+      'DeleteFamilyMemberFn',
+      {
+        entry: path.join(__dirname, '../lambda/deleteFamilyMember/index.ts'),
+        handler: 'handler',
+        runtime: lambda.Runtime.NODEJS_24_X,
+        environment: {
+          FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+        },
+        timeout: cdk.Duration.seconds(10),
       },
-      timeout: cdk.Duration.seconds(10),
-    });
+    );
     props.tables.familyMembers.grantReadWriteData(deleteFamilyMemberFn);
 
-    const deleteFamilyMemberDS = this.api.addLambdaDataSource('DeleteFamilyMemberDS', deleteFamilyMemberFn);
+    const deleteFamilyMemberDS = this.api.addLambdaDataSource(
+      'DeleteFamilyMemberDS',
+      deleteFamilyMemberFn,
+    );
     deleteFamilyMemberDS.createResolver('DeleteFamilyMember', {
       typeName: 'Mutation',
       fieldName: 'deleteFamilyMember',
     });
 
     // Lambda: createPairingCode
-    const createPairingCodeFn = new lambdaNode.NodejsFunction(this, 'CreatePairingCodeFn', {
-      entry: path.join(__dirname, '../lambda/createPairingCode/index.ts'),
-      handler: 'handler',
-      runtime: lambda.Runtime.NODEJS_24_X,
-      environment: {
-        PAIRING_CODES_TABLE: props.tables.pairingCodes.tableName,
-        FAMILIES_TABLE: props.tables.families.tableName,
-        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+    const createPairingCodeFn = new lambdaNode.NodejsFunction(
+      this,
+      'CreatePairingCodeFn',
+      {
+        entry: path.join(__dirname, '../lambda/createPairingCode/index.ts'),
+        handler: 'handler',
+        runtime: lambda.Runtime.NODEJS_24_X,
+        environment: {
+          PAIRING_CODES_TABLE: props.tables.pairingCodes.tableName,
+          FAMILIES_TABLE: props.tables.families.tableName,
+          FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+        },
+        timeout: cdk.Duration.seconds(10),
       },
-      timeout: cdk.Duration.seconds(10),
-    });
+    );
     props.tables.pairingCodes.grantWriteData(createPairingCodeFn);
     props.tables.families.grantWriteData(createPairingCodeFn);
     props.tables.familyMembers.grantWriteData(createPairingCodeFn);
 
-    const createPairingDS = this.api.addLambdaDataSource('CreatePairingDS', createPairingCodeFn);
+    const createPairingDS = this.api.addLambdaDataSource(
+      'CreatePairingDS',
+      createPairingCodeFn,
+    );
     createPairingDS.createResolver('CreatePairingCode', {
       typeName: 'Mutation',
       fieldName: 'createPairingCode',
     });
 
     // Lambda: consumePairingCode
-    const consumePairingCodeFn = new lambdaNode.NodejsFunction(this, 'ConsumePairingCodeFn', {
-      entry: path.join(__dirname, '../lambda/consumePairingCode/index.ts'),
-      handler: 'handler',
-      runtime: lambda.Runtime.NODEJS_24_X,
-      environment: {
-        PAIRING_CODES_TABLE: props.tables.pairingCodes.tableName,
-        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+    const consumePairingCodeFn = new lambdaNode.NodejsFunction(
+      this,
+      'ConsumePairingCodeFn',
+      {
+        entry: path.join(__dirname, '../lambda/consumePairingCode/index.ts'),
+        handler: 'handler',
+        runtime: lambda.Runtime.NODEJS_24_X,
+        environment: {
+          PAIRING_CODES_TABLE: props.tables.pairingCodes.tableName,
+          FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+        },
+        timeout: cdk.Duration.seconds(10),
       },
-      timeout: cdk.Duration.seconds(10),
-    });
+    );
     props.tables.pairingCodes.grantReadWriteData(consumePairingCodeFn);
     props.tables.familyMembers.grantWriteData(consumePairingCodeFn);
 
-    const consumePairingDS = this.api.addLambdaDataSource('ConsumePairingDS', consumePairingCodeFn);
+    const consumePairingDS = this.api.addLambdaDataSource(
+      'ConsumePairingDS',
+      consumePairingCodeFn,
+    );
     consumePairingDS.createResolver('ConsumePairingCode', {
       typeName: 'Mutation',
       fieldName: 'consumePairingCode',
     });
 
     // Lambda: getLiveMapState
-    const getLiveMapStateFn = new lambdaNode.NodejsFunction(this, 'GetLiveMapStateFn', {
-      entry: path.join(__dirname, '../lambda/getLiveMapState/index.ts'),
-      handler: 'handler',
-      runtime: lambda.Runtime.NODEJS_24_X,
-      environment: {
-        FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
-        CURRENT_LOCATIONS_TABLE: props.tables.currentLocations.tableName,
+    const getLiveMapStateFn = new lambdaNode.NodejsFunction(
+      this,
+      'GetLiveMapStateFn',
+      {
+        entry: path.join(__dirname, '../lambda/getLiveMapState/index.ts'),
+        handler: 'handler',
+        runtime: lambda.Runtime.NODEJS_24_X,
+        environment: {
+          FAMILY_MEMBERS_TABLE: props.tables.familyMembers.tableName,
+          CURRENT_LOCATIONS_TABLE: props.tables.currentLocations.tableName,
+        },
+        timeout: cdk.Duration.seconds(10),
       },
-      timeout: cdk.Duration.seconds(10),
-    });
+    );
     props.tables.familyMembers.grantReadData(getLiveMapStateFn);
     props.tables.currentLocations.grantReadData(getLiveMapStateFn);
 
-    const getLiveMapStateDS = this.api.addLambdaDataSource('GetLiveMapStateDS', getLiveMapStateFn);
+    const getLiveMapStateDS = this.api.addLambdaDataSource(
+      'GetLiveMapStateDS',
+      getLiveMapStateFn,
+    );
     getLiveMapStateDS.createResolver('GetLiveMapState', {
       typeName: 'Query',
       fieldName: 'getLiveMapState',
