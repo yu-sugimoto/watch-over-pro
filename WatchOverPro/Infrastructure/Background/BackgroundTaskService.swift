@@ -53,6 +53,7 @@ enum BackgroundTaskService {
         let defaults = UserDefaults.standard
         guard let modeRaw = defaults.string(forKey: "app_mode"),
               modeRaw == "watched",
+              defaults.bool(forKey: "bg_location_active"),
               let trackedUserId = defaults.string(forKey: "tracked_user_id"),
               let familyId = defaults.string(forKey: "family_id") else {
             return nil

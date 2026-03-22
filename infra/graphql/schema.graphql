@@ -73,7 +73,7 @@ input UpdateCurrentLocationInput {
   speed: Float
   heading: Float
   battery_level: Float
-  is_active: Boolean
+  is_active: Boolean!
 }
 
 input AppendRouteChunkInput {

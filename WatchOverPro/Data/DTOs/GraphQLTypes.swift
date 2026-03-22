@@ -11,7 +11,7 @@ struct GQLCurrentLocation: Decodable {
     let speed: Double?
     let heading: Double?
     let battery_level: Double?
-    let is_active: Bool?
+    let is_active: Bool
     let updated_at: String
 
     func toEntity() -> CurrentLocation {
@@ -24,7 +24,7 @@ struct GQLCurrentLocation: Decodable {
             speed: speed,
             heading: heading,
             batteryLevel: battery_level,
-            isActive: is_active ?? true,
+            isActive: is_active,
             updatedAt: ISO8601.date(from: updated_at) ?? Date()
         )
     }

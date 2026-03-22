@@ -77,7 +77,7 @@ export async function handler(event: AppSyncResolverEvent<{ family_id: string }>
         speed: item.speed?.N ? Number(item.speed.N) : null,
         heading: item.heading?.N ? Number(item.heading.N) : null,
         battery_level: item.battery_level?.N ? Number(item.battery_level.N) : null,
-        is_active: item.is_active?.BOOL ?? true,
+        is_active: item.is_active!.BOOL!,
         updated_at: item.updated_at?.S ?? '',
       });
     }
