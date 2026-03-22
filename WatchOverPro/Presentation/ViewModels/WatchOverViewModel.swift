@@ -42,9 +42,13 @@ final class WatchOverViewModel {
         familyMembers.filter { status(for: $0) == .offline }.count
     }
 
+    var pausedCount: Int {
+        familyMembers.filter { status(for: $0) == .paused }.count
+    }
+
     func status(for member: FamilyMember) -> PersonStatus {
         let location = latestLocations[member.memberUserId]
-        return resolveStatus.execute(lastUpdated: location?.updatedAt)
+        return resolveStatus.execute(lastUpdated: location?.updatedAt, isActive: location?.isActive ?? true)
     }
 
     // MARK: - Data Loading
@@ -88,6 +92,8 @@ final class WatchOverViewModel {
                         guard let self, !Task.isCancelled else { return }
                         self.latestLocations[userId] = location
                     }
+                } catch is CancellationError {
+                    // Task cancelled — expected during stopRealtime()
                 } catch {
                     print("[WatchOver] Subscription error for \(userId): \(error.localizedDescription)")
                 }

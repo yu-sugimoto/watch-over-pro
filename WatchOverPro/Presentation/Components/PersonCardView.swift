@@ -59,6 +59,7 @@ struct PersonCardView: View {
     private func statusColor(_ status: PersonStatus) -> Color {
         switch status {
         case .online: .green
+        case .paused: .blue
         case .stale: .orange
         case .offline: .gray
         }

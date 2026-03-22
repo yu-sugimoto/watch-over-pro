@@ -89,12 +89,17 @@ enum BackgroundTaskService {
             let location = CurrentLocation(
                 trackedUserId: config.trackedUserId,
                 lat: lat,
-                lng: lon
+                lng: lon,
+                isActive: true
             )
 
             do {
                 try await locationRepo.updateCurrentLocation(location)
-            } catch {}
+            } catch is CancellationError {
+                // Background task expired
+            } catch {
+                print("[BackgroundTask] Refresh failed: \(error.localizedDescription)")
+            }
 
             task.setTaskCompleted(success: true)
             scheduleRefresh()
@@ -130,12 +135,17 @@ enum BackgroundTaskService {
             let location = CurrentLocation(
                 trackedUserId: config.trackedUserId,
                 lat: lat,
-                lng: lon
+                lng: lon,
+                isActive: true
             )
 
             do {
                 try await locationRepo.updateCurrentLocation(location)
-            } catch {}
+            } catch is CancellationError {
+                // Background task expired
+            } catch {
+                print("[BackgroundTask] Processing failed: \(error.localizedDescription)")
+            }
 
             task.setTaskCompleted(success: true)
             scheduleProcessing()

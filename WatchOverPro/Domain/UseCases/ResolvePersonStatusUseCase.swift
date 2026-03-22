@@ -5,8 +5,12 @@ struct ResolvePersonStatusUseCase: Sendable {
     private let staleThreshold: TimeInterval = 300    // 5 minutes
     private let offlineThreshold: TimeInterval = 900  // 15 minutes
 
-    func execute(lastUpdated: Date?) -> PersonStatus {
+    func execute(lastUpdated: Date?, isActive: Bool = true) -> PersonStatus {
         guard let lastUpdated else { return .offline }
+
+        if !isActive {
+            return .paused
+        }
 
         let elapsed = Date().timeIntervalSince(lastUpdated)
 

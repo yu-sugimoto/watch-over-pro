@@ -86,6 +86,8 @@ final class AppSyncDataSource: Sendable {
                         }
                     }
                     continuation.finish()
+                } catch is CancellationError {
+                    continuation.finish()
                 } catch {
                     continuation.finish(throwing: error)
                 }

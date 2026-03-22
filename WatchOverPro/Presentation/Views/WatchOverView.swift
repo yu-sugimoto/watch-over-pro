@@ -59,12 +59,18 @@ struct WatchOverView: View {
     }
 
     private var overviewHeader: some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 10) {
             StatusSummaryCard(
                 count: watchOverViewModel.onlineCount,
                 label: "オンライン",
                 icon: "checkmark.circle.fill",
                 color: .green
+            )
+            StatusSummaryCard(
+                count: watchOverViewModel.pausedCount,
+                label: "送信停止",
+                icon: "pause.circle.fill",
+                color: .blue
             )
             StatusSummaryCard(
                 count: watchOverViewModel.staleCount,

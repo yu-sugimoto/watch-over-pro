@@ -14,6 +14,7 @@ final class AppSyncLocationRepository: LocationRepositoryProtocol, Sendable {
                 "speed": location.speed as Any,
                 "heading": location.heading as Any,
                 "battery_level": location.batteryLevel as Any,
+                "is_active": location.isActive,
             ]
         ]
         let result: GQLCurrentLocation = try await dataSource.mutate(
@@ -115,7 +116,7 @@ private enum Queries {
     static let updateCurrentLocation = """
     mutation UpdateCurrentLocation($input: UpdateCurrentLocationInput!) {
         updateCurrentLocation(input: $input) {
-            tracked_user_id lat lng altitude accuracy speed heading battery_level updated_at
+            tracked_user_id lat lng altitude accuracy speed heading battery_level is_active updated_at
         }
     }
     """
@@ -139,7 +140,7 @@ private enum Queries {
     static let getLiveMapState = """
     query GetLiveMapState($family_id: ID!) {
         getLiveMapState(family_id: $family_id) {
-            locations { tracked_user_id lat lng altitude accuracy speed heading battery_level updated_at }
+            locations { tracked_user_id lat lng altitude accuracy speed heading battery_level is_active updated_at }
             members { family_id member_user_id display_name relationship age color_hex role joined_at }
         }
     }
@@ -164,7 +165,7 @@ private enum Queries {
     static let onLocationUpdate = """
     subscription OnLocationUpdate($tracked_user_id: ID!) {
         onLocationUpdate(tracked_user_id: $tracked_user_id) {
-            tracked_user_id lat lng altitude accuracy speed heading battery_level updated_at
+            tracked_user_id lat lng altitude accuracy speed heading battery_level is_active updated_at
         }
     }
     """
