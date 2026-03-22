@@ -131,6 +131,7 @@ struct GQLFamilyMember: Decodable {
 struct GQLPairingCode: Decodable {
     let code: String
     let family_id: String
+    let created_by: String
     let expires_at: String
     let is_used: Bool
 
