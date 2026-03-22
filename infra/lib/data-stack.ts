@@ -42,15 +42,24 @@ export class DataStack extends cdk.Stack {
 
     const currentLocations = new dynamodb.Table(this, 'CurrentLocations', {
       tableName: 'watch-over-pro-current-locations',
-      partitionKey: { name: 'tracked_user_id', type: dynamodb.AttributeType.STRING },
+      partitionKey: {
+        name: 'tracked_user_id',
+        type: dynamodb.AttributeType.STRING,
+      },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
     const routeChunks = new dynamodb.Table(this, 'RouteChunks', {
       tableName: 'watch-over-pro-route-chunks',
-      partitionKey: { name: 'tracked_user_id_date', type: dynamodb.AttributeType.STRING },
-      sortKey: { name: 'chunk_start_epoch_ms', type: dynamodb.AttributeType.NUMBER },
+      partitionKey: {
+        name: 'tracked_user_id_date',
+        type: dynamodb.AttributeType.STRING,
+      },
+      sortKey: {
+        name: 'chunk_start_epoch_ms',
+        type: dynamodb.AttributeType.NUMBER,
+      },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       timeToLiveAttribute: 'ttl',
       removalPolicy: cdk.RemovalPolicy.DESTROY,
@@ -58,8 +67,14 @@ export class DataStack extends cdk.Stack {
 
     const stopEvents = new dynamodb.Table(this, 'StopEvents', {
       tableName: 'watch-over-pro-stop-events',
-      partitionKey: { name: 'tracked_user_id_date', type: dynamodb.AttributeType.STRING },
-      sortKey: { name: 'stop_start_epoch_ms', type: dynamodb.AttributeType.NUMBER },
+      partitionKey: {
+        name: 'tracked_user_id_date',
+        type: dynamodb.AttributeType.STRING,
+      },
+      sortKey: {
+        name: 'stop_start_epoch_ms',
+        type: dynamodb.AttributeType.NUMBER,
+      },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       timeToLiveAttribute: 'ttl',
       removalPolicy: cdk.RemovalPolicy.DESTROY,

@@ -4,7 +4,9 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 const ddb = new DynamoDBClient({});
 const TABLE = process.env.FAMILIES_TABLE!;
 
-export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
+export async function handler(
+  event: APIGatewayProxyEvent,
+): Promise<APIGatewayProxyResult> {
   try {
     if (!event.body) {
       return { statusCode: 400, body: 'Missing body' };
@@ -44,19 +46,21 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
       ? 'SET plan_status = :status, plan_expires_at = :exp'
       : 'SET plan_status = :status';
 
-    const exprValues: Record<string, any> = {
+    const exprValues: Record<string, { S: string }> = {
       ':status': { S: planStatus },
     };
     if (expiresAt) {
       exprValues[':exp'] = { S: expiresAt };
     }
 
-    await ddb.send(new UpdateItemCommand({
-      TableName: TABLE,
-      Key: { family_id: { S: familyId } },
-      UpdateExpression: updateExpr,
-      ExpressionAttributeValues: exprValues,
-    }));
+    await ddb.send(
+      new UpdateItemCommand({
+        TableName: TABLE,
+        Key: { family_id: { S: familyId } },
+        UpdateExpression: updateExpr,
+        ExpressionAttributeValues: exprValues,
+      }),
+    );
 
     return { statusCode: 200, body: 'OK' };
   } catch (error) {

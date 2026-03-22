@@ -16,19 +16,21 @@ export async function handler(event: SyncEvent) {
     ? 'SET plan_status = :status, plan_expires_at = :exp'
     : 'SET plan_status = :status';
 
-  const exprValues: Record<string, any> = {
+  const exprValues: Record<string, { S: string }> = {
     ':status': { S: status },
   };
   if (expiresAt) {
     exprValues[':exp'] = { S: expiresAt };
   }
 
-  await ddb.send(new UpdateItemCommand({
-    TableName: TABLE,
-    Key: { family_id: { S: familyId } },
-    UpdateExpression: updateExpr,
-    ExpressionAttributeValues: exprValues,
-  }));
+  await ddb.send(
+    new UpdateItemCommand({
+      TableName: TABLE,
+      Key: { family_id: { S: familyId } },
+      UpdateExpression: updateExpr,
+      ExpressionAttributeValues: exprValues,
+    }),
+  );
 
   return { success: true };
 }

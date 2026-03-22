@@ -128,7 +128,14 @@ type Mutation {
   appendRouteChunk(input: AppendRouteChunkInput!): RouteChunk!
   putStopEvent(input: PutStopEventInput!): StopEvent!
   createPairingCode(family_id: ID!): PairingCode!
-  consumePairingCode(code: String!, display_name: String, relationship: String, age: Int, color_hex: String, notes: String): FamilyMember!
+  consumePairingCode(
+    code: String!
+    display_name: String
+    relationship: String
+    age: Int
+    color_hex: String
+    notes: String
+  ): FamilyMember!
   updateFamilyMember(input: UpdateFamilyMemberInput!): FamilyMember!
   deleteFamilyMember(family_id: ID!, member_user_id: ID!): Boolean!
 }
