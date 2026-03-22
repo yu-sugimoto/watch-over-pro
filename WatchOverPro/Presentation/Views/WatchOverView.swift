@@ -8,7 +8,7 @@ struct WatchOverView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    if !watchOverViewModel.familyMembers.isEmpty {
+                    if !watchOverViewModel.trackedMembers.isEmpty {
                         overviewHeader
                         membersSection
                     } else {
@@ -87,7 +87,7 @@ struct WatchOverView: View {
                 .font(.headline)
                 .padding(.leading, 4)
 
-            ForEach(watchOverViewModel.familyMembers) { member in
+            ForEach(watchOverViewModel.trackedMembers) { member in
                 NavigationLink(value: member.memberUserId) {
                     PersonCardView(
                         member: member,
