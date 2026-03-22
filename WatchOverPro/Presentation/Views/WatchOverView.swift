@@ -73,12 +73,6 @@ struct WatchOverView: View {
                 color: .blue
             )
             StatusSummaryCard(
-                count: watchOverViewModel.staleCount,
-                label: "更新なし",
-                icon: "exclamationmark.triangle.fill",
-                color: .orange
-            )
-            StatusSummaryCard(
                 count: watchOverViewModel.offlineCount,
                 label: "オフライン",
                 icon: "wifi.slash",

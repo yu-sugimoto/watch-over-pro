@@ -34,10 +34,6 @@ final class WatchOverViewModel {
         familyMembers.filter { status(for: $0) == .online }.count
     }
 
-    var staleCount: Int {
-        familyMembers.filter { status(for: $0) == .stale }.count
-    }
-
     var offlineCount: Int {
         familyMembers.filter { status(for: $0) == .offline }.count
     }

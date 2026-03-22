@@ -239,7 +239,6 @@ struct PersonDetailView: View {
         switch status {
         case .online: .green
         case .paused: .blue
-        case .stale: .orange
         case .offline: .gray
         }
     }
