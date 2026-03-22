@@ -30,16 +30,20 @@ final class WatchOverViewModel {
 
     // MARK: - Computed Properties
 
+    var trackedMembers: [FamilyMember] {
+        familyMembers.filter { $0.role == .tracked }
+    }
+
     var onlineCount: Int {
-        familyMembers.filter { status(for: $0) == .online }.count
+        trackedMembers.filter { status(for: $0) == .online }.count
     }
 
     var offlineCount: Int {
-        familyMembers.filter { status(for: $0) == .offline }.count
+        trackedMembers.filter { status(for: $0) == .offline }.count
     }
 
     var pausedCount: Int {
-        familyMembers.filter { status(for: $0) == .paused }.count
+        trackedMembers.filter { status(for: $0) == .paused }.count
     }
 
     func status(for member: FamilyMember) -> PersonStatus {
@@ -78,7 +82,6 @@ final class WatchOverViewModel {
     func startRealtime() async {
         await stopRealtime()
 
-        let trackedMembers = familyMembers.filter { $0.role == .tracked }
         for member in trackedMembers {
             let userId = member.memberUserId
             let stream = locationRepo.subscribeLocationUpdates(trackedUserId: userId)
