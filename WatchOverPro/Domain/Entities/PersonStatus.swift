@@ -2,13 +2,13 @@ import Foundation
 
 enum PersonStatus: String, Codable, Sendable {
     case online
-    case stale
+    case paused
     case offline
 
     var label: String {
         switch self {
         case .online: "オンライン"
-        case .stale: "更新なし"
+        case .paused: "共有停止中"
         case .offline: "オフライン"
         }
     }
@@ -16,7 +16,7 @@ enum PersonStatus: String, Codable, Sendable {
     var icon: String {
         switch self {
         case .online: "checkmark.circle.fill"
-        case .stale: "exclamationmark.triangle.fill"
+        case .paused: "pause.circle.fill"
         case .offline: "wifi.slash"
         }
     }

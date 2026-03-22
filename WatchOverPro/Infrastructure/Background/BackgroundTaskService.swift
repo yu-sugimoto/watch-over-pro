@@ -53,6 +53,7 @@ enum BackgroundTaskService {
         let defaults = UserDefaults.standard
         guard let modeRaw = defaults.string(forKey: "app_mode"),
               modeRaw == "watched",
+              defaults.bool(forKey: "bg_location_active"),
               let trackedUserId = defaults.string(forKey: "tracked_user_id"),
               let familyId = defaults.string(forKey: "family_id") else {
             return nil
@@ -89,12 +90,17 @@ enum BackgroundTaskService {
             let location = CurrentLocation(
                 trackedUserId: config.trackedUserId,
                 lat: lat,
-                lng: lon
+                lng: lon,
+                isActive: true
             )
 
             do {
                 try await locationRepo.updateCurrentLocation(location)
-            } catch {}
+            } catch is CancellationError {
+                // Background task expired
+            } catch {
+                print("[BackgroundTask] Refresh failed: \(error.localizedDescription)")
+            }
 
             task.setTaskCompleted(success: true)
             scheduleRefresh()
@@ -130,12 +136,17 @@ enum BackgroundTaskService {
             let location = CurrentLocation(
                 trackedUserId: config.trackedUserId,
                 lat: lat,
-                lng: lon
+                lng: lon,
+                isActive: true
             )
 
             do {
                 try await locationRepo.updateCurrentLocation(location)
-            } catch {}
+            } catch is CancellationError {
+                // Background task expired
+            } catch {
+                print("[BackgroundTask] Processing failed: \(error.localizedDescription)")
+            }
 
             task.setTaskCompleted(success: true)
             scheduleProcessing()

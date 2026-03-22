@@ -27,6 +27,7 @@ type CurrentLocation {
   speed: Float
   heading: Float
   battery_level: Float
+  is_active: Boolean!
   updated_at: AWSDateTime!
 }
 
@@ -72,6 +73,7 @@ input UpdateCurrentLocationInput {
   speed: Float
   heading: Float
   battery_level: Float
+  is_active: Boolean!
 }
 
 input AppendRouteChunkInput {

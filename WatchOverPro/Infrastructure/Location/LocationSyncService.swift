@@ -45,10 +45,29 @@ final class LocationSyncService {
     func stopSync() {
         syncTask?.cancel()
         syncTask = nil
+
+        let lastLat = locationService.currentLatitude
+        let lastLng = locationService.currentLongitude
+        let userId = trackedUserId
+        let useCase = updateLocationUseCase
+
         locationService.stop()
         isSyncing = false
         manageRouteChunks.reset()
         detectStopEvent.reset()
+
+        // Send isActive: false so watchers see "共有停止中" immediately
+        // 位置未取得なら送信しない（見守り側は5分後に自動でoffline判定）
+        guard !userId.isEmpty,
+              let lastLat, let lastLng else { return }
+        Task {
+            try? await useCase.execute(
+                trackedUserId: userId,
+                lat: lastLat,
+                lng: lastLng,
+                isActive: false
+            )
+        }
     }
 
     private func performSync() async {
@@ -77,6 +96,8 @@ final class LocationSyncService {
 
             syncError = nil
             lastSyncTime = Date()
+        } catch is CancellationError {
+            // Task cancelled — expected during stopSync()
         } catch {
             syncError = error.localizedDescription
         }

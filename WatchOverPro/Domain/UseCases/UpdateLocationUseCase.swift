@@ -16,7 +16,8 @@ struct UpdateLocationUseCase: Sendable {
         accuracy: Double? = nil,
         speed: Double? = nil,
         heading: Double? = nil,
-        batteryLevel: Double? = nil
+        batteryLevel: Double? = nil,
+        isActive: Bool = true
     ) async throws -> CurrentLocation {
         let location = CurrentLocation(
             trackedUserId: trackedUserId,
@@ -26,7 +27,8 @@ struct UpdateLocationUseCase: Sendable {
             accuracy: accuracy,
             speed: speed,
             heading: heading,
-            batteryLevel: batteryLevel
+            batteryLevel: batteryLevel,
+            isActive: isActive
         )
         return try await repository.updateCurrentLocation(location)
     }

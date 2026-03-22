@@ -4,7 +4,7 @@ import Foundation
 final class DetectStopEventUseCase {
     private let repository: any LocationRepositoryProtocol
     private let distanceThreshold: Double = 20.0 // meters over 1 min
-    private let minStopDuration: TimeInterval = 180 // 3 minutes
+    private let minStopDuration: TimeInterval = 60  // 1 minute
     private let maxPointAge: TimeInterval = 65 // seconds
 
     var dateProvider: () -> Date = { Date() }

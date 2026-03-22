@@ -238,7 +238,7 @@ struct PersonDetailView: View {
     private var statusColor: Color {
         switch status {
         case .online: .green
-        case .stale: .orange
+        case .paused: .blue
         case .offline: .gray
         }
     }

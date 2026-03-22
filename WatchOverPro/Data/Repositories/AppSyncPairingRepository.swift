@@ -8,7 +8,7 @@ final class AppSyncPairingRepository: PairingRepositoryProtocol, Sendable {
             """
             mutation CreatePairingCode($family_id: ID!) {
                 createPairingCode(family_id: $family_id) {
-                    code family_id expires_at is_used
+                    code family_id created_by expires_at is_used
                 }
             }
             """,

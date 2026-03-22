@@ -10,6 +10,7 @@ struct CurrentLocation: Codable, Sendable, Identifiable {
     var speed: Double?
     var heading: Double?
     var batteryLevel: Double?
+    var isActive: Bool
     var updatedAt: Date
 
     init(
@@ -21,6 +22,7 @@ struct CurrentLocation: Codable, Sendable, Identifiable {
         speed: Double? = nil,
         heading: Double? = nil,
         batteryLevel: Double? = nil,
+        isActive: Bool = true,
         updatedAt: Date = Date()
     ) {
         self.trackedUserId = trackedUserId
@@ -31,6 +33,7 @@ struct CurrentLocation: Codable, Sendable, Identifiable {
         self.speed = speed
         self.heading = heading
         self.batteryLevel = batteryLevel
+        self.isActive = isActive
         self.updatedAt = updatedAt
     }
 }
