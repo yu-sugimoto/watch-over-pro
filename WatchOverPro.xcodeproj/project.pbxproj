@@ -17,7 +17,6 @@
 		2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4566722C5699D477C0E003FF /* CurrentLocation.swift */; };
 		291A4A89D8E2F730E0ABC60C /* WatchOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457581D236E53239946C77C /* WatchOverView.swift */; };
 		29EA0104152EB68ACE25F03C /* AppSyncPairingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */; };
-
 		391860122BD5AAEA4DA31F64 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */; };
 		3F1360888BD390BE6801D0A0 /* LocationSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35705F896169497FABC8176 /* LocationSyncService.swift */; };
 		4077DD4EB4E467BDC8B9B3C6 /* StatusSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */; };
@@ -31,7 +30,6 @@
 		54DCE3D5F62D74CA99B69891 /* PairingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */; };
 		56904B3517ECB24272BBB58C /* RouteChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD0D4575361EA463E63B702 /* RouteChunk.swift */; };
 		6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */; };
-
 		6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */; };
 		677BE360F2D8D4612B471A5A /* MockRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4454B8EF718ADAA04F20EA8 /* MockRepositories.swift */; };
 		67CFF4993F80DDEC45A1B6CD /* PersonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9266825B51F419DB5F3224C1 /* PersonStatus.swift */; };
@@ -41,8 +39,6 @@
 		779B09B9E9DBFFB67BFB1A5C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5D87160C5EF10368639ECA11 /* Amplify */; };
 		7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */; };
 		8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */; };
-		F2E1D0C9B8A7F6E5D4C3B2A1 /* DateFormatter+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* DateFormatter+Shared.swift */; };
-
 		963F3705F99B3A1E0696144F /* AppSyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */; };
 		9917452F48B32EC0DDA12A56 /* UpdateLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */; };
 		99D9A876336716402AB0DDE2 /* AppModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F802AA72AF9FEC28FE4F63D /* AppModeManager.swift */; };
@@ -65,6 +61,7 @@
 		BFD4EF6F2CA687CB33C60DF1 /* ResolvePersonStatusUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */; };
 		BFD5B281ECAF66D629AA7B18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106CC5580EE0D2E163152017 /* SettingsView.swift */; };
 		C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */; };
+		C850C493D76F4916DB54F0B7 /* DateFormatter+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80159D6FB98B3385899CBB3A /* DateFormatter+Shared.swift */; };
 		C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */; };
 		CAB39A837FF3E12CAED111E8 /* AmplifyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */; };
 		CBCCD8866ED87EE6AA592090 /* AppModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F9432A78A24A46E394B480 /* AppModeSelectionView.swift */; };
@@ -72,7 +69,6 @@
 		CFD83335B0E3EA506C0DFD4D /* PersonRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE53DF47718310EB48CB108 /* PersonRegistrationView.swift */; };
 		D239317B04E292F93C687B62 /* AppSyncLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */; };
 		D89DFC659E60CA67D73977BC /* CognitoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9302D6A708303E653BE35 /* CognitoDataSource.swift */; };
-		D9458396F64FA9A7296DDC3F /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */; };
 		DA6782E38F02C4DE53039488 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */; };
 		E3122787628EF5C9553462D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B64E47CBAD1B6C7E421495 /* Assets.xcassets */; };
 		E49D0AEC4E0DEC028EDC4CE3 /* WatchOverProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D50546B9173D5879B053C /* WatchOverProApp.swift */; };
@@ -112,7 +108,6 @@
 		2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCase.swift; sourceTree = "<group>"; };
 		35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchOverPro.entitlements; sourceTree = "<group>"; };
 		36B64E47CBAD1B6C7E421495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-
 		3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactMetricCard.swift; sourceTree = "<group>"; };
 		3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeLocationUseCase.swift; sourceTree = "<group>"; };
 		439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -123,7 +118,6 @@
 		54281BD91F8564EABA8EDF19 /* WatchOverProTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WatchOverProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F9432A78A24A46E394B480 /* AppModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeSelectionView.swift; sourceTree = "<group>"; };
 		596D50546B9173D5879B053C /* WatchOverProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverProApp.swift; sourceTree = "<group>"; };
-
 		5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyConfiguration.swift; sourceTree = "<group>"; };
 		605B86AE3B02EA12D893EE54 /* StopEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEvent.swift; sourceTree = "<group>"; };
 		67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncPairingRepository.swift; sourceTree = "<group>"; };
@@ -133,6 +127,7 @@
 		71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncFamilyRepository.swift; sourceTree = "<group>"; };
 		7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCaseTests.swift; sourceTree = "<group>"; };
 		7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
+		80159D6FB98B3385899CBB3A /* DateFormatter+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Shared.swift"; sourceTree = "<group>"; };
 		86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManagementUseCase.swift; sourceTree = "<group>"; };
 		873BB2AC62B792306E6600DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		88397BE81E938582BC1BA655 /* WatchOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverViewModel.swift; sourceTree = "<group>"; };
@@ -152,7 +147,6 @@
 		A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationUseCase.swift; sourceTree = "<group>"; };
 		A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailMapCard.swift; sourceTree = "<group>"; };
 		AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingUseCase.swift; sourceTree = "<group>"; };
-
 		AD251454701504183C8437CD /* MetricCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCardView.swift; sourceTree = "<group>"; };
 		AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonEditView.swift; sourceTree = "<group>"; };
 		B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTypes.swift; sourceTree = "<group>"; };
@@ -160,11 +154,8 @@
 		C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCase.swift; sourceTree = "<group>"; };
 		CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
-
-		A1B2C3D4E5F6A7B8C9D0E1F2 /* DateFormatter+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Shared.swift"; sourceTree = "<group>"; };
 		D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISO8601+Shared.swift"; sourceTree = "<group>"; };
 		DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSummaryCard.swift; sourceTree = "<group>"; };
-		DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		ED497BC3C7B381C5BF949DD2 /* WatchOverProTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverProTests.swift; sourceTree = "<group>"; };
 		ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskService.swift; sourceTree = "<group>"; };
 		F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCase.swift; sourceTree = "<group>"; };
@@ -216,7 +207,6 @@
 		1B02EA95D0189886EC916B01 /* WatchOverPro */ = {
 			isa = PBXGroup;
 			children = (
-				DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */,
 				36B64E47CBAD1B6C7E421495 /* Assets.xcassets */,
 				873BB2AC62B792306E6600DD /* Info.plist */,
 				35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */,
@@ -445,7 +435,7 @@
 			children = (
 				1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */,
 				A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */,
-				A1B2C3D4E5F6A7B8C9D0E1F2 /* DateFormatter+Shared.swift */,
+				80159D6FB98B3385899CBB3A /* DateFormatter+Shared.swift */,
 				D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */,
 				6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */,
 				CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */,
@@ -541,7 +531,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3122787628EF5C9553462D8 /* Assets.xcassets in Resources */,
-				D9458396F64FA9A7296DDC3F /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +558,7 @@
 				FBDABD40EF4C83C40444EBF0 /* ContentView.swift in Sources */,
 				2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */,
 				C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */,
+				C850C493D76F4916DB54F0B7 /* DateFormatter+Shared.swift in Sources */,
 				C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */,
 				B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */,
 				51742DCA8D6D423290400FB8 /* Family.swift in Sources */,
@@ -576,7 +566,6 @@
 				FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */,
 				B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */,
 				40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */,
-				F2E1D0C9B8A7F6E5D4C3B2A1 /* DateFormatter+Shared.swift in Sources */,
 				8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */,
 				EC4976B963765E103289A6FC /* LocationPermissionHelper.swift in Sources */,
 				E8B06E32324A74578B21AF44 /* LocationRepositoryProtocol.swift in Sources */,
