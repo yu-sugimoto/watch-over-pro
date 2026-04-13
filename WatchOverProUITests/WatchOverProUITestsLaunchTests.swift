@@ -2,7 +2,7 @@
 //  WatchOverProUITestsLaunchTests.swift
 //  WatchOverProUITests
 //
-//  Created by Rork on March 1, 2026.
+//  Created by WatchOverPro Team on March 1, 2026.
 //
 
 import XCTest
