@@ -1,14 +1,8 @@
-# Node/CDK
+# Node / CDK
 node_modules/
 infra/out/
 infra/cdk.out/
 infra/node_modules/
-
-# React Native / Expo artifacts (should not exist in Swift projects)
-.expo/
-.bundle/
-android/
-ios/
 
 # Xcode
 build/
@@ -22,7 +16,7 @@ xcuserdata/
 .swiftpm/
 Package.resolved
 
-# Temp
+# Temporary files
 tmp/
 
 # macOS
@@ -36,10 +30,5 @@ tmp/
 infra/cdk-outputs.json
 WatchOverPro/amplifyconfiguration.json
 
-# Rork
-.rork/
-rork-eslint.config.js
-
+# Core dumps
 core
-node_modules
-.expo
