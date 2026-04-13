@@ -1,9 +1,0 @@
-{
-  "apps": [
-    {
-      "name": "iOS",
-      "path": "ios",
-      "framework": "swift"
-    }
-  ]
-}
