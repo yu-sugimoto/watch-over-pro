@@ -4,6 +4,7 @@ import { AuthStack } from '../lib/auth-stack';
 import { DataStack } from '../lib/data-stack';
 import { ApiStack } from '../lib/api-stack';
 import { BillingStack } from '../lib/billing-stack';
+import { DemoStack } from '../lib/demo-stack';
 
 const app = new cdk.App();
 
@@ -22,4 +23,8 @@ new ApiStack(app, 'WatchOverPro-Api', {
 new BillingStack(app, 'WatchOverPro-Billing', {
   env,
   familiesTable: dataStack.tables.families,
+});
+new DemoStack(app, 'WatchOverPro-Demo', {
+  env,
+  tables: dataStack.tables,
 });
