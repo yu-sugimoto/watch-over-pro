@@ -26,7 +26,7 @@ const ROUTE_POINTS = [
 
 function todayStr(): string {
   const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
 }
 
 function ttl7Days(): number {
@@ -110,6 +110,7 @@ export async function handler(): Promise<{ status: string }> {
                 },
               ],
             },
+            created_at: { S: new Date(chunkEpoch).toISOString() },
             ttl: { N: String(ttl) },
           },
         }),
@@ -126,8 +127,8 @@ export async function handler(): Promise<{ status: string }> {
           stop_start_epoch_ms: { N: String(stopEpoch) },
           lat: { N: '35.6625' },
           lng: { N: '139.6978' },
-          duration_minutes: { N: '15' },
-          label: { S: '宮下公園' },
+          started_at: { S: new Date(stopEpoch).toISOString() },
+          duration_seconds: { N: String(15 * 60) },
           ttl: { N: String(ttl) },
         },
       }),

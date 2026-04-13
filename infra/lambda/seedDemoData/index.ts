@@ -13,17 +13,17 @@ const DEMO_USER_ID = 'demo-tracked-user-001';
 
 // Shibuya area route: Shibuya Station → Miyashita Park → near Yoyogi Park
 const ROUTE_POINTS = [
-  { lat: 35.6580, lng: 139.7016 }, // Shibuya Station
+  { lat: 35.658, lng: 139.7016 }, // Shibuya Station
   { lat: 35.6595, lng: 139.7004 }, // Shibuya Center-gai
-  { lat: 35.6612, lng: 139.6990 }, // Towards Miyashita Park
+  { lat: 35.6612, lng: 139.699 }, // Towards Miyashita Park
   { lat: 35.6625, lng: 139.6978 }, // Miyashita Park
   { lat: 35.6648, lng: 139.6955 }, // Towards Yoyogi
-  { lat: 35.6670, lng: 139.6935 }, // Near Yoyogi Park
+  { lat: 35.667, lng: 139.6935 }, // Near Yoyogi Park
 ];
 
 function todayStr(): string {
   const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
 }
 
 function ttl7Days(): number {
@@ -123,6 +123,7 @@ export async function handler(): Promise<{ status: string }> {
               },
             ],
           },
+          created_at: { S: new Date(chunkEpoch).toISOString() },
           ttl: { N: String(ttl) },
         },
       }),
@@ -139,8 +140,8 @@ export async function handler(): Promise<{ status: string }> {
         stop_start_epoch_ms: { N: String(stopEpoch) },
         lat: { N: '35.6625' },
         lng: { N: '139.6978' },
-        duration_minutes: { N: '15' },
-        label: { S: '宮下公園' },
+        started_at: { S: new Date(stopEpoch).toISOString() },
+        duration_seconds: { N: String(15 * 60) },
         ttl: { N: String(ttl) },
       },
     }),
