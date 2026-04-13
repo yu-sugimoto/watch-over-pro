@@ -15,18 +15,6 @@ const client = jwksClient({
   cacheMaxAge: 86400000, // 24 hours
 });
 
-function getSigningKey(kid: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    client.getSigningKey(kid, (err, key) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve(key!.getPublicKey());
-    });
-  });
-}
-
 export const handler: VerifyAuthChallengeResponseTriggerHandler = async (
   event: VerifyAuthChallengeResponseTriggerEvent,
 ) => {
@@ -45,7 +33,8 @@ export const handler: VerifyAuthChallengeResponseTriggerHandler = async (
     }
 
     // Fetch Apple's public key
-    const publicKey = await getSigningKey(decoded.header.kid);
+    const key = await client.getSigningKey(decoded.header.kid);
+    const publicKey = key.getPublicKey();
 
     // Verify the JWT
     const payload = jwt.verify(token, publicKey, {

@@ -1,7 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import * as cognito from 'aws-cdk-lib/aws-cognito';
 import * as iam from 'aws-cdk-lib/aws-iam';
-import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as path from 'path';
 import { Construct } from 'constructs';
 
@@ -15,43 +16,43 @@ export class AuthStack extends cdk.Stack {
 
     // --- Lambda triggers for Custom Auth (Apple Sign In) ---
 
-    const defineAuthChallenge = new lambda.NodejsFunction(
+    const defineAuthChallenge = new lambdaNode.NodejsFunction(
       this,
       'DefineAuthChallenge',
       {
         entry: path.join(__dirname, '../lambda/defineAuthChallenge/index.ts'),
         handler: 'handler',
-        runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
+        runtime: lambda.Runtime.NODEJS_24_X,
         bundling: { minify: true },
       },
     );
 
-    const createAuthChallenge = new lambda.NodejsFunction(
+    const createAuthChallenge = new lambdaNode.NodejsFunction(
       this,
       'CreateAuthChallenge',
       {
         entry: path.join(__dirname, '../lambda/createAuthChallenge/index.ts'),
         handler: 'handler',
-        runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
+        runtime: lambda.Runtime.NODEJS_24_X,
         bundling: { minify: true },
       },
     );
 
-    const verifyAuthChallenge = new lambda.NodejsFunction(
+    const verifyAuthChallenge = new lambdaNode.NodejsFunction(
       this,
       'VerifyAuthChallenge',
       {
         entry: path.join(__dirname, '../lambda/verifyAuthChallenge/index.ts'),
         handler: 'handler',
-        runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
+        runtime: lambda.Runtime.NODEJS_24_X,
         bundling: { minify: true },
       },
     );
 
-    const preSignUp = new lambda.NodejsFunction(this, 'PreSignUp', {
+    const preSignUp = new lambdaNode.NodejsFunction(this, 'PreSignUp', {
       entry: path.join(__dirname, '../lambda/preSignUp/index.ts'),
       handler: 'handler',
-      runtime: cdk.aws_lambda.Runtime.NODEJS_20_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       bundling: { minify: true },
     });
 
