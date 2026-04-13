@@ -36,10 +36,6 @@ tmp/
 infra/cdk-outputs.json
 WatchOverPro/amplifyconfiguration.json
 
-# Rork
-.rork/
-rork-eslint.config.js
-
 core
 node_modules
 .expo
