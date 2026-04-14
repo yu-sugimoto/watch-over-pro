@@ -20,17 +20,4 @@ enum ISO8601 {
     static func date(from string: String) -> Date? {
         formatter.date(from: string) ?? basicFormatter.date(from: string)
     }
-
-    static let realtimeDecoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { decoder in
-            let container = try decoder.singleValueContainer()
-            let dateString = try container.decode(String.self)
-            if let date = ISO8601.date(from: dateString) {
-                return date
-            }
-            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode date: \(dateString)")
-        }
-        return decoder
-    }()
 }

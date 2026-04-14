@@ -7,7 +7,6 @@ struct PairingCodeGeneratorView: View {
 
     @State private var generatedCode: String?
     @State private var isGenerating = false
-    @State private var isLoading = false
     @State private var errorMessage: String?
     @State private var copiedFeedback = false
 
@@ -36,10 +35,7 @@ struct PairingCodeGeneratorView: View {
                             .multilineTextAlignment(.center)
                     }
 
-                    if isLoading {
-                        ProgressView()
-                            .frame(height: 80)
-                    } else if let code = generatedCode {
+                    if let code = generatedCode {
                         codeDisplaySection(code)
                     } else {
                         generateSection

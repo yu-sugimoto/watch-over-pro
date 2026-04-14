@@ -86,24 +86,6 @@ struct GQLStopEvent: Decodable {
     }
 }
 
-struct GQLFamily: Decodable {
-    let family_id: String
-    let name: String
-    let plan_status: String
-    let plan_expires_at: String?
-    let created_at: String
-
-    func toEntity() -> Family {
-        Family(
-            familyId: family_id,
-            name: name,
-            planStatus: plan_status,
-            planExpiresAt: plan_expires_at.flatMap { ISO8601.date(from: $0) },
-            createdAt: ISO8601.date(from: created_at) ?? Date()
-        )
-    }
-}
-
 struct GQLFamilyMember: Decodable {
     let family_id: String
     let member_user_id: String
@@ -149,5 +131,4 @@ struct GQLPairingCode: Decodable {
 
 struct GQLLiveMapState: Decodable {
     let locations: [GQLCurrentLocation]
-    let members: [GQLFamilyMember]
 }

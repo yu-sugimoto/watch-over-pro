@@ -61,62 +61,22 @@ enum BackgroundTaskService {
         return (trackedUserId, familyId)
     }
 
-    private static func currentLocation() -> (lat: Double?, lon: Double?) {
-        let manager = CLLocationManager()
-        return (manager.location?.coordinate.latitude, manager.location?.coordinate.longitude)
-    }
-
     private static func handleRefresh(_ task: BGAppRefreshTask) {
-        let bgTask = Task { @MainActor in
-            guard let config = loadTrackedConfig() else {
-                task.setTaskCompleted(success: true)
-                scheduleRefresh()
-                return
-            }
-
-            guard !Task.isCancelled else {
-                task.setTaskCompleted(success: false)
-                return
-            }
-
-            let loc = currentLocation()
-            guard let lat = loc.lat, let lon = loc.lon else {
-                task.setTaskCompleted(success: true)
-                scheduleRefresh()
-                return
-            }
-
-            let locationRepo = AppSyncLocationRepository()
-            let location = CurrentLocation(
-                trackedUserId: config.trackedUserId,
-                lat: lat,
-                lng: lon,
-                isActive: true
-            )
-
-            do {
-                try await locationRepo.updateCurrentLocation(location)
-            } catch is CancellationError {
-                // Background task expired
-            } catch {
-                print("[BackgroundTask] Refresh failed: \(error.localizedDescription)")
-            }
-
-            task.setTaskCompleted(success: true)
-            scheduleRefresh()
-        }
-
-        task.expirationHandler = {
-            bgTask.cancel()
-            task.setTaskCompleted(success: false)
-        }
+        performLocationSync(task: task, reschedule: scheduleRefresh)
     }
 
     private static func handleProcessing(_ task: BGProcessingTask) {
+        performLocationSync(task: task, reschedule: scheduleProcessing)
+    }
+
+    private static func performLocationSync(
+        task: BGTask,
+        reschedule: @escaping @MainActor @Sendable () -> Void
+    ) {
         let bgTask = Task { @MainActor in
             guard let config = loadTrackedConfig() else {
                 task.setTaskCompleted(success: true)
-                scheduleProcessing()
+                reschedule()
                 return
             }
 
@@ -125,31 +85,30 @@ enum BackgroundTaskService {
                 return
             }
 
-            let loc = currentLocation()
-            guard let lat = loc.lat, let lon = loc.lon else {
+            guard let location = CLLocationManager().location else {
                 task.setTaskCompleted(success: true)
-                scheduleProcessing()
+                reschedule()
                 return
             }
 
-            let locationRepo = AppSyncLocationRepository()
-            let location = CurrentLocation(
+            let repo = AppSyncLocationRepository()
+            let current = CurrentLocation(
                 trackedUserId: config.trackedUserId,
-                lat: lat,
-                lng: lon,
+                lat: location.coordinate.latitude,
+                lng: location.coordinate.longitude,
                 isActive: true
             )
 
             do {
-                try await locationRepo.updateCurrentLocation(location)
+                _ = try await repo.updateCurrentLocation(current)
             } catch is CancellationError {
                 // Background task expired
             } catch {
-                print("[BackgroundTask] Processing failed: \(error.localizedDescription)")
+                print("[BackgroundTask] Sync failed: \(error.localizedDescription)")
             }
 
             task.setTaskCompleted(success: true)
-            scheduleProcessing()
+            reschedule()
         }
 
         task.expirationHandler = {

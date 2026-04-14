@@ -25,11 +25,6 @@ final class NotificationService {
         await MainActor.run { isAuthorized = authorized }
     }
 
-    func clearAllNotifications() {
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-    }
-
     func registerCategories() {
         let viewAction = UNNotificationAction(
             identifier: "VIEW_DETAIL",
