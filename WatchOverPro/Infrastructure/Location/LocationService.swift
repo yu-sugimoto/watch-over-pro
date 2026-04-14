@@ -10,8 +10,6 @@ final class LocationService {
     private var backgroundSession: CLBackgroundActivitySession?
     private var locationTask: Task<Void, Never>?
 
-    var isActive: Bool { locationTask != nil }
-
     func start() {
         guard locationTask == nil else { return }
         startBackgroundSessionIfAuthorized()

@@ -10,7 +10,6 @@ struct WatchedModeView: View {
     @State private var showResetConfirmation = false
     @State private var showPairingCode = false
     @State private var isTracking = false
-    @State private var permissionsReady = false
     @State private var resetError: String?
 
     var body: some View {
@@ -43,7 +42,6 @@ struct WatchedModeView: View {
                 await PermissionManager.requestWatchedModePermissions(
                     hasLinkedPerson: appModeManager.trackedUserId != nil
                 )
-                permissionsReady = true
                 autoStartIfNeeded()
             }
             .onChange(of: appModeManager.currentMode) { _, newMode in

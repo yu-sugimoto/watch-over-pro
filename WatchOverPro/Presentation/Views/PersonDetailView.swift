@@ -14,7 +14,6 @@ struct PersonDetailView: View {
     @State private var routeChunks: [RouteChunk] = []
     @State private var stopEvents: [StopEvent] = []
     @State private var mapPosition: MapCameraPosition = .automatic
-    @State private var subscriptionTask: Task<Void, Never>?
     @State private var routeLoadError: String?
 
     private var location: CurrentLocation? {
@@ -99,10 +98,6 @@ struct PersonDetailView: View {
         .task {
             await loadRouteData()
             updateMapPosition()
-        }
-        .onDisappear {
-            subscriptionTask?.cancel()
-            subscriptionTask = nil
         }
         .refreshable {
             await loadRouteData()
