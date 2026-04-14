@@ -25,7 +25,6 @@
 		485153C2B7BC45A9185BB139 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = D2BDC010AF3DE26424D084FF /* AWSAPIPlugin */; };
 		4C6DF840B0A49A65EDD221E7 /* WatchedModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552C97A713D811D1F45F7BC /* WatchedModeView.swift */; };
 		4E0B44ABA03DE63D22AB7B87 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9B25F38E3E5A095132454 /* Relationship.swift */; };
-		51742DCA8D6D423290400FB8 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6916E59677C1CCC814798304 /* Family.swift */; };
 		56904B3517ECB24272BBB58C /* RouteChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD0D4575361EA463E63B702 /* RouteChunk.swift */; };
 		6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */; };
 		6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */; };
@@ -50,7 +49,6 @@
 		B3A91A1FE28942C33873C710 /* PairingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF12DAD612E5A9769A9482D /* PairingInputView.swift */; };
 		B403F20B5D2A3AD135C38583 /* PairingStepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1260F6259B2D0AEC76C3CF31 /* PairingStepRow.swift */; };
 		B5BD16D8D3904D5B5ED0CBD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */; };
-		B5C37E507CF3860A9B7BF9E9 /* SubscribeLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */; };
 		B5CBDDEB14909E887A628736 /* PairingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C7FA33BE75193A8553FCAB /* PairingCode.swift */; };
 		B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */; };
 		B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */; };
@@ -104,7 +102,6 @@
 		2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCase.swift; sourceTree = "<group>"; };
 		35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchOverPro.entitlements; sourceTree = "<group>"; };
 		36B64E47CBAD1B6C7E421495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeLocationUseCase.swift; sourceTree = "<group>"; };
 		439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingRepositoryProtocol.swift; sourceTree = "<group>"; };
 		4566722C5699D477C0E003FF /* CurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 		4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncDataSource.swift; sourceTree = "<group>"; };
@@ -116,7 +113,6 @@
 		5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyConfiguration.swift; sourceTree = "<group>"; };
 		605B86AE3B02EA12D893EE54 /* StopEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEvent.swift; sourceTree = "<group>"; };
 		67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncPairingRepository.swift; sourceTree = "<group>"; };
-		6916E59677C1CCC814798304 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHelper.swift; sourceTree = "<group>"; };
 		6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncFamilyRepository.swift; sourceTree = "<group>"; };
@@ -218,7 +214,6 @@
 				F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */,
 				C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */,
 				2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */,
-				3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */,
 				A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */,
 			);
 			path = UseCases;
@@ -398,7 +393,6 @@
 			children = (
 				7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */,
 				4566722C5699D477C0E003FF /* CurrentLocation.swift */,
-				6916E59677C1CCC814798304 /* Family.swift */,
 				F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */,
 				90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */,
 				99C7FA33BE75193A8553FCAB /* PairingCode.swift */,
@@ -548,7 +542,6 @@
 				C850C493D76F4916DB54F0B7 /* DateFormatter+Shared.swift in Sources */,
 				C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */,
 				B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */,
-				51742DCA8D6D423290400FB8 /* Family.swift in Sources */,
 				FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */,
 				B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */,
 				40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */,
@@ -579,7 +572,6 @@
 				BFD5B281ECAF66D629AA7B18 /* SettingsView.swift in Sources */,
 				4077DD4EB4E467BDC8B9B3C6 /* StatusSummaryCard.swift in Sources */,
 				A7F8FB85A2A1FF13CCEBD101 /* StopEvent.swift in Sources */,
-				B5C37E507CF3860A9B7BF9E9 /* SubscribeLocationUseCase.swift in Sources */,
 				9917452F48B32EC0DDA12A56 /* UpdateLocationUseCase.swift in Sources */,
 				E49D0AEC4E0DEC028EDC4CE3 /* WatchOverProApp.swift in Sources */,
 				291A4A89D8E2F730E0ABC60C /* WatchOverView.swift in Sources */,
