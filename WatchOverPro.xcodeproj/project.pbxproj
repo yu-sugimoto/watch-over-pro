@@ -10,7 +10,6 @@
 		02A3782AD73B2754AFF0E0AF /* ManageRouteChunksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */; };
 		0612860C3E68E57284BFC2E0 /* ManageRouteChunksUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BFE31619B2FA720E26ED7 /* ManageRouteChunksUseCaseTests.swift */; };
 		0B8597B860F8CFB95191E5AD /* AWSCloudWatchLoggingPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 701C289CD99A2E8A5B53C2A4 /* AWSCloudWatchLoggingPlugin */; };
-		1424A42BBA3900C8EE192E1D /* MetricCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD251454701504183C8437CD /* MetricCardView.swift */; };
 		17F21680A3125CF27F65AD3E /* DetectStopEventUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B661553D815A9AE58D9FCDA7 /* DetectStopEventUseCaseTests.swift */; };
 		1DC8737D51E03E5717DF8A08 /* MemberRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */; };
 		207BA31DA96BCAED35E07D91 /* PersonStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49837F88655C1C0E3E1382 /* PersonStatusTests.swift */; };
@@ -27,14 +26,12 @@
 		4C6DF840B0A49A65EDD221E7 /* WatchedModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552C97A713D811D1F45F7BC /* WatchedModeView.swift */; };
 		4E0B44ABA03DE63D22AB7B87 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9B25F38E3E5A095132454 /* Relationship.swift */; };
 		51742DCA8D6D423290400FB8 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6916E59677C1CCC814798304 /* Family.swift */; };
-		54DCE3D5F62D74CA99B69891 /* PairingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */; };
 		56904B3517ECB24272BBB58C /* RouteChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD0D4575361EA463E63B702 /* RouteChunk.swift */; };
 		6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */; };
 		6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */; };
 		677BE360F2D8D4612B471A5A /* MockRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4454B8EF718ADAA04F20EA8 /* MockRepositories.swift */; };
 		67CFF4993F80DDEC45A1B6CD /* PersonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9266825B51F419DB5F3224C1 /* PersonStatus.swift */; };
 		686F177DAA945F19A32B737E /* WatchOverProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED497BC3C7B381C5BF949DD2 /* WatchOverProTests.swift */; };
-		6F695D3053FA403591A8B525 /* CompactMetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */; };
 		7379E466A2FA215CAEFE6511 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933E05A9D4B9735B16C954EE /* AuthRepositoryProtocol.swift */; };
 		779B09B9E9DBFFB67BFB1A5C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5D87160C5EF10368639ECA11 /* Amplify */; };
 		7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */; };
@@ -46,7 +43,6 @@
 		9E174313A2F99D58D2D98743 /* BackgroundTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */; };
 		A14D8250912CA5BC6B61E5F9 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF30985819D2B827FDA1BFA /* PersonDetailView.swift */; };
 		A7790BFA901AC9CE8A3A0C63 /* CognitoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */; };
-		A7AA1F119BB8ABF0694FD74A /* FamilyManagementUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */; };
 		A7F8FB85A2A1FF13CCEBD101 /* StopEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B86AE3B02EA12D893EE54 /* StopEvent.swift */; };
 		A97764820E4C24A5815301AD /* PersonEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */; };
 		ACB7DFAF47FB1356745C55F6 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD868C40549C11D4E689482 /* AWSCognitoAuthPlugin */; };
@@ -108,7 +104,6 @@
 		2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCase.swift; sourceTree = "<group>"; };
 		35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchOverPro.entitlements; sourceTree = "<group>"; };
 		36B64E47CBAD1B6C7E421495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactMetricCard.swift; sourceTree = "<group>"; };
 		3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeLocationUseCase.swift; sourceTree = "<group>"; };
 		439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingRepositoryProtocol.swift; sourceTree = "<group>"; };
 		4566722C5699D477C0E003FF /* CurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
@@ -128,7 +123,6 @@
 		7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCaseTests.swift; sourceTree = "<group>"; };
 		7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
 		80159D6FB98B3385899CBB3A /* DateFormatter+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Shared.swift"; sourceTree = "<group>"; };
-		86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManagementUseCase.swift; sourceTree = "<group>"; };
 		873BB2AC62B792306E6600DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		88397BE81E938582BC1BA655 /* WatchOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverViewModel.swift; sourceTree = "<group>"; };
 		90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRole.swift; sourceTree = "<group>"; };
@@ -146,8 +140,6 @@
 		A54BFE31619B2FA720E26ED7 /* ManageRouteChunksUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCaseTests.swift; sourceTree = "<group>"; };
 		A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationUseCase.swift; sourceTree = "<group>"; };
 		A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailMapCard.swift; sourceTree = "<group>"; };
-		AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingUseCase.swift; sourceTree = "<group>"; };
-		AD251454701504183C8437CD /* MetricCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCardView.swift; sourceTree = "<group>"; };
 		AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonEditView.swift; sourceTree = "<group>"; };
 		B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTypes.swift; sourceTree = "<group>"; };
 		B661553D815A9AE58D9FCDA7 /* DetectStopEventUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCaseTests.swift; sourceTree = "<group>"; };
@@ -224,9 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */,
-				86A31333036D6DE14086FB36 /* FamilyManagementUseCase.swift */,
 				C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */,
-				AC688C08825D3AB1BA58C435 /* PairingUseCase.swift */,
 				2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */,
 				3E35B9423DF80755F2F40C08 /* SubscribeLocationUseCase.swift */,
 				A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */,
@@ -303,8 +293,6 @@
 		77E546024435DBF9A028F6D7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3BBE8DF0A6296463C9C3FBBD /* CompactMetricCard.swift */,
-				AD251454701504183C8437CD /* MetricCardView.swift */,
 				1260F6259B2D0AEC76C3CF31 /* PairingStepRow.swift */,
 				0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */,
 				A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */,
@@ -554,7 +542,6 @@
 				A7790BFA901AC9CE8A3A0C63 /* CognitoAuthRepository.swift in Sources */,
 				D89DFC659E60CA67D73977BC /* CognitoDataSource.swift in Sources */,
 				B5BD16D8D3904D5B5ED0CBD4 /* Color+Hex.swift in Sources */,
-				6F695D3053FA403591A8B525 /* CompactMetricCard.swift in Sources */,
 				FBDABD40EF4C83C40444EBF0 /* ContentView.swift in Sources */,
 				2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */,
 				C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */,
@@ -562,7 +549,6 @@
 				C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */,
 				B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */,
 				51742DCA8D6D423290400FB8 /* Family.swift in Sources */,
-				A7AA1F119BB8ABF0694FD74A /* FamilyManagementUseCase.swift in Sources */,
 				FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */,
 				B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */,
 				40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */,
@@ -573,14 +559,12 @@
 				3F1360888BD390BE6801D0A0 /* LocationSyncService.swift in Sources */,
 				02A3782AD73B2754AFF0E0AF /* ManageRouteChunksUseCase.swift in Sources */,
 				1DC8737D51E03E5717DF8A08 /* MemberRole.swift in Sources */,
-				1424A42BBA3900C8EE192E1D /* MetricCardView.swift in Sources */,
 				DA6782E38F02C4DE53039488 /* NotificationService.swift in Sources */,
 				B5CBDDEB14909E887A628736 /* PairingCode.swift in Sources */,
 				7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */,
 				B3A91A1FE28942C33873C710 /* PairingInputView.swift in Sources */,
 				9DC2F2E5ADD799471DF74131 /* PairingRepositoryProtocol.swift in Sources */,
 				B403F20B5D2A3AD135C38583 /* PairingStepRow.swift in Sources */,
-				54DCE3D5F62D74CA99B69891 /* PairingUseCase.swift in Sources */,
 				391860122BD5AAEA4DA31F64 /* PermissionManager.swift in Sources */,
 				6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */,
 				6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */,
