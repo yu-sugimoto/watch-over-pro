@@ -131,5 +131,4 @@ struct GQLPairingCode: Decodable {
 
 struct GQLLiveMapState: Decodable {
     let locations: [GQLCurrentLocation]
-    let members: [GQLFamilyMember]
 }

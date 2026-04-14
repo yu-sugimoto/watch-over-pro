@@ -5,27 +5,21 @@ import Foundation
 final class WatchOverViewModel {
     var familyMembers: [FamilyMember] = []
     var latestLocations: [String: CurrentLocation] = [:]
-    var isLoading = false
     var showAddPerson = false
-    var showAlert = false
-    var alertMessage = ""
     var familyId: String?
 
     private let locationRepo: any LocationRepositoryProtocol
     private let familyRepo: any FamilyRepositoryProtocol
-    private let pairingRepo: any PairingRepositoryProtocol
     private let resolveStatus = ResolvePersonStatusUseCase()
 
     private var subscriptionTasks: [String: Task<Void, Never>] = [:]
 
     init(
         locationRepo: any LocationRepositoryProtocol,
-        familyRepo: any FamilyRepositoryProtocol,
-        pairingRepo: any PairingRepositoryProtocol
+        familyRepo: any FamilyRepositoryProtocol
     ) {
         self.locationRepo = locationRepo
         self.familyRepo = familyRepo
-        self.pairingRepo = pairingRepo
     }
 
     // MARK: - Computed Properties
@@ -55,13 +49,11 @@ final class WatchOverViewModel {
 
     func loadData() async {
         guard let familyId else { return }
-        isLoading = true
 
         do {
             familyMembers = try await familyRepo.getFamilyMembers(familyId: familyId)
         } catch {
-            alertMessage = "メンバー取得に失敗しました: \(error.localizedDescription)"
-            showAlert = true
+            print("メンバー取得に失敗しました: \(error.localizedDescription)")
         }
 
         do {
@@ -70,11 +62,8 @@ final class WatchOverViewModel {
                 latestLocations[loc.trackedUserId] = loc
             }
         } catch {
-            alertMessage = "位置情報取得に失敗しました: \(error.localizedDescription)"
-            showAlert = true
+            print("位置情報取得に失敗しました: \(error.localizedDescription)")
         }
-
-        isLoading = false
     }
 
     // MARK: - Realtime
@@ -105,37 +94,6 @@ final class WatchOverViewModel {
             task.cancel()
         }
         subscriptionTasks.removeAll()
-    }
-
-    // MARK: - Pairing
-
-    func createPairingCode() async throws -> PairingCode {
-        guard let familyId else {
-            throw AppError.noFamilyId
-        }
-        return try await pairingRepo.createPairingCode(familyId: familyId)
-    }
-
-    func consumePairingCode(
-        _ code: String,
-        displayName: String? = nil,
-        relationship: String? = nil,
-        age: Int? = nil,
-        colorHex: String? = nil,
-        notes: String? = nil
-    ) async throws -> FamilyMember {
-        let member = try await pairingRepo.consumePairingCode(
-            code: code,
-            displayName: displayName,
-            relationship: relationship,
-            age: age,
-            colorHex: colorHex,
-            notes: notes
-        )
-        if !familyMembers.contains(where: { $0.memberUserId == member.memberUserId }) {
-            familyMembers.insert(member, at: 0)
-        }
-        return member
     }
 
     // MARK: - Member Management

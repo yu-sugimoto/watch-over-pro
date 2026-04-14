@@ -4,7 +4,6 @@ struct ContentView: View {
     @Environment(\.authRepository) private var authRepo
     @Environment(\.locationRepository) private var locationRepo
     @Environment(\.familyRepository) private var familyRepo
-    @Environment(\.pairingRepository) private var pairingRepo
 
     @State private var appModeManager = AppModeManager()
     @State private var watchOverViewModel: WatchOverViewModel?
@@ -39,8 +38,7 @@ struct ContentView: View {
         .task {
             let vm = WatchOverViewModel(
                 locationRepo: locationRepo,
-                familyRepo: familyRepo,
-                pairingRepo: pairingRepo
+                familyRepo: familyRepo
             )
             vm.familyId = appModeManager.familyId
             watchOverViewModel = vm

@@ -202,7 +202,7 @@ struct WatchedSetupView: View {
             }
             let familyId = appModeManager.familyId ?? UUID().uuidString
             let pairingCode = try await pairingRepo.createPairingCode(familyId: familyId)
-            appModeManager.linkToTrackedUser(id: userId, name: "", familyId: familyId)
+            appModeManager.linkToTrackedUser(id: userId, familyId: familyId)
             generatedCode = pairingCode.code
         } catch {
             errorMessage = "コード生成に失敗しました: \(error.localizedDescription)"

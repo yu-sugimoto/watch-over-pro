@@ -141,7 +141,6 @@ private enum Queries {
     query GetLiveMapState($family_id: ID!) {
         getLiveMapState(family_id: $family_id) {
             locations { tracked_user_id lat lng altitude accuracy speed heading battery_level is_active updated_at }
-            members { family_id member_user_id display_name relationship age color_hex role joined_at }
         }
     }
     """
