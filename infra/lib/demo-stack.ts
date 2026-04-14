@@ -19,7 +19,7 @@ export class DemoStack extends cdk.Stack {
 
     // Seed Lambda: one-time manual execution to populate demo data
     const seedFn = new lambdaNode.NodejsFunction(this, 'SeedDemoDataFn', {
-      entry: path.join(__dirname, '../lambda/seedDemoData/index.ts'),
+      entry: path.join(__dirname, '../lambda/seedDemoData.ts'),
       handler: 'handler',
       runtime: lambda.Runtime.NODEJS_24_X,
       timeout: cdk.Duration.seconds(30),
@@ -44,7 +44,7 @@ export class DemoStack extends cdk.Stack {
       this,
       'RefreshDemoLocationFn',
       {
-        entry: path.join(__dirname, '../lambda/refreshDemoLocation/index.ts'),
+        entry: path.join(__dirname, '../lambda/refreshDemoLocation.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         timeout: cdk.Duration.seconds(10),

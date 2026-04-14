@@ -18,7 +18,7 @@ export class BillingStack extends cdk.Stack {
       this,
       'ActivateSubscriptionFn',
       {
-        entry: path.join(__dirname, '../lambda/activateSubscription/index.ts'),
+        entry: path.join(__dirname, '../lambda/activateSubscription.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         environment: {
@@ -33,10 +33,7 @@ export class BillingStack extends cdk.Stack {
       this,
       'SyncSubscriptionFn',
       {
-        entry: path.join(
-          __dirname,
-          '../lambda/syncSubscriptionStatus/index.ts',
-        ),
+        entry: path.join(__dirname, '../lambda/syncSubscriptionStatus.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         environment: {
