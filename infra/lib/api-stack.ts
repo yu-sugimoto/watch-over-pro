@@ -165,7 +165,7 @@ export class ApiStack extends cdk.Stack {
       this,
       'UpdateFamilyMemberFn',
       {
-        entry: path.join(__dirname, '../lambda/updateFamilyMember/index.ts'),
+        entry: path.join(__dirname, '../lambda/updateFamilyMember.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         environment: {
@@ -190,7 +190,7 @@ export class ApiStack extends cdk.Stack {
       this,
       'DeleteFamilyMemberFn',
       {
-        entry: path.join(__dirname, '../lambda/deleteFamilyMember/index.ts'),
+        entry: path.join(__dirname, '../lambda/deleteFamilyMember.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         environment: {
@@ -215,7 +215,7 @@ export class ApiStack extends cdk.Stack {
       this,
       'CreatePairingCodeFn',
       {
-        entry: path.join(__dirname, '../lambda/createPairingCode/index.ts'),
+        entry: path.join(__dirname, '../lambda/createPairingCode.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         environment: {
@@ -244,7 +244,7 @@ export class ApiStack extends cdk.Stack {
       this,
       'ConsumePairingCodeFn',
       {
-        entry: path.join(__dirname, '../lambda/consumePairingCode/index.ts'),
+        entry: path.join(__dirname, '../lambda/consumePairingCode.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         environment: {
@@ -271,7 +271,7 @@ export class ApiStack extends cdk.Stack {
       this,
       'GetLiveMapStateFn',
       {
-        entry: path.join(__dirname, '../lambda/getLiveMapState/index.ts'),
+        entry: path.join(__dirname, '../lambda/getLiveMapState.ts'),
         handler: 'handler',
         runtime: lambda.Runtime.NODEJS_24_X,
         environment: {

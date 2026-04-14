@@ -19,7 +19,7 @@ export class AuthStack extends cdk.Stack {
       this,
       'DefineAuthChallenge',
       {
-        entry: path.join(__dirname, '../lambda/defineAuthChallenge/index.ts'),
+        entry: path.join(__dirname, '../lambda/defineAuthChallenge.ts'),
         handler: 'handler',
         runtime: cdk.aws_lambda.Runtime.NODEJS_24_X,
         bundling: { minify: true },
@@ -30,7 +30,7 @@ export class AuthStack extends cdk.Stack {
       this,
       'CreateAuthChallenge',
       {
-        entry: path.join(__dirname, '../lambda/createAuthChallenge/index.ts'),
+        entry: path.join(__dirname, '../lambda/createAuthChallenge.ts'),
         handler: 'handler',
         runtime: cdk.aws_lambda.Runtime.NODEJS_24_X,
         bundling: { minify: true },
@@ -41,7 +41,7 @@ export class AuthStack extends cdk.Stack {
       this,
       'VerifyAuthChallenge',
       {
-        entry: path.join(__dirname, '../lambda/verifyAuthChallenge/index.ts'),
+        entry: path.join(__dirname, '../lambda/verifyAuthChallenge.ts'),
         handler: 'handler',
         runtime: cdk.aws_lambda.Runtime.NODEJS_24_X,
         bundling: { minify: true },
@@ -49,7 +49,7 @@ export class AuthStack extends cdk.Stack {
     );
 
     const preSignUp = new lambda.NodejsFunction(this, 'PreSignUp', {
-      entry: path.join(__dirname, '../lambda/preSignUp/index.ts'),
+      entry: path.join(__dirname, '../lambda/preSignUp.ts'),
       handler: 'handler',
       runtime: cdk.aws_lambda.Runtime.NODEJS_24_X,
       bundling: { minify: true },
