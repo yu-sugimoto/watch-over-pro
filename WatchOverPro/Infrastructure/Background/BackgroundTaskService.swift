@@ -71,7 +71,7 @@ enum BackgroundTaskService {
 
     private static func performLocationSync(
         task: BGTask,
-        reschedule: @escaping @Sendable () -> Void
+        reschedule: @escaping @MainActor @Sendable () -> Void
     ) {
         let bgTask = Task { @MainActor in
             guard let config = loadTrackedConfig() else {
@@ -100,7 +100,7 @@ enum BackgroundTaskService {
             )
 
             do {
-                try await repo.updateCurrentLocation(current)
+                _ = try await repo.updateCurrentLocation(current)
             } catch is CancellationError {
                 // Background task expired
             } catch {
