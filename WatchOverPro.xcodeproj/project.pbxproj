@@ -204,6 +204,7 @@
 				8168D3930B9456861CBECA53 /* Domain */,
 				5E9A94A0FAC5B103060721C8 /* Infrastructure */,
 				94EE1FE95848D16687C061A4 /* Presentation */,
+				21B511FCBCE28AD6131EA95F /* UseCases */,
 				FEBE1D15351E84F1B948433D /* Utilities */,
 			);
 			path = WatchOverPro;
@@ -309,7 +310,6 @@
 			children = (
 				F84391B2FD0126DF1B77B6F7 /* Entities */,
 				F000078C955A295F2C8879BC /* Repositories */,
-				21B511FCBCE28AD6131EA95F /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
