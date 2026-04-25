@@ -11,6 +11,7 @@ struct WatchedModeView: View {
     @State private var showPairingCode = false
     @State private var isTracking = false
     @State private var resetError: String?
+    @State private var locationAuthManager = LocationAuthManager()
 
     var body: some View {
         NavigationStack {
@@ -49,6 +50,12 @@ struct WatchedModeView: View {
                     syncService?.stopSync()
                     isTracking = false
                 }
+            }
+        }
+        .overlay {
+            if !locationAuthManager.isAlwaysAuthorized
+                && locationAuthManager.authorizationStatus != .notDetermined {
+                locationPermissionGate
             }
         }
     }
@@ -257,6 +264,48 @@ struct WatchedModeView: View {
             Button("OK") { resetError = nil }
         } message: {
             Text(resetError ?? "")
+        }
+    }
+
+    private var locationPermissionGate: some View {
+        ZStack {
+            Color.black.opacity(0.7)
+                .ignoresSafeArea()
+
+            VStack(spacing: 20) {
+                Image(systemName: "location.fill")
+                    .font(.system(size: 48))
+                    .foregroundStyle(.white)
+
+                Text("位置情報を「常に」に\n変更してください")
+                    .font(.title2.bold())
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Label("「設定を開く」をタップ", systemImage: "1.circle.fill")
+                    Label("「位置情報」をタップ", systemImage: "2.circle.fill")
+                    Label("「常に」を選択", systemImage: "3.circle.fill")
+                }
+                .font(.subheadline)
+                .foregroundStyle(.white.opacity(0.9))
+
+                Button {
+                    locationAuthManager.openSettings()
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "gearshape")
+                        Text("設定を開く")
+                            .fontWeight(.semibold)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.teal)
+                .padding(.horizontal, 20)
+            }
+            .padding(32)
         }
     }
 

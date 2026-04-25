@@ -71,6 +71,7 @@
 		E8B06E32324A74578B21AF44 /* LocationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8BCBB0D872B273AB6CB773 /* LocationRepositoryProtocol.swift */; };
 		EB89EBF3424B8C8BE4ADAD6F /* PersonNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20987D67082B00322F955753 /* PersonNotFoundView.swift */; };
 		EC4976B963765E103289A6FC /* LocationPermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */; };
+		A1B2C3D4E5F60718293A4B5C /* LocationAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E5F6A1B2C30718293A4B5C /* LocationAuthManager.swift */; };
 		FBDABD40EF4C83C40444EBF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */; };
 		FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */; };
 		FE5C4D7698D96F6A82E4BB7C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B0A7309CF7B1BF96BFEE9 /* LocationService.swift */; };
@@ -118,6 +119,7 @@
 		5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyConfiguration.swift; sourceTree = "<group>"; };
 		605B86AE3B02EA12D893EE54 /* StopEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEvent.swift; sourceTree = "<group>"; };
 		6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHelper.swift; sourceTree = "<group>"; };
+		D4E5F6A1B2C30718293A4B5C /* LocationAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuthManager.swift; sourceTree = "<group>"; };
 		6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCaseTests.swift; sourceTree = "<group>"; };
 		7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */,
 				80159D6FB98B3385899CBB3A /* DateFormatter+Shared.swift */,
 				D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */,
+				D4E5F6A1B2C30718293A4B5C /* LocationAuthManager.swift */,
 				6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */,
 				CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */,
 			);
@@ -550,6 +553,7 @@
 				B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */,
 				40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */,
 				8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */,
+				A1B2C3D4E5F60718293A4B5C /* LocationAuthManager.swift in Sources */,
 				EC4976B963765E103289A6FC /* LocationPermissionHelper.swift in Sources */,
 				E8B06E32324A74578B21AF44 /* LocationRepositoryProtocol.swift in Sources */,
 				FE5C4D7698D96F6A82E4BB7C /* LocationService.swift in Sources */,

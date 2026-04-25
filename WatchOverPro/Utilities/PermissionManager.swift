@@ -7,7 +7,7 @@ enum PermissionManager {
 
         if hasLinkedPerson {
             let helper = LocationPermissionHelper()
-            await helper.requestWhenInUseIfNeeded()
+            await helper.requestAlwaysAuthorization()
         }
     }
 }
