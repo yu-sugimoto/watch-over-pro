@@ -187,7 +187,6 @@
 			children = (
 				C90037D8DA18C012CE3F0B81 /* DataSources */,
 				4C6849C01F969BD3EA94AF4B /* DTOs */,
-				56478A30A4319C761639F7EB /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -200,9 +199,12 @@
 				35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */,
 				596D50546B9173D5879B053C /* WatchOverProApp.swift */,
 				12E8CA44C18497CEE1D26A56 /* Data */,
+				7E3DA1BABDE258687B87BABF /* DI */,
 				8168D3930B9456861CBECA53 /* Domain */,
 				5E9A94A0FAC5B103060721C8 /* Infrastructure */,
 				94EE1FE95848D16687C061A4 /* Presentation */,
+				56478A30A4319C761639F7EB /* Repository */,
+				21B511FCBCE28AD6131EA95F /* UseCases */,
 				FEBE1D15351E84F1B948433D /* Utilities */,
 			);
 			path = WatchOverPro;
@@ -227,7 +229,7 @@
 			path = DTOs;
 			sourceTree = "<group>";
 		};
-		56478A30A4319C761639F7EB /* Repositories */ = {
+		56478A30A4319C761639F7EB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */,
@@ -235,7 +237,7 @@
 				67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */,
 				29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */,
 			);
-			path = Repositories;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		5C2FA55C579F67981B594D81 /* Background */ = {
@@ -251,7 +253,6 @@
 			children = (
 				BFED6998CB6EFE93EF3599F7 /* AWS */,
 				5C2FA55C579F67981B594D81 /* Background */,
-				7E3DA1BABDE258687B87BABF /* DI */,
 				771CBD4B4278A2AB5198D37E /* Location */,
 				FAF345C0AE27629B7B0BC52D /* Notifications */,
 			);
@@ -309,7 +310,6 @@
 			children = (
 				F84391B2FD0126DF1B77B6F7 /* Entities */,
 				F000078C955A295F2C8879BC /* Repositories */,
-				21B511FCBCE28AD6131EA95F /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
