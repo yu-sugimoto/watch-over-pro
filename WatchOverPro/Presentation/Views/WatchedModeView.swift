@@ -12,6 +12,7 @@ struct WatchedModeView: View {
     @State private var isTracking = false
     @State private var resetError: String?
     @State private var locationAuthManager = LocationAuthManager()
+    @State private var hasWatchers = false
 
     var body: some View {
         NavigationStack {
@@ -44,6 +45,10 @@ struct WatchedModeView: View {
                     hasLinkedPerson: appModeManager.trackedUserId != nil
                 )
                 autoStartIfNeeded()
+                if let familyId = appModeManager.familyId {
+                    let members = (try? await familyRepo.getFamilyMembers(familyId: familyId)) ?? []
+                    hasWatchers = members.contains { $0.role == .watcher }
+                }
             }
             .onChange(of: appModeManager.currentMode) { _, newMode in
                 if newMode != .watched && isTracking {
@@ -218,9 +223,9 @@ struct WatchedModeView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Text(appModeManager.trackedUserId != nil ? "ペアリング済み" : "未接続")
+                Text(hasWatchers ? "ペアリング済み" : "未接続")
                     .font(.subheadline)
-                    .foregroundStyle(appModeManager.trackedUserId != nil ? .green : .secondary)
+                    .foregroundStyle(hasWatchers ? .green : .secondary)
             }
         }
         .padding(16)
