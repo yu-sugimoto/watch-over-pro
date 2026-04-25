@@ -100,7 +100,8 @@ export class DemoStack extends cdk.Stack {
 
     new cdk.CfnOutput(this, 'SeedDemoDataFunctionName', {
       value: seedFn.functionName,
-      description: 'Auto-executed on deploy. Manual: aws lambda invoke --function-name <this> /tmp/seed-output.json',
+      description:
+        'Auto-executed on deploy. Manual: aws lambda invoke --function-name <this> /tmp/seed-output.json',
     });
   }
 }
