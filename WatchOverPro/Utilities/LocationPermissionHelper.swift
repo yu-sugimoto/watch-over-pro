@@ -24,6 +24,26 @@ final class LocationPermissionHelper: NSObject {
         continuation = nil
     }
 
+    func requestAlwaysAuthorization() async {
+        let status = CLLocationManager().authorizationStatus
+        switch status {
+        case .notDetermined:
+            await requestWhenInUseIfNeeded()
+            escalateToAlways()
+        case .authorizedWhenInUse:
+            escalateToAlways()
+        default:
+            return
+        }
+    }
+
+    private func escalateToAlways() {
+        let manager = CLLocationManager()
+        locationManager = manager
+        manager.delegate = self
+        manager.requestAlwaysAuthorization()
+    }
+
     private func resumeContinuationOnce() {
         guard !hasResumed else { return }
         hasResumed = true
