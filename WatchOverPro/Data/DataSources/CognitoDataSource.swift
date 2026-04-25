@@ -2,6 +2,7 @@ import Foundation
 import AuthenticationServices
 import Amplify
 import AWSCognitoAuthPlugin
+import AWSPluginsCore
 
 final class CognitoDataSource: NSObject, @unchecked Sendable {
     static let shared = CognitoDataSource()
@@ -71,6 +72,21 @@ final class CognitoDataSource: NSObject, @unchecked Sendable {
         let session = try await Amplify.Auth.fetchAuthSession()
         let userId = try? await Amplify.Auth.getCurrentUser().userId
         return (session.isSignedIn, userId)
+    }
+
+    /// Validates the current session by force-refreshing tokens with Cognito.
+    /// Returns `false` if the refresh token has expired or the session is invalid.
+    func validateSession() async -> Bool {
+        do {
+            let session = try await Amplify.Auth.fetchAuthSession(options: .forceRefresh())
+            guard session.isSignedIn else { return false }
+            if let cognitoSession = session as? any AuthCognitoTokensProvider {
+                _ = try cognitoSession.getCognitoTokens().get()
+            }
+            return true
+        } catch {
+            return false
+        }
     }
 
     func getCurrentUserId() async -> String? {

@@ -5,7 +5,7 @@ final class CognitoAuthRepository: AuthRepositoryProtocol, Sendable {
 
     var isAuthenticated: Bool {
         get async {
-            (try? await checkSession()) ?? false
+            await dataSource.validateSession()
         }
     }
 

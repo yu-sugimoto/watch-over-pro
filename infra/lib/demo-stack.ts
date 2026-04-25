@@ -3,6 +3,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
+import * as cr from 'aws-cdk-lib/custom-resources';
 import * as path from 'path';
 import { Construct } from 'constructs';
 import { DataTables } from './data-stack';
@@ -17,7 +18,7 @@ export class DemoStack extends cdk.Stack {
 
     const { tables } = props;
 
-    // Seed Lambda: one-time manual execution to populate demo data
+    // Seed Lambda: auto-executed on deploy to populate demo data
     const seedFn = new lambdaNode.NodejsFunction(this, 'SeedDemoDataFn', {
       entry: path.join(__dirname, '../lambda/seedDemoData.ts'),
       handler: 'handler',
@@ -38,6 +39,36 @@ export class DemoStack extends cdk.Stack {
     tables.pairingCodes.grantReadWriteData(seedFn);
     tables.routeChunks.grantReadWriteData(seedFn);
     tables.stopEvents.grantReadWriteData(seedFn);
+
+    // Auto-execute seed on deploy
+    const seedTrigger = new cr.AwsCustomResource(this, 'SeedDemoTrigger', {
+      installLatestAwsSdk: false,
+      onCreate: {
+        service: 'Lambda',
+        action: 'invoke',
+        parameters: {
+          FunctionName: seedFn.functionName,
+          InvocationType: 'Event',
+        },
+        physicalResourceId: cr.PhysicalResourceId.of('SeedDemoTrigger'),
+      },
+      onUpdate: {
+        service: 'Lambda',
+        action: 'invoke',
+        parameters: {
+          FunctionName: seedFn.functionName,
+          InvocationType: 'Event',
+        },
+        physicalResourceId: cr.PhysicalResourceId.of(Date.now().toString()),
+      },
+      policy: cr.AwsCustomResourcePolicy.fromStatements([
+        new cdk.aws_iam.PolicyStatement({
+          actions: ['lambda:InvokeFunction'],
+          resources: [seedFn.functionArn],
+        }),
+      ]),
+    });
+    seedTrigger.node.addDependency(seedFn);
 
     // Refresh Lambda: runs every 3 minutes to keep demo data alive
     const refreshFn = new lambdaNode.NodejsFunction(
@@ -69,8 +100,7 @@ export class DemoStack extends cdk.Stack {
 
     new cdk.CfnOutput(this, 'SeedDemoDataFunctionName', {
       value: seedFn.functionName,
-      description:
-        'Run: aws lambda invoke --function-name <this> /tmp/seed-output.json',
+      description: 'Auto-executed on deploy. Manual: aws lambda invoke --function-name <this> /tmp/seed-output.json',
     });
   }
 }

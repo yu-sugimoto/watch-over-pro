@@ -41,8 +41,8 @@ struct ContentView: View {
                 familyRepo: familyRepo
             )
             vm.familyId = appModeManager.familyId
-            watchOverViewModel = vm
             await performAuth()
+            watchOverViewModel = vm
         }
     }
 
@@ -90,6 +90,7 @@ struct ContentView: View {
             isAuthReady = true
             authFailed = false
         } else {
+            try? await authRepo.signOut()
             authFailed = true
         }
     }

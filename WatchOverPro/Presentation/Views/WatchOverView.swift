@@ -51,7 +51,6 @@ struct WatchOverView: View {
             }
             .task {
                 await NotificationService.shared.requestAuthorization()
-                watchOverViewModel.familyId = appModeManager.familyId
                 await watchOverViewModel.loadData()
                 await watchOverViewModel.startRealtime()
             }
