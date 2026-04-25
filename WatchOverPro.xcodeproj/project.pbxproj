@@ -7,25 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02A3782AD73B2754AFF0E0AF /* ManageRouteChunksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */; };
 		0612860C3E68E57284BFC2E0 /* ManageRouteChunksUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BFE31619B2FA720E26ED7 /* ManageRouteChunksUseCaseTests.swift */; };
 		0B8597B860F8CFB95191E5AD /* AWSCloudWatchLoggingPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 701C289CD99A2E8A5B53C2A4 /* AWSCloudWatchLoggingPlugin */; };
+		108BA02991D1827010F28F39 /* UpdateLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888F84CA9AE3385568D1D319 /* UpdateLocationUseCase.swift */; };
 		17F21680A3125CF27F65AD3E /* DetectStopEventUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B661553D815A9AE58D9FCDA7 /* DetectStopEventUseCaseTests.swift */; };
 		1DC8737D51E03E5717DF8A08 /* MemberRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */; };
 		207BA31DA96BCAED35E07D91 /* PersonStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49837F88655C1C0E3E1382 /* PersonStatusTests.swift */; };
 		2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4566722C5699D477C0E003FF /* CurrentLocation.swift */; };
 		291A4A89D8E2F730E0ABC60C /* WatchOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457581D236E53239946C77C /* WatchOverView.swift */; };
-		29EA0104152EB68ACE25F03C /* AppSyncPairingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */; };
 		391860122BD5AAEA4DA31F64 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */; };
 		3F1360888BD390BE6801D0A0 /* LocationSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35705F896169497FABC8176 /* LocationSyncService.swift */; };
 		4077DD4EB4E467BDC8B9B3C6 /* StatusSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */; };
 		40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */; };
+		41BBC4B6A84514812894C380 /* AppSyncLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D95DFDA61204D74D509B91 /* AppSyncLocationRepository.swift */; };
 		43E1D603FC4D32C585A544B1 /* WatchedSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E64AC7374A288C4C62DB1A /* WatchedSetupView.swift */; };
-		465780A9A19C6DE750BA5124 /* ResolvePersonStatusUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */; };
 		485153C2B7BC45A9185BB139 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = D2BDC010AF3DE26424D084FF /* AWSAPIPlugin */; };
 		4C6DF840B0A49A65EDD221E7 /* WatchedModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552C97A713D811D1F45F7BC /* WatchedModeView.swift */; };
 		4E0B44ABA03DE63D22AB7B87 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9B25F38E3E5A095132454 /* Relationship.swift */; };
 		56904B3517ECB24272BBB58C /* RouteChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD0D4575361EA463E63B702 /* RouteChunk.swift */; };
+		5782A378F68400088716398D /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1EEC23A278480730DA711A /* EnvironmentKeys.swift */; };
+		5D09A33FB2AE3D7DA065BF60 /* CognitoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7493EDFBBF12D7370E2D40B /* CognitoAuthRepository.swift */; };
 		6230E898BD0932C5617A2C9E /* PersonDetailMapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */; };
 		6743DD37893EBF5AD05B3615 /* PersonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */; };
 		677BE360F2D8D4612B471A5A /* MockRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4454B8EF718ADAA04F20EA8 /* MockRepositories.swift */; };
@@ -34,35 +35,35 @@
 		7379E466A2FA215CAEFE6511 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933E05A9D4B9735B16C954EE /* AuthRepositoryProtocol.swift */; };
 		779B09B9E9DBFFB67BFB1A5C /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 5D87160C5EF10368639ECA11 /* Amplify */; };
 		7B272BFA5F00284E0AE2EAB0 /* PairingCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */; };
+		81418CF8928E31E42030C07C /* AppSyncPairingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1400F2228546CC1670A67B43 /* AppSyncPairingRepository.swift */; };
 		8FB686B308A6DF1FD3E72CBC /* ISO8601+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */; };
 		963F3705F99B3A1E0696144F /* AppSyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */; };
-		9917452F48B32EC0DDA12A56 /* UpdateLocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */; };
 		99D9A876336716402AB0DDE2 /* AppModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F802AA72AF9FEC28FE4F63D /* AppModeManager.swift */; };
 		9DC2F2E5ADD799471DF74131 /* PairingRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */; };
 		9E174313A2F99D58D2D98743 /* BackgroundTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */; };
 		A14D8250912CA5BC6B61E5F9 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF30985819D2B827FDA1BFA /* PersonDetailView.swift */; };
-		A7790BFA901AC9CE8A3A0C63 /* CognitoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */; };
 		A7F8FB85A2A1FF13CCEBD101 /* StopEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B86AE3B02EA12D893EE54 /* StopEvent.swift */; };
 		A97764820E4C24A5815301AD /* PersonEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */; };
+		ABDF022380853A388D97731F /* ManageRouteChunksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A27F4E5B96884D09D19725 /* ManageRouteChunksUseCase.swift */; };
 		ACB7DFAF47FB1356745C55F6 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD868C40549C11D4E689482 /* AWSCognitoAuthPlugin */; };
-		AEA4F19FA5CAFC642AC547E8 /* AppSyncFamilyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */; };
 		B3A91A1FE28942C33873C710 /* PairingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF12DAD612E5A9769A9482D /* PairingInputView.swift */; };
 		B403F20B5D2A3AD135C38583 /* PairingStepRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1260F6259B2D0AEC76C3CF31 /* PairingStepRow.swift */; };
 		B5BD16D8D3904D5B5ED0CBD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */; };
 		B5CBDDEB14909E887A628736 /* PairingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C7FA33BE75193A8553FCAB /* PairingCode.swift */; };
-		B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */; };
 		B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */; };
+		BC067634954FCCFDC7C1BCC1 /* DetectStopEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C471CCA8442BF97EAB3B4C /* DetectStopEventUseCase.swift */; };
 		BFD4EF6F2CA687CB33C60DF1 /* ResolvePersonStatusUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */; };
 		BFD5B281ECAF66D629AA7B18 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106CC5580EE0D2E163152017 /* SettingsView.swift */; };
 		C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */; };
+		C5339D620D137BE63A6E0E8A /* AppSyncFamilyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAAD733D9A047F08BA8517 /* AppSyncFamilyRepository.swift */; };
 		C850C493D76F4916DB54F0B7 /* DateFormatter+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80159D6FB98B3385899CBB3A /* DateFormatter+Shared.swift */; };
-		C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */; };
 		CAB39A837FF3E12CAED111E8 /* AmplifyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */; };
 		CBCCD8866ED87EE6AA592090 /* AppModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F9432A78A24A46E394B480 /* AppModeSelectionView.swift */; };
 		CD0B4FCC73481AD864F065BE /* AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */; };
+		CFD7B809FAEEFAE8858B51EB /* ResolvePersonStatusUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457362A23539E7BC0C30841 /* ResolvePersonStatusUseCase.swift */; };
 		CFD83335B0E3EA506C0DFD4D /* PersonRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE53DF47718310EB48CB108 /* PersonRegistrationView.swift */; };
-		D239317B04E292F93C687B62 /* AppSyncLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */; };
 		D89DFC659E60CA67D73977BC /* CognitoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9302D6A708303E653BE35 /* CognitoDataSource.swift */; };
+		D9458396F64FA9A7296DDC3F /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */; };
 		DA6782E38F02C4DE53039488 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */; };
 		E3122787628EF5C9553462D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B64E47CBAD1B6C7E421495 /* Assets.xcassets */; };
 		E49D0AEC4E0DEC028EDC4CE3 /* WatchOverProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D50546B9173D5879B053C /* WatchOverProApp.swift */; };
@@ -86,24 +87,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01D95DFDA61204D74D509B91 /* AppSyncLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncLocationRepository.swift; sourceTree = "<group>"; };
 		04213E85BCCF3C6B01E0F878 /* PairingCodeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingCodeGeneratorView.swift; sourceTree = "<group>"; };
 		044B0A7309CF7B1BF96BFEE9 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		049C1A4857A4D898FBDC48E0 /* WatchOverPro.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WatchOverPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E64AC7374A288C4C62DB1A /* WatchedSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedSetupView.swift; sourceTree = "<group>"; };
+		0A1EEC23A278480730DA711A /* EnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeys.swift; sourceTree = "<group>"; };
 		0A9E2F9C6311B4233E5D69B1 /* PersonCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCardView.swift; sourceTree = "<group>"; };
 		106CC5580EE0D2E163152017 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1260F6259B2D0AEC76C3CF31 /* PairingStepRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingStepRow.swift; sourceTree = "<group>"; };
+		1400F2228546CC1670A67B43 /* AppSyncPairingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncPairingRepository.swift; sourceTree = "<group>"; };
 		1BE9B25F38E3E5A095132454 /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		1EC3AB7B5F4599FDD3096BDA /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		1EF12DAD612E5A9769A9482D /* PairingInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingInputView.swift; sourceTree = "<group>"; };
 		20987D67082B00322F955753 /* PersonNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonNotFoundView.swift; sourceTree = "<group>"; };
+		2457362A23539E7BC0C30841 /* ResolvePersonStatusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCase.swift; sourceTree = "<group>"; };
 		2552C97A713D811D1F45F7BC /* WatchedModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedModeView.swift; sourceTree = "<group>"; };
-		29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoAuthRepository.swift; sourceTree = "<group>"; };
-		2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCase.swift; sourceTree = "<group>"; };
 		35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchOverPro.entitlements; sourceTree = "<group>"; };
 		36B64E47CBAD1B6C7E421495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3FBAAD733D9A047F08BA8517 /* AppSyncFamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncFamilyRepository.swift; sourceTree = "<group>"; };
 		439D2808F7071796382EA9B5 /* PairingRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingRepositoryProtocol.swift; sourceTree = "<group>"; };
 		4566722C5699D477C0E003FF /* CurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
+		45C471CCA8442BF97EAB3B4C /* DetectStopEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCase.swift; sourceTree = "<group>"; };
 		4A611CD06D7EB231F41CE968 /* AppSyncDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncDataSource.swift; sourceTree = "<group>"; };
 		4F802AA72AF9FEC28FE4F63D /* AppModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeManager.swift; sourceTree = "<group>"; };
 		4FD0D4575361EA463E63B702 /* RouteChunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteChunk.swift; sourceTree = "<group>"; };
@@ -112,15 +117,14 @@
 		596D50546B9173D5879B053C /* WatchOverProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverProApp.swift; sourceTree = "<group>"; };
 		5FE04360504EF8CACDA6D4EE /* AmplifyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyConfiguration.swift; sourceTree = "<group>"; };
 		605B86AE3B02EA12D893EE54 /* StopEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEvent.swift; sourceTree = "<group>"; };
-		67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncPairingRepository.swift; sourceTree = "<group>"; };
 		6AB14F8F98C641199FFA7EFD /* LocationPermissionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionHelper.swift; sourceTree = "<group>"; };
 		6F3FEB33EA5082CEBDFDED81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncFamilyRepository.swift; sourceTree = "<group>"; };
 		7584E2CAE07D712238AEC663 /* ResolvePersonStatusUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePersonStatusUseCaseTests.swift; sourceTree = "<group>"; };
 		7CC1DC335306ECBAF1E2EE48 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
 		80159D6FB98B3385899CBB3A /* DateFormatter+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Shared.swift"; sourceTree = "<group>"; };
 		873BB2AC62B792306E6600DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		88397BE81E938582BC1BA655 /* WatchOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverViewModel.swift; sourceTree = "<group>"; };
+		888F84CA9AE3385568D1D319 /* UpdateLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationUseCase.swift; sourceTree = "<group>"; };
 		90A4D9F5ECA733B943D2EC60 /* MemberRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRole.swift; sourceTree = "<group>"; };
 		9266825B51F419DB5F3224C1 /* PersonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonStatus.swift; sourceTree = "<group>"; };
 		933E05A9D4B9735B16C954EE /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -128,27 +132,25 @@
 		9AA9302D6A708303E653BE35 /* CognitoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoDataSource.swift; sourceTree = "<group>"; };
 		9BE53DF47718310EB48CB108 /* PersonRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRegistrationView.swift; sourceTree = "<group>"; };
 		9CF30985819D2B827FDA1BFA /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
-		9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeys.swift; sourceTree = "<group>"; };
 		A3073C9EC2A44B6C6EB7C55F /* Date+Relative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Relative.swift"; sourceTree = "<group>"; };
 		A35705F896169497FABC8176 /* LocationSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSyncService.swift; sourceTree = "<group>"; };
 		A4454B8EF718ADAA04F20EA8 /* MockRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepositories.swift; sourceTree = "<group>"; };
 		A457581D236E53239946C77C /* WatchOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverView.swift; sourceTree = "<group>"; };
 		A54BFE31619B2FA720E26ED7 /* ManageRouteChunksUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCaseTests.swift; sourceTree = "<group>"; };
-		A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationUseCase.swift; sourceTree = "<group>"; };
 		A9EA7CCBED5201D3AEB65FF9 /* PersonDetailMapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailMapCard.swift; sourceTree = "<group>"; };
 		AFA07BB7D2C038D6AEB24971 /* PersonEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonEditView.swift; sourceTree = "<group>"; };
+		B0A27F4E5B96884D09D19725 /* ManageRouteChunksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCase.swift; sourceTree = "<group>"; };
 		B5BD5183C77CBF8D434110C1 /* GraphQLTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTypes.swift; sourceTree = "<group>"; };
 		B661553D815A9AE58D9FCDA7 /* DetectStopEventUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCaseTests.swift; sourceTree = "<group>"; };
-		C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRouteChunksUseCase.swift; sourceTree = "<group>"; };
 		CC9AF86BB144E8A05E872EF7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CE9F4BCDEA1CCA82C13BFDBC /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		D5E14690596B5CC014CE7D85 /* ISO8601+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ISO8601+Shared.swift"; sourceTree = "<group>"; };
 		DC0A9B691535AD100151FEA7 /* StatusSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSummaryCard.swift; sourceTree = "<group>"; };
+		DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		ED497BC3C7B381C5BF949DD2 /* WatchOverProTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOverProTests.swift; sourceTree = "<group>"; };
 		ED77341276C408E91A752EA7 /* BackgroundTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskService.swift; sourceTree = "<group>"; };
-		F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectStopEventUseCase.swift; sourceTree = "<group>"; };
 		F67B5AEC9C65BBC7926DABBD /* FamilyMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyMember.swift; sourceTree = "<group>"; };
-		FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncLocationRepository.swift; sourceTree = "<group>"; };
+		F7493EDFBBF12D7370E2D40B /* CognitoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoAuthRepository.swift; sourceTree = "<group>"; };
 		FC081D70BB400B2C9D9F5BBD /* FamilyRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyRepositoryProtocol.swift; sourceTree = "<group>"; };
 		FC8BCBB0D872B273AB6CB773 /* LocationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryProtocol.swift; sourceTree = "<group>"; };
 		FD49837F88655C1C0E3E1382 /* PersonStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonStatusTests.swift; sourceTree = "<group>"; };
@@ -194,31 +196,32 @@
 		1B02EA95D0189886EC916B01 /* WatchOverPro */ = {
 			isa = PBXGroup;
 			children = (
+				DC8949A8CE54FA4ED1237DE2 /* amplifyconfiguration.json */,
 				36B64E47CBAD1B6C7E421495 /* Assets.xcassets */,
 				873BB2AC62B792306E6600DD /* Info.plist */,
 				35D8E3417A26ACE98AA93B50 /* WatchOverPro.entitlements */,
 				596D50546B9173D5879B053C /* WatchOverProApp.swift */,
 				12E8CA44C18497CEE1D26A56 /* Data */,
-				7E3DA1BABDE258687B87BABF /* DI */,
+				B63EF07FF79C8B11C4D22E3C /* DI */,
 				8168D3930B9456861CBECA53 /* Domain */,
 				5E9A94A0FAC5B103060721C8 /* Infrastructure */,
 				94EE1FE95848D16687C061A4 /* Presentation */,
-				56478A30A4319C761639F7EB /* Repository */,
-				21B511FCBCE28AD6131EA95F /* UseCases */,
+				3AA41EFB03FDA9E948EC340E /* Repository */,
+				52B7B5E92E267D7093E0B809 /* UseCases */,
 				FEBE1D15351E84F1B948433D /* Utilities */,
 			);
 			path = WatchOverPro;
 			sourceTree = "<group>";
 		};
-		21B511FCBCE28AD6131EA95F /* UseCases */ = {
+		3AA41EFB03FDA9E948EC340E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				F5439F3E699B4BD021138397 /* DetectStopEventUseCase.swift */,
-				C966EB93E7DBD9478A8B6188 /* ManageRouteChunksUseCase.swift */,
-				2B5D29750805F10067FB4BEB /* ResolvePersonStatusUseCase.swift */,
-				A5FDF48F32FFBE0A58DC0719 /* UpdateLocationUseCase.swift */,
+				3FBAAD733D9A047F08BA8517 /* AppSyncFamilyRepository.swift */,
+				01D95DFDA61204D74D509B91 /* AppSyncLocationRepository.swift */,
+				1400F2228546CC1670A67B43 /* AppSyncPairingRepository.swift */,
+				F7493EDFBBF12D7370E2D40B /* CognitoAuthRepository.swift */,
 			);
-			path = UseCases;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		4C6849C01F969BD3EA94AF4B /* DTOs */ = {
@@ -229,15 +232,15 @@
 			path = DTOs;
 			sourceTree = "<group>";
 		};
-		56478A30A4319C761639F7EB /* Repository */ = {
+		52B7B5E92E267D7093E0B809 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				71D561150F3C655B00910D57 /* AppSyncFamilyRepository.swift */,
-				FB717E4D129C721EEE6A613C /* AppSyncLocationRepository.swift */,
-				67F7B4EBB1757DF21DB1FB9A /* AppSyncPairingRepository.swift */,
-				29B27761BAD0F2425AF5D1EB /* CognitoAuthRepository.swift */,
+				45C471CCA8442BF97EAB3B4C /* DetectStopEventUseCase.swift */,
+				B0A27F4E5B96884D09D19725 /* ManageRouteChunksUseCase.swift */,
+				2457362A23539E7BC0C30841 /* ResolvePersonStatusUseCase.swift */,
+				888F84CA9AE3385568D1D319 /* UpdateLocationUseCase.swift */,
 			);
-			path = Repository;
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		5C2FA55C579F67981B594D81 /* Background */ = {
@@ -297,14 +300,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		7E3DA1BABDE258687B87BABF /* DI */ = {
-			isa = PBXGroup;
-			children = (
-				9F6C9EBD1F02BE3BA0F95009 /* EnvironmentKeys.swift */,
-			);
-			path = DI;
-			sourceTree = "<group>";
-		};
 		8168D3930B9456861CBECA53 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +353,14 @@
 				54281BD91F8564EABA8EDF19 /* WatchOverProTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B63EF07FF79C8B11C4D22E3C /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				0A1EEC23A278480730DA711A /* EnvironmentKeys.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		BFED6998CB6EFE93EF3599F7 /* AWS */ = {
@@ -513,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3122787628EF5C9553462D8 /* Assets.xcassets in Resources */,
+				D9458396F64FA9A7296DDC3F /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,20 +532,20 @@
 				99D9A876336716402AB0DDE2 /* AppModeManager.swift in Sources */,
 				CBCCD8866ED87EE6AA592090 /* AppModeSelectionView.swift in Sources */,
 				963F3705F99B3A1E0696144F /* AppSyncDataSource.swift in Sources */,
-				AEA4F19FA5CAFC642AC547E8 /* AppSyncFamilyRepository.swift in Sources */,
-				D239317B04E292F93C687B62 /* AppSyncLocationRepository.swift in Sources */,
-				29EA0104152EB68ACE25F03C /* AppSyncPairingRepository.swift in Sources */,
+				C5339D620D137BE63A6E0E8A /* AppSyncFamilyRepository.swift in Sources */,
+				41BBC4B6A84514812894C380 /* AppSyncLocationRepository.swift in Sources */,
+				81418CF8928E31E42030C07C /* AppSyncPairingRepository.swift in Sources */,
 				7379E466A2FA215CAEFE6511 /* AuthRepositoryProtocol.swift in Sources */,
 				9E174313A2F99D58D2D98743 /* BackgroundTaskService.swift in Sources */,
-				A7790BFA901AC9CE8A3A0C63 /* CognitoAuthRepository.swift in Sources */,
+				5D09A33FB2AE3D7DA065BF60 /* CognitoAuthRepository.swift in Sources */,
 				D89DFC659E60CA67D73977BC /* CognitoDataSource.swift in Sources */,
 				B5BD16D8D3904D5B5ED0CBD4 /* Color+Hex.swift in Sources */,
 				FBDABD40EF4C83C40444EBF0 /* ContentView.swift in Sources */,
 				2729777E6E19D5F783DD4DD6 /* CurrentLocation.swift in Sources */,
 				C05D3F674F2A8AEEDDD526D4 /* Date+Relative.swift in Sources */,
 				C850C493D76F4916DB54F0B7 /* DateFormatter+Shared.swift in Sources */,
-				C9ACE3D89E807501130ED63D /* DetectStopEventUseCase.swift in Sources */,
-				B73D6B81E850411D07EE863E /* EnvironmentKeys.swift in Sources */,
+				BC067634954FCCFDC7C1BCC1 /* DetectStopEventUseCase.swift in Sources */,
+				5782A378F68400088716398D /* EnvironmentKeys.swift in Sources */,
 				FC3C4CA9D9169CABDB500F95 /* FamilyMember.swift in Sources */,
 				B88D5A2C5F4D5E2036625C80 /* FamilyRepositoryProtocol.swift in Sources */,
 				40EE033C155C097D8D0FFD45 /* GraphQLTypes.swift in Sources */,
@@ -550,7 +554,7 @@
 				E8B06E32324A74578B21AF44 /* LocationRepositoryProtocol.swift in Sources */,
 				FE5C4D7698D96F6A82E4BB7C /* LocationService.swift in Sources */,
 				3F1360888BD390BE6801D0A0 /* LocationSyncService.swift in Sources */,
-				02A3782AD73B2754AFF0E0AF /* ManageRouteChunksUseCase.swift in Sources */,
+				ABDF022380853A388D97731F /* ManageRouteChunksUseCase.swift in Sources */,
 				1DC8737D51E03E5717DF8A08 /* MemberRole.swift in Sources */,
 				DA6782E38F02C4DE53039488 /* NotificationService.swift in Sources */,
 				B5CBDDEB14909E887A628736 /* PairingCode.swift in Sources */,
@@ -567,12 +571,12 @@
 				CFD83335B0E3EA506C0DFD4D /* PersonRegistrationView.swift in Sources */,
 				67CFF4993F80DDEC45A1B6CD /* PersonStatus.swift in Sources */,
 				4E0B44ABA03DE63D22AB7B87 /* Relationship.swift in Sources */,
-				465780A9A19C6DE750BA5124 /* ResolvePersonStatusUseCase.swift in Sources */,
+				CFD7B809FAEEFAE8858B51EB /* ResolvePersonStatusUseCase.swift in Sources */,
 				56904B3517ECB24272BBB58C /* RouteChunk.swift in Sources */,
 				BFD5B281ECAF66D629AA7B18 /* SettingsView.swift in Sources */,
 				4077DD4EB4E467BDC8B9B3C6 /* StatusSummaryCard.swift in Sources */,
 				A7F8FB85A2A1FF13CCEBD101 /* StopEvent.swift in Sources */,
-				9917452F48B32EC0DDA12A56 /* UpdateLocationUseCase.swift in Sources */,
+				108BA02991D1827010F28F39 /* UpdateLocationUseCase.swift in Sources */,
 				E49D0AEC4E0DEC028EDC4CE3 /* WatchOverProApp.swift in Sources */,
 				291A4A89D8E2F730E0ABC60C /* WatchOverView.swift in Sources */,
 				E81BA78A39B2551C84C8C98C /* WatchOverViewModel.swift in Sources */,

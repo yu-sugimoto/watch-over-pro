@@ -52,15 +52,21 @@ final class WatchOverViewModel {
 
         do {
             familyMembers = try await familyRepo.getFamilyMembers(familyId: familyId)
+        } catch is CancellationError {
+            return
         } catch {
             print("メンバー取得に失敗しました: \(error.localizedDescription)")
         }
+
+        guard !Task.isCancelled else { return }
 
         do {
             let locations = try await locationRepo.getLiveMapState(familyId: familyId)
             for loc in locations {
                 latestLocations[loc.trackedUserId] = loc
             }
+        } catch is CancellationError {
+            return
         } catch {
             print("位置情報取得に失敗しました: \(error.localizedDescription)")
         }

@@ -94,22 +94,20 @@ export async function handler(event: AppSyncResolverEvent<ConsumePairingArgs>) {
     throw new Error('Cannot consume own pairing code');
   }
 
-  // Update tracked member with watcher-provided info
+  // Create/overwrite tracked member with complete record
   await ddb.send(
-    new UpdateItemCommand({
+    new PutItemCommand({
       TableName: MEMBERS_TABLE,
-      Key: {
+      Item: {
         family_id: { S: familyId },
         member_user_id: { S: trackedUserId },
-      },
-      UpdateExpression:
-        'SET display_name = :dn, relationship = :rel, age = :age, color_hex = :ch, notes = :notes',
-      ExpressionAttributeValues: {
-        ':dn': { S: memberDisplayName },
-        ':rel': { S: memberRelationship },
-        ':age': { N: String(memberAge) },
-        ':ch': { S: memberColorHex },
-        ':notes': { S: memberNotes },
+        display_name: { S: memberDisplayName },
+        relationship: { S: memberRelationship },
+        age: { N: String(memberAge) },
+        color_hex: { S: memberColorHex },
+        notes: { S: memberNotes },
+        role: { S: 'tracked' },
+        joined_at: { S: now },
       },
     }),
   );
